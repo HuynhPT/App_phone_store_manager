@@ -4,17 +4,57 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+        <item android:title="Quản lý">
+            <menu>
+                <item
+                    android:id="@+id/nav_hoaDonXuat"
+                    android:icon="@drawable/ic_home"
+                    android:title="@string/menu_hd_xuat" />
+                <item
+                    android:id="@+id/nav_hoaDonNhap"
+                    android:icon="@drawable/ic_directions"
+                    android:title="@string/menu_hd_nhap" />
+                <item
+                    android:id="@+id/nav_hang"
+                    android:icon="@drawable/ic_hang"
+                    android:title="@string/hang" />
+                <item
+                    android:id="@+id/nav_sanPham"
+                    android:icon="@drawable/ic_category"
+                    android:title="@string/san_pham" />
+                <item
+                    android:id="@+id/nav_khachHang"
+                    android:icon="@drawable/ic_people"
+                    android:title="@string/khach_hang" />
+            </menu>
+        </item>
+        <item android:title="Thống kê">
+            <menu>
+                <item
+                    android:id="@+id/nav_doanhThu"
+                    android:icon="@drawable/ic_money"
+                    android:title="@string/doanh_thu" />
+                <item
+                    android:id="@+id/nav_topSanPham"
+                    android:icon="@drawable/ic_top"
+                    android:title="@string/menu_top" />
+            </menu>
+        </item>
     </group>
+    <item android:title="Người dùng">
+        <menu>
+            <item
+                android:id="@+id/nav_account"
+                android:icon="@drawable/ic_accounts"
+                android:title="@string/menu_acc" />
+            <item
+                android:id="@+id/nav_info"
+                android:icon="@drawable/ic_info"
+                android:title="@string/menu_about_acc" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/menu_logout" />
+        </menu>
+    </item>
 </menu>
