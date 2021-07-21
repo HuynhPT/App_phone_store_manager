@@ -8,4 +8,5 @@
         android:orderInCategory="100"
         app:showAsAction="ifRoom">
     </item>
+    //String name menu
 </menu>
