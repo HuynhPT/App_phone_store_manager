@@ -7,47 +7,47 @@
     <fragment
         android:id="@+id/nav_hoaDonXuat"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.HoaDonXuat.HoaDonXuatFragment"
-        android:label="fragment_hoa_don_xuat"
+        android:label="@string/menu_hd_xuat"
         tools:layout="@layout/fragment_hoa_don_xuat" />
     <fragment
         android:id="@+id/nav_hoaDonNhap"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.HoaDonNhap.HoaDonNhapFragment"
-        android:label="fragment_hoa_don_nhap"
+        android:label="@string/menu_hd_nhap"
         tools:layout="@layout/fragment_hoa_don_nhap" />
     <fragment
         android:id="@+id/nav_sanPham"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.SanPham.SanPhamFragment"
-        android:label="fragment_san_pham"
+        android:label="@string/san_pham"
         tools:layout="@layout/fragment_san_pham" />
     <fragment
         android:id="@+id/nav_khachHang"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.KhachHang.KhachHangFragment"
-        android:label="fragment_khach_hang"
+        android:label="@string/khach_hang"
         tools:layout="@layout/fragment_khach_hang" />
     <fragment
         android:id="@+id/nav_doanhThu"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.ThongKe.DoanhThuFragment"
-        android:label="fragment_doanh_thu"
+        android:label="@string/doanh_thu"
         tools:layout="@layout/fragment_doanh_thu" />
     <fragment
         android:id="@+id/nav_topSanPham"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.ThongKe.TopSanPhamFragment"
-        android:label="fragment_top_san_pham"
+        android:label="@string/menu_top"
         tools:layout="@layout/fragment_top_san_pham" />
     <fragment
         android:id="@+id/nav_account"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.TaiKhoan.TaiKhoanFragment"
-        android:label="fragment_tai_khoan"
+        android:label="@string/menu_acc"
         tools:layout="@layout/fragment_tai_khoan" />
     <fragment
         android:id="@+id/nav_info"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.NguoiDung.NguoiDungFragment"
-        android:label="fragment_nguoi_dung"
+        android:label="@string/menu_about_acc"
         tools:layout="@layout/fragment_nguoi_dung" />
     <fragment
         android:id="@+id/nav_hang"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.Hang.HangFragment"
-        android:label="fragment_hang"
+        android:label="@string/hang"
         tools:layout="@layout/fragment_hang" />
     <fragment android:id="@+id/nav_logout"
         android:label="@string/menu_hd_xuat"
