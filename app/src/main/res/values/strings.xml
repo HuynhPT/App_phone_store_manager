@@ -29,4 +29,6 @@
     <string name="login">Đăng nhập</string>
     <string name="remember">Lưu tài khoản</string>
     <string name="cancel">Hủy</string>
+    <string name="title_add_hang">Thêm hãng</string>
+
 </resources>
