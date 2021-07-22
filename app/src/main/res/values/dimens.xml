@@ -6,6 +6,7 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="font_sc">65sp</dimen>
+    <dimen name="avatar_size">64dp</dimen>
     <dimen name="font_sc_sp">24sp</dimen>
     <dimen name="radius">25sp</dimen>
     <dimen name="logo_with">120dp</dimen>

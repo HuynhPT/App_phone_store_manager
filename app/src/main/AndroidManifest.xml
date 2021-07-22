@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_phone_store_manager_Nhom_3">
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.Hang.AddHangActivity"
             android:theme="@style/Theme.App_phone_store_manager_Nhom_3.NoActionBar"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.App_phone_store_manager_Nhom_3.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.App_phone_store_manager_Nhom_3.NoActionBar">
@@ -24,7 +27,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.App_phone_store_manager_Nhom_3.NoActionBar"></activity>
+            android:theme="@style/Theme.App_phone_store_manager_Nhom_3.NoActionBar" />
     </application>
 
 </manifest>
