@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App_phone_store_manager_Nhom_3">
+        <activity android:name=".ui.KhachHang.AddKhachHangAcivity"
+            android:theme="@style/Theme.App_phone_store_manager_Nhom_3.NoActionBar"></activity>
         <activity
             android:name=".ui.Hang.AddHangActivity"
-            android:theme="@style/Theme.App_phone_store_manager_Nhom_3.NoActionBar"></activity>
+            android:theme="@style/Theme.App_phone_store_manager_Nhom_3.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.App_phone_store_manager_Nhom_3.NoActionBar" />
