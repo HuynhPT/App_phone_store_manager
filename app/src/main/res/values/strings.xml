@@ -29,6 +29,12 @@
     <string name="login">Đăng nhập</string>
     <string name="remember">Lưu tài khoản</string>
     <string name="cancel">Hủy</string>
+    <string name="edit">Sửa</string>
     <string name="title_add_hang">Thêm hãng</string>
+    <string name="ma_hang">Mã hãng</string>
+    <string name="name_hang">Tên hãng</string>
+    <string name="name_hang_show">Tên hãng:</string>
+    <string name="seach">Tìm kiếm</string>
+    <string name="loc">Lọc</string>
 
 </resources>

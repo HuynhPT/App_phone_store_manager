@@ -20,11 +20,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class HangFragment extends Fragment {
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
     }
 
     @Override
@@ -33,22 +31,4 @@ public class HangFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_hang, container, false);
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_add, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu_add:
-                Intent intent = new Intent(getActivity(), AddHangActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

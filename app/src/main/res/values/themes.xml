@@ -22,4 +22,9 @@
     <style name="Theme.App_phone_store_manager_Nhom_3.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.App_phone_store_manager_Nhom_3.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="custom_TV">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
