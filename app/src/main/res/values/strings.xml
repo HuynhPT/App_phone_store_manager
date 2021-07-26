@@ -30,6 +30,11 @@
     <string name="remember">Lưu tài khoản</string>
     <string name="cancel">Hủy</string>
     <string name="edit">Sửa</string>
+    <string name="khachhang_title">Mã Khách Hàng</string>
+    <string name="tile_HotenKH">Họ Tên</string>
+    <string name="tile_sdtKH">Số điện thoại</string>
+    <string name="tile_diachiKH">Địa chỉ</string>
+    <string name="tile_edit_kH">Khách Hàng </string>
     <string name="title_add_hang">Thêm hãng</string>
     <string name="ma_hang">Mã hãng</string>
     <string name="name_hang">Tên hãng</string>

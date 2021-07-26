@@ -3,12 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="35dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.TaiKhoan.EditTkFragment">
-
+    tools:context=".ui.KhachHang.EditKhachHangFragment">
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilMaNvTkChange"
+        android:id="@+id/til_makhchange"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -19,125 +17,77 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_person_24"
-        tools:ignore="MissingConstraints">
+        app:startIconDrawable="@drawable/ic_baseline_person_24">
 
         <EditText
-            android:id="@+id/edMaNvTkChange"
+            android:id="@+id/edMaKhachHangchange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mã Nhân Viên" />
+            android:hint="@string/khachhang_title" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilHoTenTkChange"
+        android:id="@+id/til_HoTenKHchange"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilMaNvTkChange"
+        app:layout_constraintTop_toBottomOf="@+id/til_makhchange"
         app:startIconDrawable="@drawable/ic_baseline_hoten_24">
 
         <EditText
-            android:id="@+id/ed_HoTen_TkChange"
+            android:id="@+id/edHoTenKHchange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Họ Tên" />
+            android:hint="@string/tile_HotenKH" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilSdtTkChange"
+        android:id="@+id/til_sdtkhchange"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilHoTenTkChange"
+        app:layout_constraintTop_toBottomOf="@+id/til_HoTenKHchange"
         app:startIconDrawable="@drawable/ic_baseline_phone_24">
 
         <EditText
-            android:id="@+id/ed_Sdt_TkChange"
+            android:id="@+id/edSoDTKHchange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Số Điện Thoại"
-            android:inputType="phone" />
+            android:hint="@string/tile_sdtKH" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilTkTkChange"
+        android:id="@+id/til_daichikhchange"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilSdtTkChange"
-        app:startIconDrawable="@drawable/ic_baseline_user_24">
-
-        <EditText
-            android:id="@+id/ed_Tk_Tk"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tài Khoản" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilDiaChiTkChange"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:endIconMode="clear_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilTkTkChange"
+        app:layout_constraintTop_toBottomOf="@+id/til_sdtkhchange"
         app:startIconDrawable="@drawable/ic_baseline_local_24">
 
         <EditText
-            android:id="@+id/ed_DiaChi_TkChange"
+            android:id="@+id/edDiachiKHchange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ĐỊa Chỉ" />
+            android:hint="@string/tile_diachiKH" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilNamSinhTkChange"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:endIconMode="clear_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilDiaChiTkChange"
-        app:startIconDrawable="@drawable/ic_date">
-
-        <EditText
-            android:id="@+id/ed_NamSinh_TkChange"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Năm Sinh"
-            android:inputType="date" />
-    </com.google.android.material.textfield.TextInputLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.app_phone_store_manager_nhom_3.ui.Hang;
+package com.example.app_phone_store_manager_nhom_3.ui.KhachHang;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -21,11 +21,11 @@ import com.example.app_phone_store_manager_nhom_3.R;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ChiTietHangFragment extends Fragment {
+
+public class EditKhachHangFragment extends Fragment {
     private AppCompatActivity appCompatActivity;
     private Drawable drawable;
     private NavController navController;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,34 +35,39 @@ public class ChiTietHangFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_chi_tiet_hang, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_edit_khach_hang, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        drawable = getActivity().getDrawable(R.drawable.ic_backspace);
+
         navController = Navigation.findNavController(view);
         appCompatActivity = (AppCompatActivity) getActivity();
-
+        drawable = appCompatActivity.getDrawable(R.drawable.ic_backspace);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
-        appCompatActivity.getSupportActionBar().setTitle("Chi tiết Hãng");
+        appCompatActivity.getSupportActionBar().setTitle("Cập nhập Khách Hàng");
+
     }
+
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_edit,menu);
+        inflater.inflate(R.menu.menu_save, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
-                navController.navigate(R.id.chiTietHang_to_listHang);
+                navController.navigate(R.id.action_editKH_to_chitietKH);
                 return true;
-            case R.id.menu_edit:
-                navController.navigate(R.id.chiTietHang_to_editHang);
+            case R.id.menu_reset:
+                return true;
+            case R.id.menu_save:
+                navController.navigate(R.id.editTk_to_ListTk);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
