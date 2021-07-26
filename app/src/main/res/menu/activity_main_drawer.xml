@@ -8,8 +8,12 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_hoaDonXuat"
+                    android:id="@+id/nav_home"
                     android:icon="@drawable/ic_home"
+                    android:title="@string/home" />
+                <item
+                    android:id="@+id/nav_hoaDonXuat"
+                    android:icon="@drawable/ic_directions"
                     android:title="@string/menu_hd_xuat" />
                 <item
                     android:id="@+id/nav_hoaDonNhap"

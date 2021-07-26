@@ -13,6 +13,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="doanh_thu">Doanh thu</string>
+    <string name="home">Tổng quan</string>
     <string name="menu_hd_xuat">Hóa đơn Xuất</string>
     <string name="menu_hd_nhap">Hóa đơn Nhập</string>
     <string name="san_pham">Sản phẩm</string>
@@ -41,5 +42,14 @@
     <string name="name_hang_show">Tên hãng:</string>
     <string name="seach">Tìm kiếm</string>
     <string name="loc">Lọc</string>
+    <string name="user_tk">Tài khoản</string>
+    <string name="nv_id">Mã nhân viên</string>
+    <string name="name">Họ tên</string>
+    <string name="phone">Điện thoại</string>
+    <string name="date_year">Năm sinh</string>
+    <string name="dia_chi">Điạ chỉ</string>
+    <string name="pass_forget">Quên mật khẩu</string>
+    <string name="reset_pass">Đặt lại mật khẩu mặc định cho tài khoản</string>
+    <string name="update_img">Cập nhập ảnh đại diện</string>
 
 </resources>

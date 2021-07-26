@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="35dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".ui.TaiKhoan.AddTaiKhoanFragment">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -19,14 +19,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:startIconDrawable="@drawable/ic_user"
         tools:ignore="MissingConstraints">
 
         <EditText
             android:id="@+id/edMaNvTk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mã Nhân Viên" />
+            android:hint="@string/nv_id" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -35,7 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
             android:id="@+id/ed_HoTen_Tk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Họ Tên" />
+            android:hint="@string/name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -56,13 +56,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tilHoTenTk"
-        app:startIconDrawable="@drawable/ic_baseline_phone_24">
+        app:startIconDrawable="@drawable/ic_phone">
 
         <EditText
             android:id="@+id/ed_Sdt_Tk"
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Số Điện Thoại"
+            android:hint="@string/phone"
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,19 +80,19 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tilSdtTk"
-        app:startIconDrawable="@drawable/ic_baseline_user_24">
+        app:startIconDrawable="@drawable/ic_accounts">
 
         <EditText
             android:id="@+id/ed_Tk_Tk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tài Khoản" />
+            android:hint="@string/user_tk" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -101,13 +101,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tilTkTk"
-        app:startIconDrawable="@drawable/ic_baseline_local_24">
+        app:startIconDrawable="@drawable/ic_home">
 
         <EditText
             android:id="@+id/ed_DiaChi_Tk"
@@ -122,7 +122,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"

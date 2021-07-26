@@ -59,6 +59,7 @@ public class ListHoaDonXuatFragment extends Fragment {
 
         binding.tblHDXuat.inflateMenu(R.menu.menu_header);
         drawable = getActivity().getDrawable(R.drawable.ic_menu);
+
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setTitle("Hoá Đơn Xuất");
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
@@ -110,7 +111,7 @@ public class ListHoaDonXuatFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_add:
-                navController.navigate(R.id.listHDXuat_to_addHDXuat);
+//                navController.navigate(R.id.listHDXuat_to_addHDXuat);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

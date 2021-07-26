@@ -12,7 +12,7 @@
         android:theme="@style/Theme.App_phone_store_manager_Nhom_3.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/tlbMain"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"

@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_hoaDonXuat">
+    app:startDestination="@id/nav_home">
     <fragment
         android:id="@+id/nav_hoaDonXuat"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.HoaDonXuat.HoaDonXuatFragment"
-        android:label="@string/menu_hd_xuat"
+        android:label="@string/home"
         tools:layout="@layout/fragment_hoa_don_xuat" />
     <fragment
         android:id="@+id/nav_hoaDonNhap"
@@ -53,4 +53,9 @@
         android:label="@string/menu_hd_xuat"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.HoaDonXuat.HoaDonXuatFragment"
         tools:layout="@layout/fragment_hoa_don_xuat"/>
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.app_phone_store_manager_nhom_3.ui.TrangChu.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>
