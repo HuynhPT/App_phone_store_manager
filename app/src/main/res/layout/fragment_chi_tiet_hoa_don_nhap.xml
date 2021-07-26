@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.HoaDonNhap.ChiTietHoaDonNhapFragment">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Nhân Viên"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.047">
+
+        <TextView
+            style="@style/custom_TV"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:paddingLeft="@dimen/padding_defaut"
+            android:text="Nhân Viên"
+            android:textSize="@dimen/text_little" />
+
+        <TextView
+            android:id="@+id/tvTenNvNhap"
+            style="@style/custom_TV"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:textSize="@dimen/text_little" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.06">
+
+                <TextView
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:paddingLeft="@dimen/padding_defaut"
+                    android:text="Ngày Tạo"
+                    android:textSize="@dimen/text_little" />
+
+                <TextView
+                    android:id="@+id/tvNgayTaoNhap"
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:textSize="@dimen/text_little" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.010">
+
+                <TextView
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:paddingLeft="@dimen/padding_defaut"
+                    android:text="Người Tạo"
+                    android:textSize="@dimen/text_little" />
+
+                <TextView
+                    android:id="@+id/tvNguoiTaoNhap"
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:textSize="@dimen/text_little" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.010">
+
+                <TextView
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:paddingLeft="@dimen/padding_defaut"
+                    android:text="Trạng Thái"
+                    android:textSize="@dimen/text_little" />
+
+                <TextView
+                    android:id="@+id/tvTrangThaiNhap"
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:textSize="@dimen/text_little" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Chi Tiết Hoá Đơn"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintVertical_bias="0.005"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.047">
+
+                <TextView
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:paddingLeft="@dimen/padding_defaut"
+                    android:text="Tên Sản Phẩm"
+                    android:textSize="@dimen/text_little" />
+
+                <TextView
+                    android:id="@+id/tvTenSpNhap"
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:textSize="@dimen/text_little" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.010">
+
+                <TextView
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:paddingLeft="@dimen/padding_defaut"
+                    android:text="Tình Trạng Sp"
+                    android:textSize="@dimen/text_little" />
+
+                <TextView
+                    android:id="@+id/tvTinhTrangNhap"
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:textSize="@dimen/text_little" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+        app:layout_constraintVertical_bias="0.010">
+
+        <TextView
+            style="@style/custom_TV"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:paddingLeft="@dimen/padding_defaut"
+            android:text="Số Lượng"
+            android:textSize="@dimen/text_little" />
+
+        <TextView
+            android:id="@+id/tvSlNhap"
+            style="@style/custom_TV"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:textSize="@dimen/text_little" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8"
+        app:layout_constraintVertical_bias="0.010">
+
+        <TextView
+            style="@style/custom_TV"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:paddingLeft="@dimen/padding_defaut"
+            android:text="Đơn Giá"
+            android:textSize="@dimen/text_little" />
+
+        <TextView
+            android:id="@+id/tvDonGiaNhap"
+            style="@style/custom_TV"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:textSize="@dimen/text_little" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout9"
+        app:layout_constraintVertical_bias="0.366">
+
+                <TextView
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:paddingLeft="@dimen/padding_defaut"
+                    android:text="Thành Tiền"
+                    android:textSize="@dimen/text_little" />
+
+                <TextView
+                    android:id="@+id/tvThanhTienNhap"
+                    style="@style/custom_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:textSize="@dimen/text_little" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
