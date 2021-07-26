@@ -49,7 +49,7 @@ public class ChiTietHoaDonXuatFragment extends Fragment {
         appCompatActivity = (AppCompatActivity) getActivity();
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
-        appCompatActivity.getSupportActionBar().setTitle("Chi Tiết Hoá ĐƠn Xuất");
+        appCompatActivity.getSupportActionBar().setTitle("Chi Tiết Hoá Đơn Xuất");
     }
 
     @Override
@@ -62,10 +62,10 @@ public class ChiTietHoaDonXuatFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-//                navController.navigate(R.id.chiTietHDXuat_to_listHDXuat);
+                navController.navigate(R.id.action_ChiTiet_hoadon_xuat_to_List_hoadon_xuat2);
                 return true;
             case R.id.menu_edit:
-//                navController.navigate(R.id.chiTietHDXuat_to_editHDXuat);
+                navController.navigate(R.id.action_ChiTiet_hoadon_xuat_to_Edit_hoadon_xuat);
                 return true;
             default:
             return super.onOptionsItemSelected(item);
