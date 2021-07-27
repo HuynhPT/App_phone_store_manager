@@ -30,8 +30,9 @@ public class DbHelper extends SQLiteOpenHelper {
         //Tạo bảng Khách hàng
         String createTableKhachHang = "CREATE TABLE KhachHang(" +
                 "maKH TEXT NOT NULL PRIMARY KEY," +
-                "hoTen TEXT NOT NULL PRIMARY KEY," +
-                "dienThoai TEXT NOT NULL)";
+                "hoTen TEXT NOT NULL ," +
+                "dienThoai TEXT NOT NULL," +
+                "diaChi TEXT NOT NULL)";
         db.execSQL(createTableKhachHang);
         //Tạo bảng Hãng
         String createTableHang = "CREATE TABLE Hang(" +
@@ -112,11 +113,11 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
     //Bật rằng buộc khóa ngoại SQLite
-    @Override
-    public void onOpen(SQLiteDatabase db) {
-        super.onOpen(db);
-        if (!db.isReadOnly()) {
-            db.execSQL("PRAGMA forengin_key = ON");
-        }
-    }
+//    @Override
+//    public void onOpen(SQLiteDatabase db) {
+//        super.onOpen(db);
+//        if (!db.isReadOnly()) {
+//            db.execSQL("PRAGMA forengin_key = ON");
+//        }
+//    }
 }
