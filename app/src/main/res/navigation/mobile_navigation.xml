@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/nav_hoaDonXuat"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.HoaDonXuat.HoaDonXuatFragment"
-        android:label="@string/home"
+        android:label="@string/menu_hd_xuat"
         tools:layout="@layout/fragment_hoa_don_xuat" />
     <fragment
         android:id="@+id/nav_hoaDonNhap"
@@ -49,13 +49,14 @@
         android:name="com.example.app_phone_store_manager_nhom_3.ui.Hang.HangFragment"
         android:label="@string/hang"
         tools:layout="@layout/fragment_hang" />
-    <fragment android:id="@+id/nav_logout"
-        android:label="@string/menu_hd_xuat"
-        android:name="com.example.app_phone_store_manager_nhom_3.ui.HoaDonXuat.HoaDonXuatFragment"
-        tools:layout="@layout/fragment_hoa_don_xuat"/>
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.app_phone_store_manager_nhom_3.ui.TrangChu.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_logout"
+        android:name="com.example.app_phone_store_manager_nhom_3.ui.HoaDonXuat.HoaDonXuatFragment"
+        android:label="@string/menu_hd_xuat"
+        tools:layout="@layout/fragment_hoa_don_xuat" />
+        <fragment
+            android:id="@+id/nav_home"
+            android:name="com.example.app_phone_store_manager_nhom_3.ui.TrangChu.HomeFragment"
+            android:label="fragment_home"
+            tools:layout="@layout/fragment_home" />
 </navigation>

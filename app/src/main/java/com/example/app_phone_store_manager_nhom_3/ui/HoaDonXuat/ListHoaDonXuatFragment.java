@@ -92,7 +92,7 @@ public class ListHoaDonXuatFragment extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.menu_loc:
-                        navController.navigate(R.id.listHDX_to_chiTietHDX);
+                        navController.navigate(R.id.action_List_hoadon_xuat_to_ChiTiet_hoadon_xuat2);
                         return true;
                     default:
                         return false;
@@ -111,7 +111,7 @@ public class ListHoaDonXuatFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_add:
-                navController.navigate(R.id.listHDX_to_addHDX);
+                navController.navigate(R.id.action_List_hoadon_xuat_to_Add_hoadon_xuat2);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
