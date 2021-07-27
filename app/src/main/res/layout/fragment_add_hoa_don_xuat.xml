@@ -5,21 +5,21 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.HoaDonXuat.AddHoaDonXuatFragment">
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilMaHDXuat"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067"
-        app:startIconDrawable="@drawable/ic_hang">
+        app:startIconDrawable="@drawable/ic_id_hoa_don">
 
         <EditText
             android:id="@+id/edMaHDXuat"
@@ -34,15 +34,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilMaHDXuat"
-        app:layout_constraintVertical_bias="0.027"
-        app:startIconDrawable="@drawable/ic_hang">
+        app:startIconDrawable="@drawable/ic_date">
 
         <EditText
             android:id="@+id/edNgayXuat"
@@ -50,8 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="date"
-            android:hint="Ngày"/>
+            android:hint="Ngày"
+            android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -60,13 +59,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilNgayXuat"
-        app:layout_constraintVertical_bias="0.027"
         app:startIconDrawable="@drawable/ic_hang">
 
 
@@ -76,13 +74,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Sản Phẩm" />
+            android:hint="Sản Phẩm"
+            android:inputType="textPersonName" />
+
         <Spinner
             android:id="@+id/spnSpXuat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-35dp"/>
+            android:layout_marginTop="-35dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -92,72 +91,69 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilSpXuat"
-        app:layout_constraintVertical_bias="0.027"
-        app:startIconDrawable="@drawable/ic_hang">
+        app:startIconDrawable="@drawable/ic_people">
 
 
-                <EditText
-                    android:id="@+id/edKhXuat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="Khách Hàng" />
-                <Spinner
-                    android:id="@+id/spnKhXuat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-35dp"/>
+        <EditText
+            android:id="@+id/edKhXuat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Khách Hàng"
+            android:inputType="textPersonName" />
+
+        <Spinner
+            android:id="@+id/spnKhXuat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-35dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Bảo Hành"
         android:textColor="@color/black"
         android:textSize="@dimen/text_small"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilKhXuat"
-        app:layout_constraintVertical_bias="0.036"
         tools:ignore="MissingConstraints" />
 
     <RadioGroup
         android:id="@+id/checkgroup"
         android:layout_width="375dp"
         android:layout_height="48dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.089">
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
         <RadioButton
-            android:id="@+id/checkbaohanh1"
+            android:id="@+id/cbKoBH"
             android:layout_width="305dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Không bảo hành" />
+
         <RadioButton
-            android:id="@+id/checkbaohanh2"
+            android:id="@+id/cbBH6T"
             android:layout_width="285dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="6 tháng" />
+
         <RadioButton
-            android:id="@+id/checkbaohanh3"
+            android:id="@+id/cbBH12T"
             android:layout_width="285dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -170,15 +166,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkgroup"
-        app:layout_constraintVertical_bias="0.047"
-        app:startIconDrawable="@drawable/ic_hang">
+        app:startIconDrawable="@drawable/ic_money">
 
         <EditText
             android:id="@+id/edDonGiaXuat"
@@ -193,21 +188,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilDonGiaXuat"
-        app:layout_constraintVertical_bias="0.047"
-        app:startIconDrawable="@drawable/ic_hang">
+        app:startIconDrawable="@drawable/ic_sale">
 
-                <EditText
-                    android:id="@+id/edKmXuat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Khuyến Mãi" />
+        <EditText
+            android:id="@+id/edKmXuat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Khuyến Mãi" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -216,24 +210,46 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilKmXuat"
-        app:layout_constraintVertical_bias="0.047"
-        app:startIconDrawable="@drawable/ic_hang">
+        app:startIconDrawable="@drawable/ic_status">
 
         <EditText
             android:id="@+id/edTrangThaiXuat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Trạng Thái" />
+
         <Spinner
             android:id="@+id/spnTrangThaiXuat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-35dp"/>
+            android:layout_marginTop="-35dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilThanhTien"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilTrangThaiXuat"
+        app:startIconDrawable="@drawable/ic_money">
+
+        <EditText
+            android:id="@+id/edThanhTien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Thành tiền" />
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

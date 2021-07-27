@@ -49,7 +49,10 @@
     <string name="date_year">Năm sinh</string>
     <string name="dia_chi">Điạ chỉ</string>
     <string name="pass_forget">Quên mật khẩu</string>
+    <string name="pass_change">Đổi mật khẩu</string>
     <string name="reset_pass">Đặt lại mật khẩu mặc định cho tài khoản</string>
     <string name="update_img">Cập nhập ảnh đại diện</string>
+    <string name="pass_old">Mật khẩu cũ</string>
+    <string name="pass_re_change">Nhập lại mật khẩu</string>
 
 </resources>

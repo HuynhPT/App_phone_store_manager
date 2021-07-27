@@ -1,411 +1,398 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg_seach"
     tools:context=".ui.HoaDonXuat.ChiTietHoaDonXuatFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Khách Hàng"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Khách Hàng"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_small"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.021">
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Khách Hàng"
+                android:textSize="@dimen/text_little" />
 
-                <TextView
-                    style="@style/custom_TV"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:paddingLeft="@dimen/padding_defaut"
-                    android:text="Khách Hàng"
-                    android:textSize="@dimen/text_little" />
+            <TextView
+                android:id="@+id/tvKhXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvKhXuat"
-                    style="@style/custom_TV"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.7"
-                    android:textSize="@dimen/text_little" />
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.030">
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Ngày Tạo"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvNgayTaoXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Nhân Viên Bán"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvNvBanXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Người Tạo"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvNguoiTaoXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Trạng Thái"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvTrangThaiXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
 
         <TextView
-            style="@style/custom_TV"
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Chi Tiết Hoá ĐƠn"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+            tools:ignore="MissingConstraints" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="Ngày Tạo"
-            android:textSize="@dimen/text_little" />
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-        <TextView
-            android:id="@+id/tvNgayTaoXuat"
-            style="@style/custom_TV"
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Tên Sản Phẩm"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvTenSpXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.010">
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Tình Trạng"
+                android:textSize="@dimen/text_little" />
 
-        <TextView
-            style="@style/custom_TV"
+            <TextView
+                android:id="@+id/tvTinhTrangXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout9"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="Nhân Viên Bán"
-            android:textSize="@dimen/text_little" />
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
-        <TextView
-            android:id="@+id/tvNvBanXuat"
-            style="@style/custom_TV"
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Số Lượng"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvSlXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout10"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintVertical_bias="0.010">
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
 
-        <TextView
-            style="@style/custom_TV"
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Bảo Hành"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvBaoHanhXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout11"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="Người Tạo"
-            android:textSize="@dimen/text_little" />
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
 
-        <TextView
-            android:id="@+id/tvNguoiTaoXuat"
-            style="@style/custom_TV"
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Đơn Giá"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvDonGiaXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout12"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintVertical_bias="0.010">
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
 
-        <TextView
-            style="@style/custom_TV"
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Giảm Giá"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvGiamGiaXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout13"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="Trạng Thái"
-            android:textSize="@dimen/text_little" />
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
 
-        <TextView
-            android:id="@+id/tvTrangThaiXuat"
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="Thành Tiền"
+                android:textSize="@dimen/text_little" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="328dp"
-        android:text="Chi Tiết Hoá ĐƠn"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_small"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout7"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.021">
-
-        <TextView
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="Tên Sản Phẩm"
-            android:textSize="@dimen/text_little" />
-
-        <TextView
-            android:id="@+id/tvTenSpXuat"
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayout8"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
-        app:layout_constraintVertical_bias="0.010">
-
-        <TextView
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="Tình Trạng"
-            android:textSize="@dimen/text_little" />
-
-        <TextView
-            android:id="@+id/tvTinhTrangXuat"
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayout9"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout8"
-        app:layout_constraintVertical_bias="0.010">
-
-        <TextView
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="Số Lượng"
-            android:textSize="@dimen/text_little" />
-
-        <TextView
-            android:id="@+id/tvSlXuat"
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayout10"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout9"
-        app:layout_constraintVertical_bias="0.010">
-
-        <TextView
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="Bảo Hành"
-            android:textSize="@dimen/text_little" />
-
-        <TextView
-            android:id="@+id/tvBaoHanhXuat"
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayout11"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
-        app:layout_constraintVertical_bias="0.010">
-
-        <TextView
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="Đơn Giá"
-            android:textSize="@dimen/text_little" />
-
-        <TextView
-            android:id="@+id/tvDonGiaXuat"
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayout12"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
-        app:layout_constraintVertical_bias="0.010">
-
-        <TextView
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="Giảm Giá"
-            android:textSize="@dimen/text_little" />
-
-        <TextView
-            android:id="@+id/tvGiamGiaXuat"
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout13"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout12"
-        app:layout_constraintVertical_bias="0.558">
-
-        <TextView
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="Thành Tiền"
-            android:textSize="@dimen/text_little" />
-
-        <TextView
-            android:id="@+id/tvThanhTienXuat"
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tvThanhTienXuat"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

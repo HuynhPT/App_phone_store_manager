@@ -22,6 +22,6 @@
         <action
             android:id="@+id/doiMatKhau_to_chiTietNguoiDung"
             app:destination="@id/nav_chiTietNguoiDung"
-            app:popUpTo="@id/nav_nguoi_dung"/>
+            app:popUpTo="@id/nav_nguoi_dung" />
     </fragment>
 </navigation>

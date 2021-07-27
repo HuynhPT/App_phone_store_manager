@@ -60,12 +60,12 @@ public class EditHoaDonXuatragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-//                navController.navigate(R.id.editHDXuat_to_chiTietHDXuat);
+                navController.navigate(R.id.updateHDX_to_chiTietHDX);
                 return true;
             case R.id.menu_reset:
                 return true;
             case R.id.menu_save:
-//                navController.navigate(R.id.editHDXuat_to_listHDXuat);
+                navController.navigate(R.id.updateHDX_to_listHDX);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
