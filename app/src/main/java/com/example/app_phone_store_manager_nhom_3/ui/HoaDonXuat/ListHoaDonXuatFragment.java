@@ -29,7 +29,7 @@ import com.example.app_phone_store_manager_nhom_3.databinding.FragmentListHoaDon
 import org.jetbrains.annotations.NotNull;
 
 
-public class ListHoaDonXuatFragment extends Fragment {
+public class ListHoaDonXuatFragment extends Fragment  {
     private NavController navController;
     private AppCompatActivity appCompatActivity;
     private Drawable drawable;
@@ -71,8 +71,8 @@ public class ListHoaDonXuatFragment extends Fragment {
         edSeach.setTextColor(Color.BLACK);
         edSeach.setHintTextColor(Color.LTGRAY);
 
-        ImageView iconSeach =(ImageView) searchView.findViewById(androidx.appcompat.R.id.search_button);
-        ImageView iconClose =(ImageView) searchView.findViewById(androidx.appcompat.R.id.search_close_btn);
+        ImageView iconSeach = (ImageView) searchView.findViewById(androidx.appcompat.R.id.search_button);
+        ImageView iconClose = (ImageView) searchView.findViewById(androidx.appcompat.R.id.search_close_btn);
         iconSeach.setColorFilter(Color.BLACK);
         iconClose.setColorFilter(Color.BLACK);
 
@@ -90,7 +90,7 @@ public class ListHoaDonXuatFragment extends Fragment {
         binding.tblHDXuat.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.menu_loc:
                         navController.navigate(R.id.action_List_hoadon_xuat_to_ChiTiet_hoadon_xuat2);
                         return true;
@@ -99,12 +99,13 @@ public class ListHoaDonXuatFragment extends Fragment {
                 }
             }
         });
+
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_add,menu);
+        inflater.inflate(R.menu.menu_add, menu);
     }
 
     @Override

@@ -16,16 +16,26 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.app_phone_store_manager_nhom_3.R;
+import com.example.app_phone_store_manager_nhom_3.dao.DaoKhachHang;
+import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 
 public class EditKhachHangFragment extends Fragment {
     private AppCompatActivity appCompatActivity;
     private Drawable drawable;
     private NavController navController;
+    private DaoKhachHang dao;
+    private List<KhachHang> list;
+    private EditText edMaKHChange, edHoTenKHChange, edDienThoaiChange, edDiaChiChange;
+    private KhachHang khachHang;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +54,25 @@ public class EditKhachHangFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(view);
+
+        edMaKHChange = view.findViewById(R.id.edMaKhachHangchange);
+        edHoTenKHChange = view.findViewById(R.id.edHoTenKHchange);
+        edDienThoaiChange = view.findViewById(R.id.edSoDTKHchange);
+        edDiaChiChange = view.findViewById(R.id.edDiachiKHchange);
+
         appCompatActivity = (AppCompatActivity) getActivity();
         drawable = appCompatActivity.getDrawable(R.drawable.ic_backspace);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
         appCompatActivity.getSupportActionBar().setTitle("Cập nhập Khách Hàng");
+        khachHang = new KhachHang();
+        dao = new DaoKhachHang(getActivity());
+        dao.open();
+        edMaKHChange.setText(khachHang.getMaKH());
+        edHoTenKHChange.setText(khachHang.getHoTen());
+        edDienThoaiChange.setText(khachHang.getDienThoai());
+        edDiaChiChange.setText(khachHang.getDiaChi());
+
 
     }
 
@@ -67,6 +91,20 @@ public class EditKhachHangFragment extends Fragment {
             case R.id.menu_reset:
                 return true;
             case R.id.menu_save:
+                if (khachHang.getMaKH().equals(edMaKHChange.getText().toString()) &&
+                        khachHang.getHoTen().equals(edHoTenKHChange.getText().toString()) &&
+                        khachHang.getDienThoai().equals(edDienThoaiChange.getText().toString()) &&
+                        khachHang.getDiaChi().equals(edDiaChiChange.getText().toString())) {
+
+                } else {
+
+                    khachHang.setMaKH(edMaKHChange.getText().toString());
+                    khachHang.setHoTen(edHoTenKHChange.getText().toString());
+                    khachHang.setDienThoai(edDienThoaiChange.getText().toString());
+                    khachHang.setDiaChi(edDiaChiChange.getText().toString());
+                    long kq = dao.updateKH(khachHang,"");
+                }
+
                 navController.navigate(R.id.editTk_to_ListTk);
                 return true;
             default:
