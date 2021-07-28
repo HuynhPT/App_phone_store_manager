@@ -128,7 +128,7 @@
         tools:ignore="MissingConstraints" />
 
     <RadioGroup
-        android:id="@+id/checkgroup"
+        android:id="@+id/cbBaoHanh"
         android:layout_width="375dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
@@ -172,7 +172,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkgroup"
+        app:layout_constraintTop_toBottomOf="@+id/cbBaoHanh"
         app:startIconDrawable="@drawable/ic_money">
 
         <EditText

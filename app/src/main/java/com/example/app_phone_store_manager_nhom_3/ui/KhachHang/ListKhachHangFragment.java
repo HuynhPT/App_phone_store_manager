@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,14 +37,13 @@ import java.util.List;
 
 public class ListKhachHangFragment extends Fragment {
     private NavController navController;
-    private FragmentListKhachHangBinding khachHangBinding;// lớp liên kết trực tiếp đến XML
+    private FragmentListKhachHangBinding binding;// lớp liên kết trực tiếp đến XML
     private AppCompatActivity appCompatActivity;
     private Drawable drawable;
     private SearchView searchView;
     private List<KhachHang> list;
     private KhachHangAdapter adapter;
     private DaoKhachHang dao;
-    private RecyclerView rvKhachHang;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,26 +52,28 @@ public class ListKhachHangFragment extends Fragment {
     }
 
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentListKhachHangBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
+    }
+
+    @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         navController = Navigation.findNavController(view);
         appCompatActivity = (AppCompatActivity) getActivity();
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        rvKhachHang.setLayoutManager(layoutManager);
-
-        khachHangBinding.tlbKhachHang.inflateMenu(R.menu.menu_header);
 
         appCompatActivity.getSupportActionBar().setTitle("Khách Hàng");
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawable = appCompatActivity.getDrawable(R.drawable.ic_menu);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
 
-        dao = new DaoKhachHang(getActivity());
-        dao.open();
+        binding.tlbKhachHang.inflateMenu(R.menu.menu_header);
 
-        MenuItem menuItem = khachHangBinding.tlbKhachHang.getMenu().findItem(R.id.menu_search);
-
+        MenuItem menuItem = binding.tlbKhachHang.getMenu().findItem(R.id.menu_search);
 
         searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("Tên Khách Hàng, Mã Khách Hàng");
@@ -98,7 +99,7 @@ public class ListKhachHangFragment extends Fragment {
                 return false;
             }
         });
-        khachHangBinding.tlbKhachHang.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+        binding.tlbKhachHang.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
@@ -110,18 +111,19 @@ public class ListKhachHangFragment extends Fragment {
                 }
             }
         });
+
+        dao = new DaoKhachHang(getActivity());
+        dao.open();
+
         list = new ArrayList<>();
         list = dao.getAll();
 
+        adapter = new KhachHangAdapter(list);
+        binding.rvKH.setAdapter(adapter);
+        binding.rvKH.setLayoutManager(new LinearLayoutManager(getActivity()));
+
     }
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        khachHangBinding = FragmentListKhachHangBinding.inflate(inflater, container, false);
-        View view = khachHangBinding.getRoot();
-        return view;
-    }
+
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);

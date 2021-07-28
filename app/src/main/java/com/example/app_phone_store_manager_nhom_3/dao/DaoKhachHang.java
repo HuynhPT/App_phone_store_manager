@@ -45,20 +45,12 @@ public class DaoKhachHang {
     public List<KhachHang> getData(String sql, String... args) {
         List<KhachHang> list = new ArrayList<>();
         Cursor cursor = database.rawQuery(sql, args);
-        while (!cursor.moveToNext()) {
+        while (cursor.moveToNext()) {
             KhachHang khachHang = new KhachHang();
-            if (cursor != null) {
-                khachHang.setMaKH(cursor.getString(cursor.getColumnIndex(KhachHang.TB_COL_ID)));
-                khachHang.setHoTen(cursor.getString(cursor.getColumnIndex(KhachHang.TB_COL_NAME)));
-                khachHang.setDienThoai(cursor.getString(cursor.getColumnIndex(KhachHang.TB_COL_PHONE)));
-                khachHang.setDiaChi(cursor.getString(cursor.getColumnIndex(KhachHang.TB_COL_LOCALE)));
-            } else {
-
-                khachHang.setMaKH("KH01");
-                khachHang.setHoTen("B V A");
-                khachHang.setDienThoai("090099800");
-                khachHang.setDiaChi("HN");
-            }
+            khachHang.setMaKH(cursor.getString(cursor.getColumnIndex(KhachHang.TB_COL_ID)));
+            khachHang.setHoTen(cursor.getString(cursor.getColumnIndex(KhachHang.TB_COL_NAME)));
+            khachHang.setDienThoai(cursor.getString(cursor.getColumnIndex(KhachHang.TB_COL_PHONE)));
+            khachHang.setDiaChi(cursor.getString(cursor.getColumnIndex(KhachHang.TB_COL_LOCALE)));
             list.add(khachHang);
         }
         return list;

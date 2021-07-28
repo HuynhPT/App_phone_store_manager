@@ -2,51 +2,58 @@ package com.example.app_phone_store_manager_nhom_3.adapter;
 
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app_phone_store_manager_nhom_3.R;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
-public class KhachHangAdapter extends BaseAdapter {
+public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.ViewHolder>{
     private List<KhachHang> list;
-    private Context context;
-    private TextView tvMa;
-    public KhachHangAdapter(List<KhachHang> list, Context context) {
+
+    public KhachHangAdapter(List<KhachHang> list) {
         this.list = list;
-        this.context = context;
+    }
+
+    @NonNull
+    @NotNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_item_khach_hang, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public int getCount() {
+    public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
+        KhachHang khachHang = list.get(position);
+        holder.tvMaKH.setText("Mã KH: "+ khachHang.getMaKH());
+        holder.tvHoTenKH.setText("Tên KH: "+ khachHang.getHoTen());
+        holder.tvPhoneKH.setText("Mã KH: "+ khachHang.getDienThoai());
+        holder.tvDiaChiKH.setText("Mã KH: "+ khachHang.getDiaChi());
+    }
+
+    @Override
+    public int getItemCount() {
         return list.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return list.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-
-        if (convertView == null){
-            view = View.inflate(context, R.layout.custom_item_khach_hang, null);
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView tvMaKH, tvHoTenKH, tvPhoneKH, tvDiaChiKH;
+        public ViewHolder(@NonNull @NotNull View itemView) {
+            super(itemView);
+            tvMaKH = itemView.findViewById(R.id.tvMaKH);
+            tvHoTenKH = itemView.findViewById(R.id.tvHoTenKH);
+            tvPhoneKH = itemView.findViewById(R.id.tvDienThoaiKH);
+            tvDiaChiKH = itemView.findViewById(R.id.tvDiaChiKH);
         }
-
-        KhachHang khachHang = list.get(position);
-        tvMa = view.findViewById(R.id.tvMaKH);
-        tvMa.setText(khachHang.getMaKH());
-        return view;
     }
 }

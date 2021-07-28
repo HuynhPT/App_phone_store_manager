@@ -11,10 +11,10 @@
         android:label="fragment_list_san_pham"
         tools:layout="@layout/fragment_list_san_pham" >
         <action
-            android:id="@+id/action_nav_listSP_to_nav_addSP"
+            android:id="@+id/listSP_to_addSP"
             app:destination="@id/nav_addSP" />
         <action
-            android:id="@+id/action_nav_listSP_to_nav_chitetSP"
+            android:id="@+id/listSP_to_chitetSP"
             app:destination="@id/nav_chitetSP" />
     </fragment>
     <fragment
@@ -23,8 +23,9 @@
         android:label="fragment_add_san_pham"
         tools:layout="@layout/fragment_add_san_pham" >
         <action
-            android:id="@+id/action_nav_addSP_to_nav_listSP"
-            app:destination="@id/nav_listSP" />
+            android:id="@+id/addSP_to_listSP"
+            app:destination="@id/nav_listSP"
+            app:popUpTo="@id/nav_sanpham" />
     </fragment>
     <fragment
         android:id="@+id/nav_editSP"
@@ -32,11 +33,12 @@
         android:label="fragment_edit_san_pham"
         tools:layout="@layout/fragment_edit_san_pham" >
         <action
-            android:id="@+id/action_nav_editSP_to_nav_chitetSP"
+            android:id="@+id/editSP_to_chitetSP"
             app:destination="@id/nav_chitetSP" />
         <action
-            android:id="@+id/action_nav_editSP_to_nav_listSP"
-            app:destination="@id/nav_listSP" />
+            android:id="@+id/editSP_to_listSP"
+            app:destination="@id/nav_listSP"
+            app:popUpTo="@id/nav_sanpham" />
     </fragment>
     <fragment
         android:id="@+id/nav_chitetSP"
@@ -44,10 +46,10 @@
         android:label="fragment_chi_tiet_san_pham"
         tools:layout="@layout/fragment_chi_tiet_san_pham" >
         <action
-            android:id="@+id/action_nav_chitetSP_to_nav_editSP"
+            android:id="@+id/chitetSP_to_editSP"
             app:destination="@id/nav_editSP" />
         <action
-            android:id="@+id/action_nav_chitetSP_to_nav_listSP"
+            android:id="@+id/chitetSP_to_listSP"
             app:destination="@id/nav_listSP" />
     </fragment>
 </navigation>
