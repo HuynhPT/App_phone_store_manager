@@ -26,7 +26,7 @@
             android:id="@+id/edMaHDXuatChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mã Hoá Đơn" />
+            android:hint="@string/hd_id" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Ngày"
+            android:hint="@string/date"
             android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Sản Phẩm"
+            android:hint="@string/san_pham"
             android:inputType="textPersonName" />
 
         <Spinner
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Khách Hàng"
+            android:hint="@string/khach_hang"
             android:inputType="textPersonName" />
 
         <Spinner
@@ -122,7 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Bảo Hành"
+        android:text="@string/proted"
         android:textColor="@color/black"
         android:textSize="@dimen/text_small"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +130,7 @@
         tools:ignore="MissingConstraints" />
 
     <RadioGroup
-        android:id="@+id/checkgroupChange"
+        android:id="@+id/cbBHChange"
         android:layout_width="375dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
@@ -145,23 +145,43 @@
             android:layout_width="305dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Không bảo hành" />
+            android:text="@string/proted_no" />
 
         <RadioButton
             android:id="@+id/cbBH6TChange"
             android:layout_width="285dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="6 tháng" />
+            android:text="@string/proted_tittle" />
 
         <RadioButton
             android:id="@+id/cbBH12TChange"
             android:layout_width="285dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="12 tháng" />
+            android:text="@string/proted_big" />
     </RadioGroup>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSoLuongXuatChange"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbBHChange"
+        app:startIconDrawable="@drawable/ic_money">
 
+        <EditText
+            android:id="@+id/edSoLuongXuatChange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/don_gia" />
+    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilDonGiaXuatChange"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -174,14 +194,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkgroupChange"
+        app:layout_constraintTop_toBottomOf="@+id/tilSoLuongXuatChange"
         app:startIconDrawable="@drawable/ic_money">
 
         <EditText
             android:id="@+id/edDonGiaXuatChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Đơn Giá" />
+            android:hint="@string/don_gia" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -203,7 +223,7 @@
             android:id="@+id/edKmXuatChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Khuyến Mãi" />
+            android:hint="@string/sale" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -224,7 +244,7 @@
             android:id="@+id/edTrangThaiXuatChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Trạng Thái" />
+            android:hint="@string/status" />
 
         <Spinner
             android:id="@+id/spnTrangThaiXuatChange"
@@ -252,6 +272,6 @@
             android:id="@+id/edThanhTienChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Thành tiền" />
+            android:hint="@string/money" />
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

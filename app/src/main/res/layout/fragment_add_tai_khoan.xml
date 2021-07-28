@@ -113,7 +113,7 @@
             android:id="@+id/ed_DiaChi_Tk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ĐỊa Chỉ" />
+            android:hint="@string/dia_chi" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -136,7 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Năm Sinh"
+            android:hint="@string/date_year"
             android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Tổng quan</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -54,5 +54,40 @@
     <string name="update_img">Cập nhập ảnh đại diện</string>
     <string name="pass_old">Mật khẩu cũ</string>
     <string name="pass_re_change">Nhập lại mật khẩu</string>
+    <string name="sp_name">Tên sản phẩm</string>
+    <string name="sp_id">Mã sản phẩm</string>
+    <string name="sp_class">Loại sản phẩm</string>
+    <string name="sp_phone">Điện thoại</string>
+    <string name="sp_phukien">Phụ kiện</string>
+    <string name="sp_status">Tình trạng</string>
+    <string name="status">Trạng thái</string>
+    <string name="sp_money">Giá tiền</string>
+    <string name="sp_bonho">Bộ nhớ</string>
+    <string name="sp_ram">RAM</string>
+    <string name="sp_deital">Chi tiết sản phẩm</string>
+    <string name="sp_chip">ChipSet</string>
+    <string name="sp_os">Hệ điều hành</string>
+    <string name="sp_display">Màn hình</string>
+    <string name="sp_battery">Dung lượng pin</string>
+    <string name="sp_type">Cổng sạc</string>
+    <string name="sp_loaiPK">Loại phụ kiện</string>
+    <string name="sp_note">Mô tả</string>
+    <string name="hd_id">Mã hóa đơn</string>
+    <string name="date">Ngày</string>
+    <string name="soluong">Số lượng</string>
+    <string name="nhan_vien">Nhân viên</string>
+    <string name="date_note">Ngày tạo</string>
+    <string name="nv_note">Người tạo</string>
+    <string name="hd_deital">Chi tiết hóa đơn</string>
+    <string name="sp_tinhtrang">Tình trạng sản phẩm</string>
+    <string name="money">Thành tiền</string>
+    <string name="proted">Bảo hành</string>
+    <string name="proted_no">Không bảo hành</string>
+    <string name="proted_tittle">6 tháng</string>
+    <string name="proted_big">12 tháng</string>
+    <string name="don_gia">Đơn giá</string>
+    <string name="hd_title">Hóa đơn</string>
+    <string name="sale">Khuyến mãi</string>
+    <string name="nv_ban">Nhân viên bán</string>
 
 </resources>

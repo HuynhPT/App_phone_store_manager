@@ -69,7 +69,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String createTableHoaDon = "CREATE TABLE HoaDon(" +
                 "maHD TEXT NOT NULL PRIMARY KEY," +
                 "maNV TEXT NOT NULL REFERENCES NhanVien(maNV)," +
-                "maKH TEXT NOT NULL REFERENCES KhachHang(maKH)," +
+                "maKH TEXT REFERENCES KhachHang(maKH)," +
                 "phanLoai INTEGER NOT NULL," +
                 "trangThai INTEGER NOT NULL," +
                 "ngay TEXT NOT NULL)";

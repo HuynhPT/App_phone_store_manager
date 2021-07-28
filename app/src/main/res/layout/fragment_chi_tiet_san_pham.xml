@@ -22,7 +22,7 @@
             tools:src="@tools:sample/avatars" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/lnlTenSP"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
             android:layout_marginTop="16dp"
@@ -38,11 +38,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:paddingLeft="@dimen/padding_defaut"
-                android:text="@string/tile_HotenKH"
+                android:text="@string/sp_name"
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvHoTenKH"
+                android:id="@+id/tvTenSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -50,7 +50,432 @@
                 android:textSize="@dimen/text_little" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/lnlHangSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlTenSP">
 
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/hang"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvHangSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlLoaiSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlHangSP">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/sp_class"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvLoaiSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlTTSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlLoaiSP">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/sp_status"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvTinhTrangSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlGiaTienSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlTTSP">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/sp_money"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvGiaTienSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlTrangThaiSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlGiaTienSP">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/status"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvTrangThaiSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="0.5"
+            android:text="@string/sp_deital"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlTrangThaiSP" />
+
+        <LinearLayout
+            android:id="@+id/lnlBoNhoSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/sp_bonho"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvBoNhoSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlRAMSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlBoNhoSP">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/sp_ram"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvRAMSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlChipSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlRAMSP">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/sp_chip"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvChipSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlOSSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlChipSP">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/sp_os"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvOSSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlManHinhSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlOSSP">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/sp_display"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvManHinhSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlBatterySP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlManHinhSP">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/sp_battery"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvBatterySP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlCongSacSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlBatterySP">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/sp_type"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvCongSacSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlLoaiPKSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlCongSacSP">
+
+            <TextView
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingLeft="@dimen/padding_defaut"
+                android:text="@string/sp_loaiPK"
+                android:textSize="@dimen/text_little" />
+
+            <TextView
+                android:id="@+id/tvLoaiPKSP"
+                style="@style/custom_TV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/text_little" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="0.5"
+            android:text="@string/sp_note"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnlLoaiPKSP" />
+
+        <LinearLayout
+            android:id="@+id/lnlMoTaSP"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+            <TextView
+                android:id="@+id/tvMotaSP"
+                style="@style/custom_TV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/text_little" />
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

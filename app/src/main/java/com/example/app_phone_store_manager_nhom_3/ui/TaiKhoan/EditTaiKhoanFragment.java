@@ -21,8 +21,7 @@ import com.example.app_phone_store_manager_nhom_3.R;
 
 import org.jetbrains.annotations.NotNull;
 
-
-public class ChiTietTkFragment extends Fragment {
+public class EditTaiKhoanFragment extends Fragment {
     private AppCompatActivity appCompatActivity;
     private Drawable drawable;
     private NavController navController;
@@ -36,36 +35,37 @@ public class ChiTietTkFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chi_tiet_tk, container, false);
+        return inflater.inflate(R.layout.fragment_edit_tk, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        drawable = getActivity().getDrawable(R.drawable.ic_backspace);
+
         navController = Navigation.findNavController(view);
         appCompatActivity = (AppCompatActivity) getActivity();
-
+        drawable = appCompatActivity.getDrawable(R.drawable.ic_backspace);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
-        appCompatActivity.getSupportActionBar().setTitle("Chi Tiết Tài Khoản");
+        appCompatActivity.getSupportActionBar().setTitle("Cập nhập Tài Khoản");
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_edit,menu);
+        inflater.inflate(R.menu.menu_save,menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                navController.navigate(R.id.ChiTietTk_to_ListTk);
+                navController.navigate(R.id.editTk_to_ChiTietTk);
                 return true;
-            case R.id.menu_edit:
-                navController.navigate(R.id.ChiTietTk_to_editTk);
+            case R.id.menu_reset:
+                return true;
+            case R.id.menu_save:
+                navController.navigate(R.id.editTk_to_ListTk);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

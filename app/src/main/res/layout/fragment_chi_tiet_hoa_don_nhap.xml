@@ -21,7 +21,7 @@
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/lnlTenNVNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
         android:layout_marginTop="16dp"
@@ -38,7 +38,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:paddingLeft="@dimen/padding_defaut"
-            android:text="Nhân Viên"
+            android:text="@string/nhan_vien"
             android:textSize="@dimen/text_little" />
 
         <TextView
@@ -51,7 +51,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/lnlNgayTaoNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
         android:layout_marginTop="16dp"
@@ -60,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/lnlTenNVNhap">
 
         <TextView
             style="@style/custom_TV"
@@ -68,7 +68,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:paddingLeft="@dimen/padding_defaut"
-            android:text="Ngày Tạo"
+            android:text="@string/date_note"
             android:textSize="@dimen/text_little" />
 
         <TextView
@@ -81,7 +81,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
+        android:id="@+id/lnlNguoiTaoNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
         android:layout_marginTop="1dp"
@@ -90,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/lnlNgayTaoNhap">
 
         <TextView
             style="@style/custom_TV"
@@ -98,7 +98,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:paddingLeft="@dimen/padding_defaut"
-            android:text="Người Tạo"
+            android:text="@string/nv_note"
             android:textSize="@dimen/text_little" />
 
         <TextView
@@ -111,7 +111,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout5"
+        android:id="@+id/lnlTrangThaiNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
         android:layout_marginTop="1dp"
@@ -120,7 +120,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/lnlNguoiTaoNhap">
 
         <TextView
             style="@style/custom_TV"
@@ -128,7 +128,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:paddingLeft="@dimen/padding_defaut"
-            android:text="Trạng Thái"
+            android:text="@string/status"
             android:textSize="@dimen/text_little" />
 
         <TextView
@@ -141,20 +141,20 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvCTHDN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Chi Tiết Hoá Đơn"
+        android:text="@string/hd_deital"
         android:textColor="@color/black"
         android:textSize="@dimen/text_small"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/lnlTrangThaiNhap"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
-        android:id="@+id/linearLayout6"
+        android:id="@+id/lnlTenSpNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
         android:layout_marginTop="16dp"
@@ -163,7 +163,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        app:layout_constraintTop_toBottomOf="@+id/tvCTHDN">
 
         <TextView
             style="@style/custom_TV"
@@ -171,7 +171,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:paddingLeft="@dimen/padding_defaut"
-            android:text="Tên Sản Phẩm"
+            android:text="@string/sp_name"
             android:textSize="@dimen/text_little" />
 
         <TextView
@@ -184,7 +184,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout7"
+        android:id="@+id/lnlTinhTrangNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
         android:layout_marginTop="1dp"
@@ -193,7 +193,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+        app:layout_constraintTop_toBottomOf="@+id/lnlTenSpNhap">
 
         <TextView
             style="@style/custom_TV"
@@ -201,7 +201,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:paddingLeft="@dimen/padding_defaut"
-            android:text="Tình Trạng Sp"
+            android:text="@string/sp_tinhtrang"
             android:textSize="@dimen/text_little" />
 
         <TextView
@@ -214,7 +214,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout8"
+        android:id="@+id/lnlSlNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
         android:layout_marginBottom="1dp"
@@ -224,7 +224,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+        app:layout_constraintTop_toBottomOf="@+id/lnlTinhTrangNhap"
         app:layout_constraintVertical_bias="0.010">
 
         <TextView
@@ -233,7 +233,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:paddingLeft="@dimen/padding_defaut"
-            android:text="Số Lượng"
+            android:text="@string/soluong"
             android:textSize="@dimen/text_little" />
 
         <TextView
@@ -246,7 +246,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout9"
+        android:id="@+id/lnlDonGiaNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
         android:layout_marginTop="1dp"
@@ -255,7 +255,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+        app:layout_constraintTop_toBottomOf="@+id/lnlSlNhap">
 
         <TextView
             style="@style/custom_TV"
@@ -263,7 +263,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:paddingLeft="@dimen/padding_defaut"
-            android:text="Đơn Giá"
+            android:text="@string/don_gia"
             android:textSize="@dimen/text_little" />
 
         <TextView
@@ -276,7 +276,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout10"
+        android:id="@+id/lnlThanhTienNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
         android:layout_marginTop="16dp"
@@ -285,7 +285,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+        app:layout_constraintTop_toBottomOf="@+id/lnlDonGiaNhap">
 
         <TextView
             style="@style/custom_TV"
@@ -293,7 +293,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:paddingLeft="@dimen/padding_defaut"
-            android:text="Thành Tiền"
+            android:text="@string/money"
             android:textSize="@dimen/text_little" />
 
         <TextView

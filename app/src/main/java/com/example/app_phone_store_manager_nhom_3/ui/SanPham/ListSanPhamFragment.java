@@ -51,12 +51,12 @@ public class ListSanPhamFragment extends Fragment {
         binding.tlbSP.inflateMenu(R.menu.menu_header);
         drawable = getActivity().getDrawable(R.drawable.ic_menu);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        appCompatActivity.getSupportActionBar().setTitle("Hãng");
+        appCompatActivity.getSupportActionBar().setTitle("Sản phẩm");
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
 
         MenuItem menu = binding.tlbSP.getMenu().findItem(R.id.menu_search);
         searchView = (SearchView) menu.getActionView();
-        searchView.setQueryHint("Tên hãng, Mã hãng");
+        searchView.setQueryHint("Tên sản phẩm, Mã sản phẩm, Ram, ...");
         searchView.setMaxWidth(Integer.MAX_VALUE);
 
         EditText edSeach = (EditText) searchView.findViewById(androidx.appcompat.R.id.search_src_text);

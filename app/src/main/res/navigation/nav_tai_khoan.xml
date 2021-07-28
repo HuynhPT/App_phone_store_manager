@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_ChiTietTk"
-        android:name="com.example.app_phone_store_manager_nhom_3.ui.TaiKhoan.ChiTietTkFragment"
+        android:name="com.example.app_phone_store_manager_nhom_3.ui.TaiKhoan.ChiTietTaiKhoanFragment"
         android:label="fragment_chi_tiet_tk"
         tools:layout="@layout/fragment_chi_tiet_tk" >
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_editTk"
-        android:name="com.example.app_phone_store_manager_nhom_3.ui.TaiKhoan.EditTkFragment"
+        android:name="com.example.app_phone_store_manager_nhom_3.ui.TaiKhoan.EditTaiKhoanFragment"
         android:label="fragment_edit_tk"
         tools:layout="@layout/fragment_edit_tk" >
         <action

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.TaiKhoan.EditTkFragment">
+    tools:context=".ui.TaiKhoan.EditTaiKhoanFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilMaNvTkChange"
@@ -26,7 +26,7 @@
             android:id="@+id/edMaNvTkChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mã Nhân Viên" />
+            android:hint="@string/nv_id" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -47,7 +47,7 @@
             android:id="@+id/ed_HoTen_TkChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Họ Tên" />
+            android:hint="@string/name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Số Điện Thoại"
+            android:hint="@string/phone"
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +92,7 @@
             android:id="@+id/ed_Tk_Tk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tài Khoản" />
+            android:hint="@string/user_tk" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -113,7 +113,7 @@
             android:id="@+id/ed_DiaChi_TkChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ĐỊa Chỉ" />
+            android:hint="@string/dia_chi" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -136,7 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Năm Sinh"
+            android:hint="@string/date_year"
             android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
 

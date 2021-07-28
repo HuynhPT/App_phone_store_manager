@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/lnlTenSP"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
         android:layout_marginTop="165dp"
@@ -71,6 +71,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/lnlTenSP"></LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

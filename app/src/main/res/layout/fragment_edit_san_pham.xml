@@ -41,7 +41,7 @@
                 android:id="@+id/edMaSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mã sản phẩm" />
+                android:hint="@string/sp_id" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +62,7 @@
                 android:id="@+id/edTenSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tên sản phẩm" />
+                android:hint="@string/sp_name" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -83,7 +83,7 @@
                 android:id="@+id/edHangSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Hãng" />
+                android:hint="@string/hang" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Loại sản phẩm"
+            android:text="@string/sp_class"
             android:textColor="@color/black"
             android:textSize="@dimen/text_small"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Tình trạng"
+            android:text="@string/sp_status"
             android:textColor="@color/black"
             android:textSize="@dimen/text_small"
             app:layout_constraintStart_toStartOf="parent"
@@ -194,7 +194,7 @@
                 android:id="@+id/edGiaTienSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Giá tiền" />
+                android:hint="@string/sp_money" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -215,7 +215,7 @@
                 android:id="@+id/edDonGiaSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Trạng thái" />
+                android:hint="@string/sp_status" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -236,7 +236,7 @@
                 android:id="@+id/edBoNhoSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Bộ nhớ" />
+                android:hint="@string/sp_bonho" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -257,7 +257,7 @@
                 android:id="@+id/edRAMSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="RAM" />
+                android:hint="@string/sp_ram" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -278,7 +278,7 @@
                 android:id="@+id/edChipSetSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="ChipSet" />
+                android:hint="@string/sp_chip" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -299,7 +299,7 @@
                 android:id="@+id/edOSSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Hệ điều hành" />
+                android:hint="@string/sp_os" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -320,7 +320,7 @@
                 android:id="@+id/edManHinhSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Màn hình" />
+                android:hint="@string/sp_display" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -341,7 +341,7 @@
                 android:id="@+id/edPinSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Dung lượng pin" />
+                android:hint="@string/sp_battery" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -362,7 +362,7 @@
                 android:id="@+id/edTypeSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Cổng sạc" />
+                android:hint="@string/sp_type" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -383,7 +383,7 @@
                 android:id="@+id/edLoaiPKSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Loại phụ kiện" />
+                android:hint="@string/sp_loaiPK" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilMoTaSPChange"
@@ -405,7 +405,7 @@
                 android:id="@+id/edMoTaSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mô tả" />
+                android:hint="@string/sp_note" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
