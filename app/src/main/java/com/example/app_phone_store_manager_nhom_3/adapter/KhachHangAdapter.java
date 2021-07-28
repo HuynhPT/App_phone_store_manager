@@ -35,10 +35,10 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         KhachHang khachHang = list.get(position);
-        holder.tvMaKH.setText("Mã KH: "+ khachHang.getMaKH());
-        holder.tvHoTenKH.setText("Tên KH: "+ khachHang.getHoTen());
-        holder.tvPhoneKH.setText("Mã KH: "+ khachHang.getDienThoai());
-        holder.tvDiaChiKH.setText("Mã KH: "+ khachHang.getDiaChi());
+        holder.tvMaKH.setText("Mã KH: #"+ khachHang.getMaKH());
+        holder.tvHoTenKH.setText("Họ Tên: "+ khachHang.getHoTen());
+        holder.tvPhoneKH.setText("Số Điện Thoại: "+ khachHang.getDienThoai());
+        holder.tvDiaChiKH.setText("Địa Chỉ: "+ khachHang.getDiaChi());
     }
 
     @Override
