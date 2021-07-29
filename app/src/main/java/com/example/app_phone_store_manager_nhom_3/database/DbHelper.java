@@ -81,7 +81,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "soLuong INTEGER NOT NULL," +
                 "giamGia TEXT NOT NULL," +
                 "donGia TEXT NOT NULL," +
-                "baoHang INTEGER)";
+                "baoHang INTEGER," +
+                "PRIMARY KEY (maHD, maSP))";
         db.execSQL(createTableChiTietHoaDon);
     }
 

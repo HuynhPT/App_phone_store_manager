@@ -20,13 +20,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.app_phone_store_manager_nhom_3.R;
-import com.example.app_phone_store_manager_nhom_3.adapter.KhachHangAdapter;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoKhachHang;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 
 public class AddKhachHangFragment extends Fragment {
     private NavController navController;
@@ -93,10 +91,10 @@ public class AddKhachHangFragment extends Fragment {
                 long kq = dao.addKH(khachHang);
 
                 if (kq > 0) {
-                    Toast.makeText(getContext(), "Thành Công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                     navController.navigate(R.id.action_addKH_to_listKH);
                 } else {
-                    Toast.makeText(getContext(), "Thất Bại", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Thêm thất Bại", Toast.LENGTH_SHORT).show();
                 }
 
                 return true;

@@ -1,11 +1,15 @@
 package com.example.app_phone_store_manager_nhom_3.ui.KhachHang;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -14,7 +18,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,19 +27,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.app_phone_store_manager_nhom_3.R;
 import com.example.app_phone_store_manager_nhom_3.adapter.KhachHangAdapter;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoKhachHang;
 import com.example.app_phone_store_manager_nhom_3.databinding.FragmentListKhachHangBinding;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
+import com.example.app_phone_store_manager_nhom_3.utilities.ItemKhachHangClick;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListKhachHangFragment extends Fragment {
+public class ListKhachHangFragment extends Fragment{
     private NavController navController;
     private FragmentListKhachHangBinding binding;// lớp liên kết trực tiếp đến XML
     private AppCompatActivity appCompatActivity;
@@ -104,7 +110,6 @@ public class ListKhachHangFragment extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_loc:
-                        navController.navigate(R.id.action_listKH_to_chitietKH);
                         return true;
                     default:
                         return false;
@@ -122,6 +127,27 @@ public class ListKhachHangFragment extends Fragment {
         binding.rvKH.setAdapter(adapter);
         binding.rvKH.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        adapter.setImgCallClick(new ItemKhachHangClick() {
+            @Override
+            public void OnItemClick(KhachHang khachHang) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + khachHang.getDienThoai()));
+                startActivity(intent);
+            }
+        });
+        adapter.setImgDeleteClick(new ItemKhachHangClick() {
+            @Override
+            public void OnItemClick(KhachHang khachHang) {
+                dialogDelete(khachHang);
+            }
+        });
+        adapter.setItemClick(new ItemKhachHangClick() {
+            @Override
+            public void OnItemClick(KhachHang khachHang) {
+                Bundle bundle = new Bundle();
+                bundle.putString("maKH", khachHang.getMaKH());
+                navController.navigate(R.id.action_listKH_to_chitietKH,bundle);
+            }
+        });
     }
 
     @Override
@@ -141,10 +167,37 @@ public class ListKhachHangFragment extends Fragment {
         }
 
     }
-
+    public void dialogDelete(KhachHang khachHang){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Xóa");
+        builder.setMessage("Bạn có chắc chắn muốn xóa không ?");
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                int kq = dao.deleteKH(khachHang);
+                if (kq > 0) {
+                    Toast.makeText(getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    list.clear();
+                    list.addAll(dao.getAll());
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(getContext(), "Xóa thất Bại", Toast.LENGTH_SHORT).show();
+                }
+                dialogInterface.cancel();
+            }
+        });
+        builder.show();
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();
         dao.close();
     }
+
 }

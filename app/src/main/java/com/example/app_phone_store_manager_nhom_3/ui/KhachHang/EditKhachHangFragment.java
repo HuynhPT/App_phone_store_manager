@@ -1,10 +1,12 @@
 package com.example.app_phone_store_manager_nhom_3.ui.KhachHang;
 
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -17,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.app_phone_store_manager_nhom_3.R;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoKhachHang;
@@ -27,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 
-public class EditKhachHangFragment extends Fragment {
+public class EditKhachHangFragment extends Fragment{
     private AppCompatActivity appCompatActivity;
     private Drawable drawable;
     private NavController navController;
@@ -35,6 +38,7 @@ public class EditKhachHangFragment extends Fragment {
     private List<KhachHang> list;
     private EditText edMaKHChange, edHoTenKHChange, edDienThoaiChange, edDiaChiChange;
     private KhachHang khachHang;
+    private String maKHOld;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class EditKhachHangFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(view);
+        maKHOld = getArguments().getString("maKH");
 
         edMaKHChange = view.findViewById(R.id.edMaKhachHangchange);
         edHoTenKHChange = view.findViewById(R.id.edHoTenKHchange);
@@ -65,9 +70,12 @@ public class EditKhachHangFragment extends Fragment {
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
         appCompatActivity.getSupportActionBar().setTitle("Cập nhập Khách Hàng");
-        khachHang = new KhachHang();
+
         dao = new DaoKhachHang(getActivity());
         dao.open();
+
+        khachHang = dao.getMaKH(maKHOld);
+
         edMaKHChange.setText(khachHang.getMaKH());
         edHoTenKHChange.setText(khachHang.getHoTen());
         edDienThoaiChange.setText(khachHang.getDienThoai());
@@ -86,29 +94,55 @@ public class EditKhachHangFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                navController.navigate(R.id.action_editKH_to_chitietKH);
+                AlertDialog.Builder builder = new AlertDialog.Builder(appCompatActivity);
+                builder.setTitle("Thoát cập nhập");
+                builder.setMessage("Bạn có chắc chắn muốn thoát không. \nDữ liệu sẽ không bị thay đổi!");
+                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("maKH",maKHOld);
+                        navController.navigate(R.id.action_editKH_to_chitietKH, bundle);
+                        dialogInterface.cancel();
+                    }
+                });
+                builder.show();
                 return true;
             case R.id.menu_reset:
+                edMaKHChange.setText("");
+                edHoTenKHChange.setText("");
+                edDienThoaiChange.setText("");
+                edDiaChiChange.setText("");
                 return true;
             case R.id.menu_save:
                 if (khachHang.getMaKH().equals(edMaKHChange.getText().toString()) &&
                         khachHang.getHoTen().equals(edHoTenKHChange.getText().toString()) &&
                         khachHang.getDienThoai().equals(edDienThoaiChange.getText().toString()) &&
                         khachHang.getDiaChi().equals(edDiaChiChange.getText().toString())) {
-
+                        Toast.makeText(appCompatActivity, "Không có thay đổi để cập nhập!", Toast.LENGTH_SHORT).show();
                 } else {
-
                     khachHang.setMaKH(edMaKHChange.getText().toString());
                     khachHang.setHoTen(edHoTenKHChange.getText().toString());
                     khachHang.setDienThoai(edDienThoaiChange.getText().toString());
                     khachHang.setDiaChi(edDiaChiChange.getText().toString());
-                    long kq = dao.updateKH(khachHang,"");
+                    long kq = dao.updateKH(khachHang,maKHOld);
+                    if (kq > 0) {
+                        Toast.makeText(getContext(), "Cập nhập thành công", Toast.LENGTH_SHORT).show();
+                        navController.navigate(R.id.action_editKH_to_listKH);
+                    } else {
+                        Toast.makeText(getContext(), "Cập nhập thất Bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
-
-                navController.navigate(R.id.editTk_to_ListTk);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

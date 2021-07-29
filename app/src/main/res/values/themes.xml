@@ -27,4 +27,9 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="custom_TV_show">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/margin</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

@@ -51,7 +51,7 @@
         <action
             android:id="@+id/editHDNhap_to_ChiTietHDNhap"
             app:destination="@id/nav_CtHDNhap"
-            app:popUpTo="@id/nav_hoa_don_nhap"/>
+            app:popUpTo="@id/nav_CtHDNhap" />
     </fragment>
 
 </navigation>

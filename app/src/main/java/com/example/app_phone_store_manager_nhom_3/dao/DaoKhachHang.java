@@ -42,17 +42,23 @@ public class DaoKhachHang {
         values.put(KhachHang.TB_COL_NAME, khachHang.getHoTen());
         values.put(KhachHang.TB_COL_PHONE, khachHang.getDienThoai());
         values.put(KhachHang.TB_COL_LOCALE, khachHang.getDiaChi());
-        return database.update(KhachHang.TB_NAME, values, "maKH=?", new String[]{maOld});
+        return database.update(KhachHang.TB_NAME, values, "maKH = ? ", new String[]{maOld});
     }
 
     public int deleteKH(KhachHang khachHang) {
-        return database.delete(KhachHang.TB_NAME, "maKH=?", new String[]{khachHang.getMaKH()});
+        return database.delete(KhachHang.TB_NAME, "maKH = ? ", new String[]{khachHang.getMaKH()});
     }
 
     public List<KhachHang> getAll() {
         String sql = "SELECT * FROM KhachHang";
         List<KhachHang> list = getData(sql);
         return list;
+    }
+
+    public KhachHang getMaKH(String maKH){
+        String sql = "SELECT * FROM KhachHang WHERE maKH = ?";
+        List<KhachHang> list = getData(sql, maKH);
+        return  list.get(0);
     }
 
     public List<KhachHang> getData(String sql, String... args) {

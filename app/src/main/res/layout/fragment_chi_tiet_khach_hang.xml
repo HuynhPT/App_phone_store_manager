@@ -39,8 +39,8 @@
             android:textSize="@dimen/text_little" />
 
         <TextView
-            android:id="@+id/tvHoTenKH"
-            style="@style/custom_TV"
+            android:id="@+id/tvHoTenKHShow"
+            style="@style/custom_TV_show"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
@@ -51,7 +51,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_height"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="2dp"
         android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,8 +68,8 @@
             android:textSize="@dimen/text_little" />
 
         <TextView
-            android:id="@+id/tvSoDienThoaiKH"
-            style="@style/custom_TV"
+            android:id="@+id/tvSoDienThoaiKHShow"
+            style="@style/custom_TV_show"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
@@ -81,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_height"
 
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="2dp"
 
         android:background="@color/white"
         android:orientation="horizontal"
@@ -99,8 +99,8 @@
             android:textSize="@dimen/text_little" />
 
         <TextView
-            android:id="@+id/tvDiaChiKH"
-            style="@style/custom_TV"
+            android:id="@+id/tvDiaChiKHShow"
+            style="@style/custom_TV_show"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
@@ -110,7 +110,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="2dp"
         android:background="@color/white"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
