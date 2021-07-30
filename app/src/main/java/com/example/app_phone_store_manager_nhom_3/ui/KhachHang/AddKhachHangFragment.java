@@ -79,7 +79,10 @@ public class AddKhachHangFragment extends Fragment {
                 navController.navigate(R.id.action_addKH_to_listKH);
                 return true;
             case R.id.menu_reset:
-
+                edMaKH.setText("");
+                edHoTenKH.setText("");
+                edDienThoaiKH.setText("");
+                edDiaChiKH.setText("");
                 return true;
             case R.id.menu_save:
 

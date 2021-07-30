@@ -16,16 +16,27 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.app_phone_store_manager_nhom_3.R;
+import com.example.app_phone_store_manager_nhom_3.dao.DaoNhanVien;
+import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 
 public class AddTaiKhoanFragment extends Fragment {
     private Drawable drawable;
     private AppCompatActivity appCompatActivity;
     private NavController navController;
+    private DaoNhanVien dao;
+    private List<NhanVien> list;
+    private String passDefault = "123456";
+    EditText edMaNV, edHoTenNV, edDienThoaiNV, edDiaChiNV, edTaiKhoanNV, edNamSinhNV;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,18 +53,30 @@ public class AddTaiKhoanFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+
+        edMaNV = view.findViewById(R.id.edMaNvTk);
+        edHoTenNV = view.findViewById(R.id.ed_HoTen_Tk);
+        edDienThoaiNV = view.findViewById(R.id.ed_Sdt_Tk);
+        edTaiKhoanNV = view.findViewById(R.id.ed_Tk_Tk);
+        edDiaChiNV = view.findViewById(R.id.ed_DiaChi_Tk);
+        edNamSinhNV = view.findViewById(R.id.ed_NamSinh_Tk);
+
         appCompatActivity = (AppCompatActivity) getActivity();
 
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setTitle("Thêm Tài Khoản");
         drawable = getActivity().getDrawable(R.drawable.ic_backspace);
-        appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);;
+        appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
+
+        dao = new DaoNhanVien(getActivity());
+        dao.openNV();
+
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_save,menu);
+        inflater.inflate(R.menu.menu_save, menu);
     }
 
     @Override
@@ -63,13 +86,39 @@ public class AddTaiKhoanFragment extends Fragment {
                 navController.navigate(R.id.addTk_to_listTk);
                 return true;
             case R.id.menu_reset:
-
+                edMaNV.setText("");
+                edHoTenNV.setText("");
+                edDienThoaiNV.setText("");
+                edTaiKhoanNV.setText("");
+                edDiaChiNV.setText("");
+                edNamSinhNV.setText("");
                 return true;
             case R.id.menu_save:
-                navController.navigate(R.id.addTk_to_listTk);
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.setMaNV(edMaNV.getText().toString());
+                nhanVien.setHoTen(edHoTenNV.getText().toString());
+                nhanVien.setDienThoai(edDienThoaiNV.getText().toString());
+                nhanVien.setTaiKhoan(edTaiKhoanNV.getText().toString());
+                nhanVien.setDiaChi(edDiaChiNV.getText().toString());
+                nhanVien.setNamSinh(edNamSinhNV.getText().toString());
+                nhanVien.setMatKhau(passDefault);
+                long kq = dao.addNV(nhanVien);
+                if (kq > 0) {
+                    navController.navigate(R.id.addTk_to_listTk);
+                    Toast.makeText(getContext(), "Thành Công", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Thất Bại", Toast.LENGTH_SHORT).show();
+                }
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dao.closeNV();
     }
 }
