@@ -12,11 +12,18 @@
         android:layout_height="@dimen/img_size"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@android:color/darker_gray"
+        android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_camera" />
-
+        app:srcCompat="@drawable/image_defaut" />
+    <ImageView
+        android:id="@+id/imgChonAnhHangChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintBottom_toBottomOf="@+id/imgHangChange"
+        app:layout_constraintStart_toEndOf="@+id/imgHangChange" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilMaHangChange"
@@ -36,7 +43,8 @@
             android:id="@+id/edMaHangChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/ma_hang" />
+            android:hint="@string/ma_hang"
+            android:inputType="text|textCapSentences"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -57,6 +65,7 @@
             android:id="@+id/edTenHangChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/name_hang" />
+            android:hint="@string/name_hang"
+            android:inputType="text|textCapSentences"/>
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

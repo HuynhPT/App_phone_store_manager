@@ -14,7 +14,7 @@ public class ChiTietHoaDon {
     public static final String TB_COL_AMOUNT = "soLuong";
     public static final String TB_COL_SALE = "giamGia";
     public static final String TB_COL_PRICE = "donGia";
-    public static final String TB_COL_BH = "baoHang";
+    public static final String TB_COL_BH = "baoHanh";
 
     public String getMaHD() {
         return maHD;

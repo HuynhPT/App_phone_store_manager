@@ -89,5 +89,11 @@
     <string name="hd_title">Hóa đơn</string>
     <string name="sale">Khuyến mãi</string>
     <string name="nv_ban">Nhân viên bán</string>
-
+    <string name="chup_anh">Chụp ảnh</string>
+    <string name="chon_file">Tải ảnh lên</string>
+    <string-array name="filter">
+        <item>Mặc định</item>
+        <item>A-Z theo Tên</item>
+        <item>A-Z theo Mã</item>
+    </string-array>
 </resources>

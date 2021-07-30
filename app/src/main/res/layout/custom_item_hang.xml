@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="1dp"
-    android:layout_margin="@dimen/margin">
+    android:layout_margin="@dimen/margin"
+    app:cardCornerRadius="@dimen/margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,48 +14,47 @@
 
         <TextView
             android:id="@+id/tvMaHang"
+            style="@style/custom_TV_show"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="1dp"
             android:layout_marginEnd="8dp"
             android:text="TextView"
             app:layout_constraintEnd_toStartOf="@+id/imgDelHang"
-            app:layout_constraintStart_toEndOf="@+id/imgListHang"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/imgHang"
+            app:layout_constraintTop_toTopOf="@+id/imgHang" />
 
         <TextView
             android:id="@+id/tvTenHang"
+            style="@style/custom_TV_show"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="1dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="1dp"
             android:text="TextView"
-            android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imgHang"
             app:layout_constraintEnd_toStartOf="@+id/imgDelHang"
-            app:layout_constraintStart_toEndOf="@+id/imgListHang"
-            app:layout_constraintTop_toBottomOf="@+id/tvMaHang"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toEndOf="@+id/imgHang"
+            app:layout_constraintTop_toBottomOf="@+id/tvMaHang" />
 
         <ImageView
             android:id="@+id/imgDelHang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_cancel" />
 
         <ImageView
-            android:id="@+id/imgListHang"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
+            android:id="@+id/imgHang"
+            android:layout_width="@dimen/item_height"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"

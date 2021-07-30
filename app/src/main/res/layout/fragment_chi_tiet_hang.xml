@@ -9,7 +9,7 @@
     tools:context=".ui.Hang.ChiTietHangFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgHangShow"
         android:layout_width="@dimen/img_size"
         android:layout_height="@dimen/img_size"
         android:layout_marginStart="16dp"
@@ -28,7 +28,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/text_small"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imgHangShow" />
 
     <LinearLayout
         android:id="@+id/lnlTenSP"
@@ -53,8 +53,8 @@
             android:textSize="@dimen/text_little" />
 
         <TextView
-            android:id="@+id/tvTenHang"
-            style="@style/custom_TV"
+            android:id="@+id/tvTenHangShow"
+            style="@style/custom_TV_show"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
@@ -65,7 +65,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="2dp"
         android:background="@color/white"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
