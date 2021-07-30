@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app_phone_store_manager_nhom_3.R;
+import com.example.app_phone_store_manager_nhom_3.model.Hang;
 import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
 import com.example.app_phone_store_manager_nhom_3.utilities.ItemNhanVienClick;
 
@@ -86,6 +87,16 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.Viewho
             }
         });
 
+    }
+
+    public void loadData(List<NhanVien> list) {
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
+    public void filter(List<NhanVien> list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @Override

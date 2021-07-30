@@ -26,6 +26,7 @@ import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 public class AddTaiKhoanFragment extends Fragment {
@@ -94,26 +95,58 @@ public class AddTaiKhoanFragment extends Fragment {
                 edNamSinhNV.setText("");
                 return true;
             case R.id.menu_save:
-                NhanVien nhanVien = new NhanVien();
-                nhanVien.setMaNV(edMaNV.getText().toString());
-                nhanVien.setHoTen(edHoTenNV.getText().toString());
-                nhanVien.setDienThoai(edDienThoaiNV.getText().toString());
-                nhanVien.setTaiKhoan(edTaiKhoanNV.getText().toString());
-                nhanVien.setDiaChi(edDiaChiNV.getText().toString());
-                nhanVien.setNamSinh(edNamSinhNV.getText().toString());
-                nhanVien.setMatKhau(passDefault);
-                long kq = dao.addNV(nhanVien);
-                if (kq > 0) {
-                    navController.navigate(R.id.addTk_to_listTk);
-                    Toast.makeText(getContext(), "Thành Công", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getContext(), "Thất Bại", Toast.LENGTH_SHORT).show();
-                }
+                if (valiDate()) {
+                    NhanVien nhanVien = new NhanVien();
+                    nhanVien.setMaNV(edMaNV.getText().toString());
+                    nhanVien.setHoTen(edHoTenNV.getText().toString());
+                    nhanVien.setDienThoai(edDienThoaiNV.getText().toString());
+                    nhanVien.setTaiKhoan(edTaiKhoanNV.getText().toString());
+                    nhanVien.setDiaChi(edDiaChiNV.getText().toString());
+                    nhanVien.setNamSinh(edNamSinhNV.getText().toString());
+                    nhanVien.setMatKhau(passDefault);
+                    long kq = dao.addNV(nhanVien);
+                    if (kq > 0) {
+                        navController.navigate(R.id.addTk_to_listTk);
+                        Toast.makeText(getContext(), "Thành Công", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "Thất Bại", Toast.LENGTH_SHORT).show();
+                    }
 
+
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public boolean valiDate() {
+        if (edMaNV.getText().length() == 0 ||
+                edHoTenNV.getText().length() == 0 ||
+                edTaiKhoanNV.getText().length() == 0 ||
+                edDienThoaiNV.getText().length() == 0 ||
+                edDiaChiNV.getText().length() == 0 ||
+                edNamSinhNV.getText().length() == 0) {
+            Toast.makeText(appCompatActivity, "Bạn cần nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (edMaNV.getText().length() < 6 || edMaNV.getText().length() > 10) {
+            Toast.makeText(appCompatActivity, "Mã hãng có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!edMaNV.getText().toString().substring(0, 1).toUpperCase().equals(edMaNV.getText().toString().substring(0, 1)) ||
+                !edHoTenNV.getText().toString().substring(0, 1).toUpperCase().equals(edHoTenNV.getText().toString().substring(0, 1)) ||
+                !edDiaChiNV.getText().toString().substring(0, 1).toUpperCase().equals(edDiaChiNV.getText().toString().substring(0, 1))) {
+            Toast.makeText(appCompatActivity, "Chữ cái đầu tiên tên hãng phải viết hoa", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (edDienThoaiNV.getText().length() < 10 ||
+                edDienThoaiNV.getText().length() > 11 ||
+                Pattern.matches("[a-zA-Z]+", edDienThoaiNV.getText().toString())) {
+            Toast.makeText(appCompatActivity, "Sai độ dài số điện thoại", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     @Override

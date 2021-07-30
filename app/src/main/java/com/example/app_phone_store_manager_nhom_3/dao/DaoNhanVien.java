@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.app_phone_store_manager_nhom_3.database.DbHelper;
+import com.example.app_phone_store_manager_nhom_3.model.Hang;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
 
@@ -68,6 +69,23 @@ public class DaoNhanVien {
         String sql = "SELECT * FROM NhanVien WHERE maNV=?";
         List<NhanVien> list = getdata(sql, maNV);
         return list.get(0);
+    }
+
+    public List<NhanVien> getAllSXTen() {
+        String sql = "SELECT * FROM NhanVien ORDER BY hoTen ASC";
+        List<NhanVien> list = getdata(sql);
+        return list;
+    }
+
+    public List<NhanVien> getAllSXMa() {
+        String sql = "SELECT * FROM NhanVien ORDER BY maNV ASC";
+        List<NhanVien> list = getdata(sql);
+        return list;
+    }
+    public List<NhanVien> getAllSXTK() {
+        String sql = "SELECT * FROM NhanVien ORDER BY taiKhoan ASC";
+        List<NhanVien> list = getdata(sql);
+        return list;
     }
 
     public List<NhanVien> getdata(String sql, String... args) {

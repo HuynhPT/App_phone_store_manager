@@ -24,6 +24,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -92,6 +94,41 @@ public class ListTaiKhoanFragment extends Fragment {
         iconSeach.setColorFilter(Color.BLACK);
         iconClose.setColorFilter(Color.BLACK);
 
+        ArrayAdapter<CharSequence> spAdapter = ArrayAdapter.createFromResource(appCompatActivity, R.array.filterNV, R.layout.custom_item_sp);
+        spAdapter.setDropDownViewResource(R.layout.custom_item_sp_drop_down);
+        binding.spListFilter.setAdapter(spAdapter);
+        binding.spListFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0:
+                        list.clear();
+                        list.addAll(dao.getAll());
+                        adapter.filter(list);
+                        break;
+                    case 1:
+                        list.clear();
+                        list.addAll(dao.getAllSXTen());
+                        adapter.filter(list);
+                        break;
+                    case 2:
+                        list.clear();
+                        list.addAll(dao.getAllSXMa());
+                        adapter.filter(list);
+                        break;
+                        case 3:
+                        list.clear();
+                        list.addAll(dao.getAllSXTK());
+                        adapter.filter(list);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         binding.tlbTaiKhoan.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -177,6 +214,9 @@ public class ListTaiKhoanFragment extends Fragment {
                 int kq = dao.deleteNV(nhanVien);
                 if (kq > 0) {
                     Toast.makeText(getContext(), "Xóa Thành Công", Toast.LENGTH_SHORT).show();
+                    list.clear();
+                    list.addAll(dao.getAll());
+                    adapter.loadData(list);
                 } else {
                     Toast.makeText(getContext(), "Xóa Thất Bại", Toast.LENGTH_SHORT).show();
                 }

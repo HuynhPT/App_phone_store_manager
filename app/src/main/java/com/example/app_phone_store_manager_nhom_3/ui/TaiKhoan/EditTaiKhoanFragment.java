@@ -27,6 +27,8 @@ import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.regex.Pattern;
+
 public class EditTaiKhoanFragment extends Fragment {
     private AppCompatActivity appCompatActivity;
     private Drawable drawable;
@@ -121,32 +123,63 @@ public class EditTaiKhoanFragment extends Fragment {
                 edNamSinhNV.setText("");
                 return true;
             case R.id.menu_save:
-                if (nhanVien.getMaNV().equals(edMaNV.getText().toString()) &&
-                        nhanVien.getHoTen().equals(edHoTenNV.getText().toString()) &&
-                        nhanVien.getDienThoai().equals(edDienThoaiNV.getText().toString()) &&
-                        nhanVien.getTaiKhoan().equals(edTaiKhoanNV.getText().toString()) &&
-                        nhanVien.getNamSinh().equals(edNamSinhNV.getText().toString()) &&
-                        nhanVien.getDiaChi().equals(edDiaChiNV.getText().toString())) {
-                    Toast.makeText(appCompatActivity, "Không có thay đổi để cập nhập!", Toast.LENGTH_SHORT).show();
-                } else {
-                    nhanVien.setMaNV(edMaNV.getText().toString());
-                    nhanVien.setHoTen(edHoTenNV.getText().toString());
-                    nhanVien.setDienThoai(edDienThoaiNV.getText().toString());
-                    nhanVien.setDiaChi(edDiaChiNV.getText().toString());
-                    nhanVien.setTaiKhoan(edTaiKhoanNV.getText().toString());
-                    nhanVien.setNamSinh(edNamSinhNV.getText().toString());
-                    long kq = dao.updateNV(nhanVien, maNV);
-                    if (kq > 0) {
-                        Toast.makeText(getContext(), "Cập nhập thành công", Toast.LENGTH_SHORT).show();
-                        navController.navigate(R.id.editTk_to_ListTk);
+                if (valiDate()) {
+                    if (nhanVien.getMaNV().equals(edMaNV.getText().toString()) &&
+                            nhanVien.getHoTen().equals(edHoTenNV.getText().toString()) &&
+                            nhanVien.getDienThoai().equals(edDienThoaiNV.getText().toString()) &&
+                            nhanVien.getTaiKhoan().equals(edTaiKhoanNV.getText().toString()) &&
+                            nhanVien.getNamSinh().equals(edNamSinhNV.getText().toString()) &&
+                            nhanVien.getDiaChi().equals(edDiaChiNV.getText().toString())) {
+                        Toast.makeText(appCompatActivity, "Không có thay đổi để cập nhập!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getContext(), "Cập nhập thất Bại", Toast.LENGTH_SHORT).show();
+                        nhanVien.setMaNV(edMaNV.getText().toString());
+                        nhanVien.setHoTen(edHoTenNV.getText().toString());
+                        nhanVien.setDienThoai(edDienThoaiNV.getText().toString());
+                        nhanVien.setDiaChi(edDiaChiNV.getText().toString());
+                        nhanVien.setTaiKhoan(edTaiKhoanNV.getText().toString());
+                        nhanVien.setNamSinh(edNamSinhNV.getText().toString());
+                        long kq = dao.updateNV(nhanVien, maNV);
+                        if (kq > 0) {
+                            Toast.makeText(getContext(), "Cập nhập thành công", Toast.LENGTH_SHORT).show();
+                            navController.navigate(R.id.editTk_to_ListTk);
+                        } else {
+                            Toast.makeText(getContext(), "Cập nhập thất Bại", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public boolean valiDate() {
+        if (edMaNV.getText().length() == 0 ||
+                edHoTenNV.getText().length() == 0 ||
+                edTaiKhoanNV.getText().length() == 0 ||
+                edDienThoaiNV.getText().length() == 0 ||
+                edDiaChiNV.getText().length() == 0 ||
+                edNamSinhNV.getText().length() == 0) {
+            Toast.makeText(appCompatActivity, "Bạn cần nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (edMaNV.getText().length() < 6 || edMaNV.getText().length() > 10) {
+            Toast.makeText(appCompatActivity, "Mã hãng có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!edMaNV.getText().toString().substring(0, 1).toUpperCase().equals(edMaNV.getText().toString().substring(0, 1)) ||
+                !edHoTenNV.getText().toString().substring(0, 1).toUpperCase().equals(edHoTenNV.getText().toString().substring(0, 1)) ||
+                !edDiaChiNV.getText().toString().substring(0, 1).toUpperCase().equals(edDiaChiNV.getText().toString().substring(0, 1))) {
+            Toast.makeText(appCompatActivity, "Chữ cái đầu tiên tên hãng phải viết hoa", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (edDienThoaiNV.getText().length() < 10 ||
+                edDienThoaiNV.getText().length() > 11 ||
+                Pattern.matches("[a-zA-Z]+", edDienThoaiNV.getText().toString())) {
+            Toast.makeText(appCompatActivity, "Sai độ dài số điện thoại", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     @Override
