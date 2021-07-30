@@ -42,7 +42,7 @@
             android:textSize="@dimen/text_little" />
 
         <TextView
-            android:id="@+id/tvTenTk"
+            android:id="@+id/tvTenShow"
             style="@style/custom_TV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -72,7 +72,7 @@
             android:textSize="@dimen/text_little" />
 
         <TextView
-            android:id="@+id/tvSdtTk"
+            android:id="@+id/tvSdtTkShow"
             style="@style/custom_TV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -102,7 +102,7 @@
             android:textSize="@dimen/text_little" />
 
         <TextView
-            android:id="@+id/tvTkTk"
+            android:id="@+id/tvTkShow"
             style="@style/custom_TV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -132,7 +132,7 @@
             android:textSize="@dimen/text_little" />
 
         <TextView
-            android:id="@+id/tvDiaChiTk"
+            android:id="@+id/tvDiaChiTkShow"
             style="@style/custom_TV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -162,7 +162,7 @@
             android:textSize="@dimen/text_little" />
 
         <TextView
-            android:id="@+id/tvNamSinhTk"
+            android:id="@+id/tvNamSinhTkShow"
             style="@style/custom_TV"
             android:layout_width="0dp"
             android:layout_height="match_parent"

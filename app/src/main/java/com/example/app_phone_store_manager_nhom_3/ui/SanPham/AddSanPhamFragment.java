@@ -42,7 +42,8 @@ public class AddSanPhamFragment extends Fragment {
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setTitle("Thêm sản phẩm");
         drawable = getActivity().getDrawable(R.drawable.ic_backspace);
-        appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);;
+        appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
+        ;
     }
 
     @Override
@@ -50,10 +51,11 @@ public class AddSanPhamFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_add_san_pham, container, false);
     }
+
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_save,menu);
+        inflater.inflate(R.menu.menu_save, menu);
     }
 
     @Override

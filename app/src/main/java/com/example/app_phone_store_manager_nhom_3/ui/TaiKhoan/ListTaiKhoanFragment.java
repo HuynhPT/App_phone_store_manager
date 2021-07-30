@@ -1,17 +1,22 @@
 package com.example.app_phone_store_manager_nhom_3.ui.TaiKhoan;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,12 +26,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.app_phone_store_manager_nhom_3.R;
+import com.example.app_phone_store_manager_nhom_3.adapter.NhanVienAdapter;
+import com.example.app_phone_store_manager_nhom_3.dao.DaoNhanVien;
 import com.example.app_phone_store_manager_nhom_3.databinding.FragmentListHangBinding;
 import com.example.app_phone_store_manager_nhom_3.databinding.FragmentListTaiKhoanBinding;
+import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
+import com.example.app_phone_store_manager_nhom_3.utilities.ItemNhanVienClick;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ListTaiKhoanFragment extends Fragment {
@@ -35,6 +48,9 @@ public class ListTaiKhoanFragment extends Fragment {
     private Drawable drawable;
     private SearchView searchView;
     private FragmentListTaiKhoanBinding binding;
+    private NhanVienAdapter adapter;
+    private DaoNhanVien dao;
+    private List<NhanVien> list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,18 +80,62 @@ public class ListTaiKhoanFragment extends Fragment {
 
         MenuItem menu = binding.tlbTaiKhoan.getMenu().findItem(R.id.menu_search);
         searchView = (SearchView) menu.getActionView();
-        searchView.setQueryHint("Mã nhân viên, Họ tên, Số điện thoại, Tài khoản, Địa chỉ , Năm sinh");
+        searchView.setQueryHint("Mã nhân viên, Họ tên, Tài khoản");
         searchView.setMaxWidth(Integer.MAX_VALUE);
 
         EditText edSeach = (EditText) searchView.findViewById(androidx.appcompat.R.id.search_src_text);
         edSeach.setTextColor(Color.BLACK);
         edSeach.setHintTextColor(Color.LTGRAY);
 
-        ImageView iconSeach =(ImageView) searchView.findViewById(androidx.appcompat.R.id.search_button);
-        ImageView iconClose =(ImageView) searchView.findViewById(androidx.appcompat.R.id.search_close_btn);
+        ImageView iconSeach = (ImageView) searchView.findViewById(androidx.appcompat.R.id.search_button);
+        ImageView iconClose = (ImageView) searchView.findViewById(androidx.appcompat.R.id.search_close_btn);
         iconSeach.setColorFilter(Color.BLACK);
         iconClose.setColorFilter(Color.BLACK);
 
+
+        binding.tlbTaiKhoan.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_loc:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        dao = new DaoNhanVien(getContext());
+        dao.openNV();
+
+        list = new ArrayList<>();
+        list = dao.getAll();
+
+        adapter = new NhanVienAdapter(list);
+
+        binding.rclNhanVien.setAdapter(adapter);
+        binding.rclNhanVien.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        adapter.setItemClick(new ItemNhanVienClick() {
+            @Override
+            public void OnItemClick(NhanVien nhanVien) {
+                Bundle bundle = new Bundle();
+                bundle.putString("maNV", nhanVien.getMaNV());
+                navController.navigate(R.id.listTk_to_ChiTietTk, bundle);
+            }
+        });
+        adapter.setImgCallClick(new ItemNhanVienClick() {
+            @Override
+            public void OnItemClick(NhanVien nhanVien) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + nhanVien.getDienThoai()));
+                startActivity(intent);
+            }
+        });
+        adapter.setImgDelClick(new ItemNhanVienClick() {
+            @Override
+            public void OnItemClick(NhanVien nhanVien) {
+                deleteDialogNV(nhanVien);
+            }
+        });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -84,19 +144,8 @@ public class ListTaiKhoanFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
                 return false;
-            }
-        });
-        binding.tlbTaiKhoan.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.menu_loc:
-                        navController.navigate(R.id.listTk_to_ChiTietTk);
-                        return true;
-                    default:
-                        return false;
-                }
             }
         });
     }
@@ -104,7 +153,7 @@ public class ListTaiKhoanFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_add,menu);
+        inflater.inflate(R.menu.menu_add, menu);
     }
 
     @Override
@@ -116,5 +165,37 @@ public class ListTaiKhoanFragment extends Fragment {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void deleteDialogNV(NhanVien nhanVien) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Xóa");
+        builder.setMessage("Bạn Có Chắc Chắn Muốn Xóa Không?");
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                int kq = dao.deleteNV(nhanVien);
+                if (kq > 0) {
+                    Toast.makeText(getContext(), "Xóa Thành Công", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Xóa Thất Bại", Toast.LENGTH_SHORT).show();
+                }
+                dialogInterface.cancel();
+            }
+
+        });
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                dialogInterface.cancel();
+            }
+        });
+        builder.show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dao.closeNV();
     }
 }

@@ -41,7 +41,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListKhachHangFragment extends Fragment{
+public class ListKhachHangFragment extends Fragment {
     private NavController navController;
     private FragmentListKhachHangBinding binding;// lớp liên kết trực tiếp đến XML
     private AppCompatActivity appCompatActivity;
@@ -78,6 +78,7 @@ public class ListKhachHangFragment extends Fragment{
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
 
         binding.tlbKhachHang.inflateMenu(R.menu.menu_header);
+
 
         MenuItem menuItem = binding.tlbKhachHang.getMenu().findItem(R.id.menu_search);
 
@@ -117,6 +118,7 @@ public class ListKhachHangFragment extends Fragment{
             }
         });
 
+
         dao = new DaoKhachHang(getActivity());
         dao.open();
 
@@ -124,6 +126,7 @@ public class ListKhachHangFragment extends Fragment{
         list = dao.getAll();
 
         adapter = new KhachHangAdapter(list);
+
         binding.rvKH.setAdapter(adapter);
         binding.rvKH.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -145,7 +148,19 @@ public class ListKhachHangFragment extends Fragment{
             public void OnItemClick(KhachHang khachHang) {
                 Bundle bundle = new Bundle();
                 bundle.putString("maKH", khachHang.getMaKH());
-                navController.navigate(R.id.action_listKH_to_chitietKH,bundle);
+                navController.navigate(R.id.action_listKH_to_chitietKH, bundle);
+            }
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
             }
         });
     }
@@ -167,7 +182,8 @@ public class ListKhachHangFragment extends Fragment{
         }
 
     }
-    public void dialogDelete(KhachHang khachHang){
+
+    public void dialogDelete(KhachHang khachHang) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Xóa");
         builder.setMessage("Bạn có chắc chắn muốn xóa không ?");
@@ -194,6 +210,7 @@ public class ListKhachHangFragment extends Fragment{
         });
         builder.show();
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

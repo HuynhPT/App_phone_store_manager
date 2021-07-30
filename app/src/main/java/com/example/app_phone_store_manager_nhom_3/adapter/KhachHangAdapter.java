@@ -5,6 +5,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,13 +19,15 @@ import com.example.app_phone_store_manager_nhom_3.utilities.ItemKhachHangClick;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.ViewHolder> {
+public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.ViewHolder> implements Filterable {
     private List<KhachHang> list;
     private ItemKhachHangClick itemClick;
     private ItemKhachHangClick imgCallClick;
     private ItemKhachHangClick imgDeleteClick;
+    private List<KhachHang> mlistKHold;
 
     public void setItemClick(ItemKhachHangClick itemClick) {
         this.itemClick = itemClick;
@@ -39,6 +43,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
 
     public KhachHangAdapter(List<KhachHang> list) {
         this.list = list;
+        this.mlistKHold = list;
     }
 
     @NonNull
@@ -91,9 +96,41 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
         return list.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String serKH = constraint.toString();
+                if (serKH.isEmpty()) {
+                    list = mlistKHold;
+                } else {
+                    List<KhachHang> listkh = new ArrayList<>();
+                    for (KhachHang khachHang : mlistKHold) {
+                        if (khachHang.getMaKH().toLowerCase().contains(serKH.toLowerCase()) ||
+                                khachHang.getHoTen().toLowerCase().contains(serKH.toLowerCase())) {
+                            listkh.add(khachHang);
+                        }
+                    }
+                    list = listkh;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = list;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                list = (List<KhachHang>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvMaKH, tvHoTenKH, tvPhoneKH, tvDiaChiKH;
         private ImageView imgCall, imgDelete;
+
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             tvMaKH = itemView.findViewById(R.id.tvMaKH);

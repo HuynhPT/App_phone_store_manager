@@ -46,23 +46,9 @@
             android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textSize="16sp"
-            android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/imgPhoneNV"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvHoTenNV" />
-
-        <TextView
-            android:id="@+id/tvTaiKhoanNV"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/tvDienThoaiNV"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDienThoaiNV" />
 
         <TextView
             android:id="@+id/tvDiaChiNV"
@@ -75,7 +61,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/imgPhoneNV"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTaiKhoanNV" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDienThoaiNV" />
 
         <TextView
             android:id="@+id/tvNamsinhNV"
