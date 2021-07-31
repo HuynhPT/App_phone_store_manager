@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app_phone_store_manager_nhom_3.R;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
+import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
 import com.example.app_phone_store_manager_nhom_3.utilities.ItemKhachHangClick;
 
 import org.jetbrains.annotations.NotNull;
@@ -86,6 +87,10 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
             });
         }
     }
+    public void filter(List<KhachHang> list) {
+        this.list = list;
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getItemCount() {
@@ -125,6 +130,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
             }
         };
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvMaKH, tvHoTenKH, tvPhoneKH, tvDiaChiKH;

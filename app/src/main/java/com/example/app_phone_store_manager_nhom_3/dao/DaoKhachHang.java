@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.app_phone_store_manager_nhom_3.database.DbHelper;
+import com.example.app_phone_store_manager_nhom_3.model.Hang;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 
 import java.util.ArrayList;
@@ -59,6 +60,16 @@ public class DaoKhachHang {
         String sql = "SELECT * FROM KhachHang WHERE maKH = ?";
         List<KhachHang> list = getData(sql, maKH);
         return  list.get(0);
+    }
+    public List<KhachHang> getAllSXTenKH() {
+        String sql = "SELECT * FROM KhachHang ORDER BY hoTen ASC";
+        List<KhachHang> list = getData(sql);
+        return list;
+    }
+    public List<KhachHang> getAllSXMaKH() {
+        String sql = "SELECT * FROM KhachHang ORDER BY maKH ASC";
+        List<KhachHang> list = getData(sql);
+        return list;
     }
 
     public List<KhachHang> getData(String sql, String... args) {

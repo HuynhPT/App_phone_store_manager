@@ -25,6 +25,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -79,7 +81,6 @@ public class ListKhachHangFragment extends Fragment {
 
         binding.tlbKhachHang.inflateMenu(R.menu.menu_header);
 
-
         MenuItem menuItem = binding.tlbKhachHang.getMenu().findItem(R.id.menu_search);
 
         searchView = (SearchView) menuItem.getActionView();
@@ -95,6 +96,38 @@ public class ListKhachHangFragment extends Fragment {
         iconSeach.setColorFilter(Color.BLACK);
         iconClose.setColorFilter(Color.BLACK);
 
+        ArrayAdapter<CharSequence> spAdapter = ArrayAdapter.createFromResource(appCompatActivity, R.array.filter, R.layout.custom_item_sp);
+        spAdapter.setDropDownViewResource(R.layout.custom_item_sp_drop_down);
+
+        binding.spListFilter.setAdapter(spAdapter);
+        binding.spListFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0:
+                        list.clear();
+                        list.addAll(dao.getAll());
+                        adapter.filter(list);
+                        break;
+                    case 1:
+                        list.clear();
+                        list.addAll(dao.getAllSXTenKH());
+                        adapter.filter(list);
+                        break;
+                    case 2:
+                        list.clear();
+                        list.addAll(dao.getAllSXMaKH());
+                        adapter.filter(list);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -103,6 +136,7 @@ public class ListKhachHangFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
                 return false;
             }
         });
@@ -151,18 +185,7 @@ public class ListKhachHangFragment extends Fragment {
                 navController.navigate(R.id.action_listKH_to_chitietKH, bundle);
             }
         });
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
     }
 
     @Override
@@ -201,7 +224,7 @@ public class ListKhachHangFragment extends Fragment {
                     Toast.makeText(getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
                     list.clear();
                     list.addAll(dao.getAll());
-                    adapter.notifyDataSetChanged();
+                    adapter.filter(list);
                 } else {
                     Toast.makeText(getContext(), "Xóa thất Bại", Toast.LENGTH_SHORT).show();
                 }

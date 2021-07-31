@@ -58,6 +58,7 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.Viewho
         NhanVien nhanVien = list.get(position);
         if (nhanVien == null) {
             return;
+
         } else {
             holder.tvMaNV.setText("Mã NV: #" + nhanVien.getMaNV());
             holder.tvHoTenNV.setText("Họ Tên: " + nhanVien.getHoTen());

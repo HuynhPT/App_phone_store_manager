@@ -82,6 +82,7 @@ public class DaoNhanVien {
         List<NhanVien> list = getdata(sql);
         return list;
     }
+
     public List<NhanVien> getAllSXTK() {
         String sql = "SELECT * FROM NhanVien ORDER BY taiKhoan ASC";
         List<NhanVien> list = getdata(sql);

@@ -216,7 +216,7 @@ public class ListTaiKhoanFragment extends Fragment {
                     Toast.makeText(getContext(), "Xóa Thành Công", Toast.LENGTH_SHORT).show();
                     list.clear();
                     list.addAll(dao.getAll());
-                    adapter.loadData(list);
+                    adapter.filter(list);
                 } else {
                     Toast.makeText(getContext(), "Xóa Thất Bại", Toast.LENGTH_SHORT).show();
                 }
