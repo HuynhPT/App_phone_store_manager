@@ -89,6 +89,25 @@ public class DaoNhanVien {
         return list;
     }
 
+    public int getUserName(String user) {
+        String dl = "SELECT * FROM NhanVien WHERE  taiKhoan=?";
+        List<NhanVien> list = getdata(dl, user);
+        if (list.size() == 0) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+    public int getlogin(String user, String pass) {
+        String dl = "SELECT * FROM NhanVien WHERE taiKhoan=? AND matKhau=?";
+        List<NhanVien> list = getdata(dl, user, pass);
+        if (list.size() == 0) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
     public List<NhanVien> getdata(String sql, String... args) {
         List<NhanVien> list = new ArrayList<>();
         Cursor cursor = database.rawQuery(sql, args);

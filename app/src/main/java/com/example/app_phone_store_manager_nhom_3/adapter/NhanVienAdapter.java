@@ -89,12 +89,6 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.Viewho
         });
 
     }
-
-    public void loadData(List<NhanVien> list) {
-        this.list = list;
-        notifyDataSetChanged();
-    }
-
     public void filter(List<NhanVien> list) {
         this.list = list;
         notifyDataSetChanged();

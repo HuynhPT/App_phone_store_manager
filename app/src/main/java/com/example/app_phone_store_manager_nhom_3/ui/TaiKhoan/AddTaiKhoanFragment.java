@@ -137,7 +137,8 @@ public class AddTaiKhoanFragment extends Fragment {
         if (!edMaNV.getText().toString().substring(0, 1).toUpperCase().equals(edMaNV.getText().toString().substring(0, 1)) ||
                 !edHoTenNV.getText().toString().substring(0, 1).toUpperCase().equals(edHoTenNV.getText().toString().substring(0, 1)) ||
                 !edDiaChiNV.getText().toString().substring(0, 1).toUpperCase().equals(edDiaChiNV.getText().toString().substring(0, 1))) {
-            Toast.makeText(appCompatActivity, "Chữ cái đầu tiên tên hãng phải viết hoa", Toast.LENGTH_SHORT).show();
+            Toast.makeText(appCompatActivity, "Chữ cái đầu tiên mã, họ tên, địa chỉ \n" +
+                    "của nhân viên phải viết hoa", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (edDienThoaiNV.getText().length() < 10 ||

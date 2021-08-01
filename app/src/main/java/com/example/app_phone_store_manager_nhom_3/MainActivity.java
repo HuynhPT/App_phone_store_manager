@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_hoaDonXuat, R.id.nav_hoaDonNhap, R.id.nav_hang, R.id.nav_sanPham,
                 R.id.nav_khachHang, R.id.nav_doanhThu, R.id.nav_topSanPham, R.id.nav_account,
-                R.id.nav_info,      R.id.nav_home)
+                R.id.nav_info, R.id.nav_home)
                 .setDrawerLayout(drawer)
                 .build();
 
@@ -77,12 +77,15 @@ public class MainActivity extends AppCompatActivity {
         tvUser = (TextView) mHeaderView.findViewById(R.id.tvMember);
         tvHello = (TextView) mHeaderView.findViewById(R.id.tvHello);
         imgUser = (ImageView) mHeaderView.findViewById(R.id.imgUserName);
+        Intent intent = getIntent();
+        String user = intent.getStringExtra("admin");
 
         TextDrawable drawable = TextDrawable.builder().beginConfig().width(64).height(64).endConfig().buildRound("A", getRandomColor());
         imgUser.setImageDrawable(drawable);
         tvUser.setText("Admin");
-        tvHello.setText("Xin chào Quản trị viên");
+        tvHello.setText("Xin chào " + user);
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
