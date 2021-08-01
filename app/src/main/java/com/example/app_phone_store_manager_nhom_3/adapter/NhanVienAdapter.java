@@ -66,8 +66,6 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.Viewho
             holder.tvTaiKhoanNV.setText("Tài Khoản: " + nhanVien.getTaiKhoan());
             holder.tvDiaChiNV.setText("Địa Chỉ: " + nhanVien.getDiaChi());
             holder.tvNamSinhNV.setText("Năm Sinh: " + nhanVien.getNamSinh());
-
-
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +87,7 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.Viewho
         });
 
     }
+
     public void filter(List<NhanVien> list) {
         this.list = list;
         notifyDataSetChanged();

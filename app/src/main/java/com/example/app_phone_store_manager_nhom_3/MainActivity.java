@@ -1,14 +1,19 @@
 package com.example.app_phone_store_manager_nhom_3;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.example.app_phone_store_manager_nhom_3.dao.DaoNhanVien;
+import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -33,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private NhanVien nhanVien;
+    private DaoNhanVien dao;
 
     View mHeaderView;
     TextView tvUser;
@@ -73,17 +80,33 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
         mHeaderView = navigationView.getHeaderView(0);
         tvUser = (TextView) mHeaderView.findViewById(R.id.tvMember);
         tvHello = (TextView) mHeaderView.findViewById(R.id.tvHello);
         imgUser = (ImageView) mHeaderView.findViewById(R.id.imgUserName);
+        dao = new DaoNhanVien(this);
+        dao.openNV();
         Intent intent = getIntent();
-        String user = intent.getStringExtra("admin");
+        String user = intent.getStringExtra("user");
+        Log.d("ad",user);
+        nhanVien = dao.gettaiKhoan(user);
+        if (nhanVien.getHinhAnh() == null) {
+            String taiK = nhanVien.getTaiKhoan();
+            TextDrawable drawable = TextDrawable.builder().beginConfig().width(64).height(64).endConfig().buildRound(taiK.substring(0, 1).toUpperCase(), getRandomColor());
+            imgUser.setImageDrawable(drawable);
+        } else {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(nhanVien.getHinhAnh(), 0, nhanVien.getHinhAnh().length);
+            imgUser.setImageBitmap(bitmap);
+        }
+        tvUser.setText(user);
+        if (user.equalsIgnoreCase("admin")) {
+            tvHello.setText("Xin chào Quản trị viên! ");
+            navigationView.getMenu().findItem(R.id.nav_account).setVisible(true);
+        } else {
+            tvHello.setText("Xin chào Member! ");
+        }
 
-        TextDrawable drawable = TextDrawable.builder().beginConfig().width(64).height(64).endConfig().buildRound("A", getRandomColor());
-        imgUser.setImageDrawable(drawable);
-        tvUser.setText("Admin");
-        tvHello.setText("Xin chào " + user);
     }
 
     @Override

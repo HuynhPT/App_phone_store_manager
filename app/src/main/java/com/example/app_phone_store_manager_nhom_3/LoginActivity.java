@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private DaoNhanVien dao;
     private Intent intent;
     private CheckBox ckbLuuTK;
-    private byte bit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             nhanVien.setHoTen("admin");
             nhanVien.setDienThoai("0123456789");
             nhanVien.setTaiKhoan("admin");
-            nhanVien.setMatKhau("admin");
+            nhanVien.setMatKhau("123456");
             dao.addNV(nhanVien);
         }
         SharedPreferences preferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
@@ -73,26 +73,22 @@ public class LoginActivity extends AppCompatActivity {
         String pass = edPass.getText().toString();
         if (user.isEmpty() || pass.isEmpty()) {
             Toast.makeText(getBaseContext(), "Nhập đầy đủ thông tin \n " +
-                    "Không được để trống", Toast.LENGTH_SHORT).show();
+                    "Không được để trống! ", Toast.LENGTH_SHORT).show();
         } else {
-            if (dao.getlogin(user, pass) > 0 ||
-                    (user.equalsIgnoreCase("admin")) &&
-                            (pass.equalsIgnoreCase("admin")) ||
-                    dao.getlogin(user, pass) > 0 ||
-                    (user.equalsIgnoreCase("user")) &&
-                            (pass.equalsIgnoreCase("user"))
-            ) {
+            if (dao.getlogin(user, pass) > 0) {
                 rememberUser(user, pass, ckbLuuTK.isChecked());
-                startActivity(intent = new Intent(this, MainActivity.class).putExtra("admin", user));
-                Toast.makeText(getBaseContext(), "Đăng Nhập Thành Công", Toast.LENGTH_SHORT).show();
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                Toast.makeText(getBaseContext(), "Đăng Nhập Thành Công! ", Toast.LENGTH_SHORT).show();
                 finish();
+
             } else {
-                Toast.makeText(getBaseContext(), "            Đăng Nhập Thất Bại! \n " +
+                Toast.makeText(getBaseContext(), "Đăng Nhập Thất Bại! \n " +
                         "Sai thông tin tài khoản, mật khẩu", Toast.LENGTH_SHORT).show();
             }
         }
     }
-
     public void rememberUser(String user, String pass, boolean status) {
         SharedPreferences pref = getSharedPreferences("USER_FILE", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
@@ -107,5 +103,6 @@ public class LoginActivity extends AppCompatActivity {
         // LƯu lại toàn bộ dữ liệu
         editor.commit();
     }
+
 
 }

@@ -60,7 +60,7 @@ public class DaoNhanVien {
     }
 
     public List<NhanVien> getAll() {
-        String sql = "SELECT * FROM NhanVien";
+        String sql = "SELECT * FROM NhanVien WHERE taiKhoan != 'admin' ";
         List<NhanVien> list = getdata(sql);
         return list;
     }
@@ -89,6 +89,12 @@ public class DaoNhanVien {
         return list;
     }
 
+    public NhanVien gettaiKhoan(String maTK) {
+        String sql = "SELECT * FROM NhanVien WHERE taiKhoan=?";
+        List<NhanVien> list = getdata(sql, maTK);
+        return list.get(0);
+    }
+
     public int getUserName(String user) {
         String dl = "SELECT * FROM NhanVien WHERE  taiKhoan=?";
         List<NhanVien> list = getdata(dl, user);
@@ -98,6 +104,7 @@ public class DaoNhanVien {
             return 1;
         }
     }
+
     public int getlogin(String user, String pass) {
         String dl = "SELECT * FROM NhanVien WHERE taiKhoan=? AND matKhau=?";
         List<NhanVien> list = getdata(dl, user, pass);
