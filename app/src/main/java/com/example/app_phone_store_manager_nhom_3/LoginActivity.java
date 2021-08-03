@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                 rememberUser(user, pass, ckbLuuTK.isChecked());
                 intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("user", user);
+                saveInfo(user);
                 startActivity(intent);
                 Toast.makeText(getBaseContext(), "Đăng Nhập Thành Công! ", Toast.LENGTH_SHORT).show();
                 finish();
@@ -89,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+
     public void rememberUser(String user, String pass, boolean status) {
         SharedPreferences pref = getSharedPreferences("USER_FILE", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
@@ -100,6 +102,15 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString("PASS", pass);
             editor.putBoolean("REMEMBER", status);
         }
+        // LƯu lại toàn bộ dữ liệu
+        editor.commit();
+    }
+
+    public void saveInfo(String user) {
+        SharedPreferences pref = getSharedPreferences("USER_INFO", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        // Lưu dữ liệu
+        editor.putString("USER", user);
         // LƯu lại toàn bộ dữ liệu
         editor.commit();
     }

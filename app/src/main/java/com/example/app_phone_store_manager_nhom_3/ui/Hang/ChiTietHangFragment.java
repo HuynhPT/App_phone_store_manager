@@ -40,8 +40,6 @@ public class ChiTietHangFragment extends Fragment {
     private ImageView imgHang;
     private TextView tvHang;
     private TextDrawable textDrawable;
-    private int REQUEST_CODE_CAMERA = 123;
-    private int REQUEST_CODE_FOLDER = 456;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,8 +74,8 @@ public class ChiTietHangFragment extends Fragment {
         if (hang.getHinhAnh() == null) {
             textDrawable = TextDrawable.builder().beginConfig().width(100).height(100).endConfig().buildRect(hang.getTenHang().substring(0, 1).toUpperCase(), getRandomColor());
             imgHang.setImageDrawable(textDrawable);
-        }else {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(hang.getHinhAnh(), 0 , hang.getHinhAnh().length);
+        } else {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(hang.getHinhAnh(), 0, hang.getHinhAnh().length);
             imgHang.setImageBitmap(bitmap);
         }
         tvHang.setText(hang.getTenHang());

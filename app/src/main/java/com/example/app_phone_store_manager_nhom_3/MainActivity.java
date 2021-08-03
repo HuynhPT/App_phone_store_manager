@@ -1,6 +1,7 @@
 package com.example.app_phone_store_manager_nhom_3;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private NhanVien nhanVien;
     private DaoNhanVien dao;
+
 
     View mHeaderView;
     TextView tvUser;
@@ -89,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         dao.openNV();
         Intent intent = getIntent();
         String user = intent.getStringExtra("user");
-        Log.d("ad",user);
         nhanVien = dao.gettaiKhoan(user);
         if (nhanVien.getHinhAnh() == null) {
             String taiK = nhanVien.getTaiKhoan();
@@ -106,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             tvHello.setText("Xin chào Member! ");
         }
-
     }
 
     @Override
