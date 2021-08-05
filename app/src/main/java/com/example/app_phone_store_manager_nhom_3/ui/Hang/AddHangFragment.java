@@ -193,7 +193,6 @@ public class AddHangFragment extends Fragment {
         });
         bottomSheetDialog.show();
     }
-
     public boolean valueDate() {
         if (edMaHang.getText().length() == 0 || edTenHang.getText().length() == 0) {
             Toast.makeText(appCompatActivity, "Bạn cần nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();

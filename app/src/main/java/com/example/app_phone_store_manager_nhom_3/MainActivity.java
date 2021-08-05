@@ -38,6 +38,8 @@ import java.util.List;
 import java.util.Random;
 
 
+
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -99,15 +101,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String user = intent.getStringExtra("user");
         nhanVien = dao.gettaiKhoan(user);
-//        dao.updateNV(nhanVien,user);
-//        adapter.filter(list);
         if (nhanVien.getHinhAnh() == null) {
             String taiK = nhanVien.getTaiKhoan();
             TextDrawable drawable = TextDrawable.builder().beginConfig().width(70).height(70).endConfig().buildRound(taiK.substring(0, 1).toUpperCase(), getRandomColor());
             imgUser.setImageDrawable(drawable);
         } else {
             Bitmap bitmap = BitmapFactory.decodeByteArray(nhanVien.getHinhAnh(), 0, nhanVien.getHinhAnh().length);
-            imgUser.setImageBitmap(bitmap);
+            imgUser.setImageBitmap(Bitmap.createScaledBitmap(bitmap,1000,1000,false));
         }
         tvUser.setText(user.toUpperCase());
         if (user.equalsIgnoreCase("admin")) {
@@ -117,10 +117,12 @@ public class MainActivity extends AppCompatActivity {
             tvHello.setText("Xin chào Member! ");
         }
     }
-    public void setAvatar(NhanVien nhanVien){
+
+    public void setAvatar(NhanVien nhanVien) {
         Bitmap bitmap = BitmapFactory.decodeByteArray(nhanVien.getHinhAnh(), 0, nhanVien.getHinhAnh().length);
         imgUser.setImageBitmap(bitmap);
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);

@@ -1,6 +1,7 @@
 package com.example.app_phone_store_manager_nhom_3.ui.NguoiDung;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -17,6 +18,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -28,6 +30,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,6 +39,7 @@ import android.widget.Toast;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.app_phone_store_manager_nhom_3.MainActivity;
 import com.example.app_phone_store_manager_nhom_3.R;
+import com.example.app_phone_store_manager_nhom_3.adapter.NhanVienAdapter;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoHang;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoNhanVien;
 import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
@@ -46,7 +50,10 @@ import org.jetbrains.annotations.NotNull;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 public class ChiTietNguoiDungFragment extends Fragment {
     private AppCompatActivity appCompatActivity;
@@ -56,11 +63,13 @@ public class ChiTietNguoiDungFragment extends Fragment {
     private String tenTK;
     private DaoNhanVien dao;
     private NhanVien nhanVien;
+    private NhanVienAdapter adapter;
     private TextDrawable textDrawable;
     private ImageView img_nv, img_chonAnh, img_pencle;
     private TextView tvHoTen, tvDienThoai, tvDiaChi, tvNamSinh;
     private LinearLayout lnlChupAnh, lnlChonFile;
     private byte[] hinhAnh;
+    private List<NhanVien> list;
     private ActivityResultLauncher<Intent> launcherCamera;
     private ActivityResultLauncher<Intent> launcherFlie;
 
@@ -129,6 +138,7 @@ public class ChiTietNguoiDungFragment extends Fragment {
 
         dao = new DaoNhanVien(getActivity());
         dao.openNV();
+
         nhanVien = dao.gettaiKhoan(tenTK);
 
         if (nhanVien.getHinhAnh() != null) {
@@ -136,10 +146,6 @@ public class ChiTietNguoiDungFragment extends Fragment {
             img_nv.setImageBitmap(bitmap);
         }
 
-        tvHoTen.setText(nhanVien.getHoTen());
-        tvDienThoai.setText(nhanVien.getDienThoai());
-        tvDiaChi.setText(nhanVien.getDiaChi());
-        tvNamSinh.setText(nhanVien.getNamSinh());
         img_chonAnh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,11 +153,17 @@ public class ChiTietNguoiDungFragment extends Fragment {
 
             }
         });
-
+        setData(nhanVien);
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.chiTietNguoiDung_to_doiMatKhau);
+            }
+        });
+        img_pencle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editperson();
             }
         });
 
@@ -203,6 +215,57 @@ public class ChiTietNguoiDungFragment extends Fragment {
         }
     }
 
+    public void editperson() {
+        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        View view = inflater.inflate(R.layout.custom_item_nguoi_dung_edit, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(view);
+        builder.setTitle("Sửa Thông Tin Cá Nhân");
+        EditText edhoten = view.findViewById(R.id.ed_HoTen_Tkedit);
+        EditText eddienthoai = view.findViewById(R.id.ed_Sdt_Tkedit);
+        EditText eddiachi = view.findViewById(R.id.ed_DiaChi_Tkedit);
+        EditText ednamsinh = view.findViewById(R.id.ed_NamSinh_Tkedit);
+        edhoten.setText(nhanVien.getHoTen());
+        eddienthoai.setText(nhanVien.getDienThoai());
+        eddiachi.setText(nhanVien.getDiaChi());
+        ednamsinh.setText(nhanVien.getNamSinh());
+        list = new ArrayList<>();
+        adapter = new NhanVienAdapter(list);
+        builder.setPositiveButton("Lưu", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (nhanVien.getHoTen().equals(edhoten.getText().toString()) &&
+                        nhanVien.getDienThoai().equals(eddienthoai.getText().toString()) &&
+                        nhanVien.getDiaChi().equals(eddiachi.getText().toString()) &&
+                        nhanVien.getNamSinh().equals(ednamsinh.getText().toString())) {
+                    Toast.makeText(getContext().getApplicationContext(), "Không Có Gì Thay Đổi \n  " +
+                            " Lưu Thất Bại!", Toast.LENGTH_SHORT).show();
+                } else {
+                    nhanVien.setHoTen(edhoten.getText().toString());
+                    nhanVien.setDienThoai(eddienthoai.getText().toString());
+                    nhanVien.setDiaChi(eddiachi.getText().toString());
+                    nhanVien.setNamSinh(ednamsinh.getText().toString());
+                    int kq = dao.updateNV(nhanVien, nhanVien.getMaNV());
+                    if (kq > 0) {
+                        setData(nhanVien);
+                        Toast.makeText(getContext(), "Lưu thành công!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "Lưu thất bại!", Toast.LENGTH_SHORT).show();
+                    }
+                    dialog.dismiss();
+                }
+
+            }
+        });
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
     public void convertImage() {
         BitmapDrawable bitmapDrawable = (BitmapDrawable) img_nv.getDrawable();
         Bitmap bitmap = bitmapDrawable.getBitmap();
@@ -211,6 +274,12 @@ public class ChiTietNguoiDungFragment extends Fragment {
         hinhAnh = byteArray.toByteArray();
     }
 
+    public void setData(NhanVien nhanVien) {
+        tvHoTen.setText(nhanVien.getHoTen());
+        tvDienThoai.setText(nhanVien.getDienThoai());
+        tvDiaChi.setText(nhanVien.getDiaChi());
+        tvNamSinh.setText(nhanVien.getNamSinh());
+    }
 
     @Override
     public void onDestroy() {
