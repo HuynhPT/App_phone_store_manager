@@ -114,6 +114,11 @@ public class DaoNhanVien {
             return 1;
         }
     }
+    public int changePassword(NhanVien nhanVien) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(NhanVien.TB_COL_PASS,nhanVien.getMatKhau());
+        return database.update(NhanVien.TB_NAME,contentValues,"maNV=?",new String[]{nhanVien.getMaNV()});
+    }
 
     public List<NhanVien> getdata(String sql, String... args) {
         List<NhanVien> list = new ArrayList<>();
@@ -132,4 +137,6 @@ public class DaoNhanVien {
         }
         return list;
     }
+
+
 }
