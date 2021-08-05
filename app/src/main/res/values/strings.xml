@@ -51,7 +51,7 @@
     <string name="pass_forget">Quên mật khẩu</string>
     <string name="pass_change">Đổi mật khẩu</string>
     <string name="reset_pass">Đặt lại mật khẩu mặc định cho tài khoản</string>
-    <string name="update_img">Cập nhập ảnh đại diện</string>
+    <string name="text_thongtin">Chỉnh sửa cá nhân</string>
     <string name="pass_old">Mật khẩu cũ</string>
     <string name="pass_re_change">Nhập lại mật khẩu</string>
     <string name="sp_name">Tên sản phẩm</string>
@@ -61,6 +61,7 @@
     <string name="sp_phukien">Phụ kiện</string>
     <string name="sp_status">Tình trạng</string>
     <string name="status">Trạng thái</string>
+    <string name="status_s">Trạng thái:</string>
     <string name="sp_money">Giá tiền</string>
     <string name="sp_bonho">Bộ nhớ</string>
     <string name="sp_ram">RAM</string>
@@ -91,6 +92,12 @@
     <string name="nv_ban">Nhân viên bán</string>
     <string name="chup_anh">Chụp ảnh</string>
     <string name="chon_file">Tải ảnh lên</string>
+    <string name="sl_nhap">Số lượng Nhập:</string>
+    <string name="sl_xuat">Số lượng Xuất:</string>
+    <string name="sl_ton">Tồn kho:</string>
+    <string name="sp_moneys">Giá tiền:</string>
+    <string name="done">Chọn</string>
+
     <string-array name="filter">
         <item>Mặc định</item>
         <item>A-Z theo Tên</item>

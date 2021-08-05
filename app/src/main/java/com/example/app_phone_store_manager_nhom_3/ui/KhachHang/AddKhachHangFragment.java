@@ -25,6 +25,8 @@ import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.regex.Pattern;
+
 
 public class AddKhachHangFragment extends Fragment {
     private NavController navController;
@@ -85,19 +87,19 @@ public class AddKhachHangFragment extends Fragment {
                 edDiaChiKH.setText("");
                 return true;
             case R.id.menu_save:
-
-                KhachHang khachHang = new KhachHang();
-                khachHang.setMaKH(edMaKH.getText().toString());
-                khachHang.setHoTen(edHoTenKH.getText().toString());
-                khachHang.setDienThoai(edDienThoaiKH.getText().toString());
-                khachHang.setDiaChi(edDiaChiKH.getText().toString());
-                long kq = dao.addKH(khachHang);
-
-                if (kq > 0) {
-                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    navController.navigate(R.id.action_addKH_to_listKH);
-                } else {
-                    Toast.makeText(getContext(), "Thêm thất Bại", Toast.LENGTH_SHORT).show();
+                if (valiDate()) {
+                    KhachHang khachHang = new KhachHang();
+                    khachHang.setMaKH(edMaKH.getText().toString());
+                    khachHang.setHoTen(edHoTenKH.getText().toString());
+                    khachHang.setDienThoai(edDienThoaiKH.getText().toString());
+                    khachHang.setDiaChi(edDiaChiKH.getText().toString());
+                    long kq = dao.addKH(khachHang);
+                    if (kq > 0) {
+                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        navController.navigate(R.id.action_addKH_to_listKH);
+                    } else {
+                        Toast.makeText(getContext(), "Thêm thất Bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 return true;
@@ -105,6 +107,34 @@ public class AddKhachHangFragment extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    public boolean valiDate() {
+        if (edMaKH.getText().length() == 0 ||
+                edHoTenKH.getText().length() == 0 ||
+                edDienThoaiKH.getText().length() == 0 ||
+                edDiaChiKH.getText().length() == 0) {
+            Toast.makeText(appCompatActivity, "Bạn cần nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (edMaKH.getText().length() < 6 || edMaKH.getText().length() > 10) {
+            Toast.makeText(appCompatActivity, "Mã hãng có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!edMaKH.getText().toString().substring(0, 1).toUpperCase().equals(edMaKH.getText().toString().substring(0, 1)) ||
+                !edHoTenKH.getText().toString().substring(0, 1).toUpperCase().equals(edHoTenKH.getText().toString().substring(0, 1)) ||
+                !edDiaChiKH.getText().toString().substring(0, 1).toUpperCase().equals(edDiaChiKH.getText().toString().substring(0, 1))) {
+            Toast.makeText(appCompatActivity, "Chữ cái đầu tiên mã, họ tên, địa chỉ \n" +
+                    "của nhân viên phải viết hoa", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (edDienThoaiKH.getText().length() < 10 ||
+                edDienThoaiKH.getText().length() > 11 ||
+                Pattern.matches("[a-zA-Z]+", edDienThoaiKH.getText().toString())) {
+            Toast.makeText(appCompatActivity, "Sai độ dài số điện thoại", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     @Override

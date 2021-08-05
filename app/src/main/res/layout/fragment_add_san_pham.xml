@@ -11,17 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <ImageView
             android:id="@+id/imgSP"
             android:layout_width="@dimen/img_size"
             android:layout_height="@dimen/img_size"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:background="@android:color/darker_gray"
+            android:background="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_camera" />
+            app:srcCompat="@drawable/image_defaut" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilMaSP"
@@ -74,6 +73,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             app:endIconMode="clear_text"
+            android:clickable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tilTenSP"
@@ -83,7 +83,9 @@
                 android:id="@+id/edHangSP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hang" />
+                android:hint="@string/hang"
+                android:clickable="true"
+                android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -117,7 +119,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:checked="true"
                 android:text="@string/sp_phone" />
 
             <RadioButton
@@ -158,7 +159,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:checked="true"
                 android:text="Cũ" />
 
             <RadioButton
@@ -177,7 +177,7 @@
         </RadioGroup>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilSoLuongSP"
+            android:id="@+id/tilGiaTienSP"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -198,7 +198,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDonGiaSP"
+            android:id="@+id/tilTrangThaiSP"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -208,11 +208,11 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilSoLuongSP"
+            app:layout_constraintTop_toBottomOf="@+id/tilGiaTienSP"
             app:startIconDrawable="@drawable/ic_status">
 
             <EditText
-                android:id="@+id/edDonGiaSP"
+                android:id="@+id/edTrangThaiSP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Trạng thái" />
@@ -229,7 +229,7 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilDonGiaSP"
+            app:layout_constraintTop_toBottomOf="@+id/tilTrangThaiSP"
             app:startIconDrawable="@drawable/ic_bo_nho">
 
             <EditText
@@ -408,6 +408,15 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/sp_note" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/imgSelectPick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_camera"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSP"
+            app:layout_constraintStart_toEndOf="@+id/imgSP" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

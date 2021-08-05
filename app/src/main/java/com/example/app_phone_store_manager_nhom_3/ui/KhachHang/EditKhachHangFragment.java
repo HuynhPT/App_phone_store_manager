@@ -28,9 +28,10 @@ import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 
-public class EditKhachHangFragment extends Fragment{
+public class EditKhachHangFragment extends Fragment {
     private AppCompatActivity appCompatActivity;
     private Drawable drawable;
     private NavController navController;
@@ -107,7 +108,7 @@ public class EditKhachHangFragment extends Fragment{
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Bundle bundle = new Bundle();
-                        bundle.putString("maKH",maKHOld);
+                        bundle.putString("maKH", maKHOld);
                         navController.navigate(R.id.action_editKH_to_chitietKH, bundle);
                         dialogInterface.cancel();
                     }
@@ -121,22 +122,24 @@ public class EditKhachHangFragment extends Fragment{
                 edDiaChiChange.setText("");
                 return true;
             case R.id.menu_save:
-                if (khachHang.getMaKH().equals(edMaKHChange.getText().toString()) &&
-                        khachHang.getHoTen().equals(edHoTenKHChange.getText().toString()) &&
-                        khachHang.getDienThoai().equals(edDienThoaiChange.getText().toString()) &&
-                        khachHang.getDiaChi().equals(edDiaChiChange.getText().toString())) {
+                if (valiDate()) {
+                    if (khachHang.getMaKH().equals(edMaKHChange.getText().toString()) &&
+                            khachHang.getHoTen().equals(edHoTenKHChange.getText().toString()) &&
+                            khachHang.getDienThoai().equals(edDienThoaiChange.getText().toString()) &&
+                            khachHang.getDiaChi().equals(edDiaChiChange.getText().toString())) {
                         Toast.makeText(appCompatActivity, "Không có thay đổi để cập nhập!", Toast.LENGTH_SHORT).show();
-                } else {
-                    khachHang.setMaKH(edMaKHChange.getText().toString());
-                    khachHang.setHoTen(edHoTenKHChange.getText().toString());
-                    khachHang.setDienThoai(edDienThoaiChange.getText().toString());
-                    khachHang.setDiaChi(edDiaChiChange.getText().toString());
-                    long kq = dao.updateKH(khachHang,maKHOld);
-                    if (kq > 0) {
-                        Toast.makeText(getContext(), "Cập nhập thành công", Toast.LENGTH_SHORT).show();
-                        navController.navigate(R.id.action_editKH_to_listKH);
                     } else {
-                        Toast.makeText(getContext(), "Cập nhập thất Bại", Toast.LENGTH_SHORT).show();
+                        khachHang.setMaKH(edMaKHChange.getText().toString());
+                        khachHang.setHoTen(edHoTenKHChange.getText().toString());
+                        khachHang.setDienThoai(edDienThoaiChange.getText().toString());
+                        khachHang.setDiaChi(edDiaChiChange.getText().toString());
+                        int kq = dao.updateKH(khachHang, maKHOld);
+                        if (kq > 0) {
+                            Toast.makeText(getContext(), "Cập nhập thành công", Toast.LENGTH_SHORT).show();
+                            navController.navigate(R.id.action_editKH_to_listKH);
+                        } else {
+                            Toast.makeText(getContext(), "Cập nhập thất Bại", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
                 return true;
@@ -145,4 +148,30 @@ public class EditKhachHangFragment extends Fragment{
         }
     }
 
+    public boolean valiDate() {
+        if (edMaKHChange.getText().length() == 0 ||
+                edHoTenKHChange.getText().length() == 0 ||
+                edDienThoaiChange.getText().length() == 0 ||
+                edDiaChiChange.getText().length() == 0) {
+            Toast.makeText(appCompatActivity, "Bạn cần nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (edMaKHChange.getText().length() < 6 || edMaKHChange.getText().length() > 10) {
+            Toast.makeText(appCompatActivity, "Mã hãng có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!edMaKHChange.getText().toString().substring(0, 1).toUpperCase().equals(edMaKHChange.getText().toString().substring(0, 1)) ||
+                !edDienThoaiChange.getText().toString().substring(0, 1).toUpperCase().equals(edHoTenKHChange.getText().toString().substring(0, 1)) ||
+                !edDiaChiChange.getText().toString().substring(0, 1).toUpperCase().equals(edDiaChiChange.getText().toString().substring(0, 1))) {
+            Toast.makeText(appCompatActivity, "Chữ cái đầu tiên tên hãng phải viết hoa", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (edDienThoaiChange.getText().length() < 10 ||
+                edDienThoaiChange.getText().length() > 11 ||
+                Pattern.matches("[a-zA-Z]+", edDienThoaiChange.getText().toString())) {
+            Toast.makeText(appCompatActivity, "Sai độ dài số điện thoại", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
 }

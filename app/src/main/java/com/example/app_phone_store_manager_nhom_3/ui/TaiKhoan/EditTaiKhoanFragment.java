@@ -138,7 +138,7 @@ public class EditTaiKhoanFragment extends Fragment {
                         nhanVien.setDiaChi(edDiaChiNV.getText().toString());
                         nhanVien.setTaiKhoan(edTaiKhoanNV.getText().toString());
                         nhanVien.setNamSinh(edNamSinhNV.getText().toString());
-                        long kq = dao.updateNV(nhanVien, maNV);
+                        int kq = dao.updateNV(nhanVien, maNV);
                         if (kq > 0) {
                             Toast.makeText(getContext(), "Cập nhập thành công", Toast.LENGTH_SHORT).show();
                             navController.navigate(R.id.editTk_to_ListTk);

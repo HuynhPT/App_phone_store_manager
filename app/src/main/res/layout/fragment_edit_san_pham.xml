@@ -177,7 +177,7 @@
         </RadioGroup>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilSoLuongSPChange"
+            android:id="@+id/tilGiaTienSPChange"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -198,7 +198,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDonGiaSPChange"
+            android:id="@+id/tilTrangThaiSPChange"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -208,11 +208,11 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilSoLuongSPChange"
+            app:layout_constraintTop_toBottomOf="@+id/tilGiaTienSPChange"
             app:startIconDrawable="@drawable/ic_status">
 
             <EditText
-                android:id="@+id/edDonGiaSPChange"
+                android:id="@+id/edTrangThaiSPChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/sp_status" />
@@ -229,7 +229,7 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilDonGiaSPChange"
+            app:layout_constraintTop_toBottomOf="@+id/tilTrangThaiSPChange"
             app:startIconDrawable="@drawable/ic_bo_nho">
 
             <EditText
