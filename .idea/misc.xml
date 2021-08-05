@@ -4,9 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Nhom3/app/src/main/res/layout/activity_login.xml" value="0.18568840579710144" />
+        <entry key="..\:/Nhom3/app/src/main/res/layout/bottom_sheet.xml" value="0.2554347826086957" />
         <entry key="..\:/Nhom3/app/src/main/res/layout/content_main.xml" value="0.23278985507246377" />
+        <entry key="..\:/Nhom3/app/src/main/res/layout/fragment_add_hang.xml" value="0.2554347826086957" />
         <entry key="..\:/Nhom3/app/src/main/res/layout/fragment_chi_tiet_hang.xml" value="0.23278985507246377" />
         <entry key="..\:/Nhom3/app/src/main/res/layout/fragment_chi_tiet_nguoi_dung.xml" value="0.23278985507246377" />
+        <entry key="..\:/Nhom3/app/src/main/res/layout/nav_header_main.xml" value="0.19427083333333334" />
+        <entry key="..\:/Nhom3/app/src/main/res/menu/menu_add.xml" value="0.19427083333333334" />
       </map>
     </option>
   </component>

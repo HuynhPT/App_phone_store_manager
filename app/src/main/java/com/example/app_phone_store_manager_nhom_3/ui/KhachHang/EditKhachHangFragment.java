@@ -131,7 +131,7 @@ public class EditKhachHangFragment extends Fragment{
                     khachHang.setHoTen(edHoTenKHChange.getText().toString());
                     khachHang.setDienThoai(edDienThoaiChange.getText().toString());
                     khachHang.setDiaChi(edDiaChiChange.getText().toString());
-                    long kq = dao.updateKH(khachHang,maKHOld);
+                    int kq = dao.updateKH(khachHang,maKHOld);
                     if (kq > 0) {
                         Toast.makeText(getContext(), "Cập nhập thành công", Toast.LENGTH_SHORT).show();
                         navController.navigate(R.id.action_editKH_to_listKH);

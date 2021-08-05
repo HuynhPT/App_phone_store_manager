@@ -6,9 +6,15 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,21 +22,29 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.app_phone_store_manager_nhom_3.R;
+import com.example.app_phone_store_manager_nhom_3.dao.DaoHang;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoNhanVien;
 import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Random;
 
 public class ChiTietNguoiDungFragment extends Fragment {
@@ -42,8 +56,12 @@ public class ChiTietNguoiDungFragment extends Fragment {
     private DaoNhanVien dao;
     private NhanVien nhanVien;
     private TextDrawable textDrawable;
-    private ImageView img_nv;
+    private ImageView img_nv, img_chonAnh, img_pencle;
     private TextView tvHoTen, tvDienThoai, tvDiaChi, tvNamSinh;
+    private LinearLayout lnlChupAnh, lnlChonFile;
+    private byte[] hinhAnh;
+    private ActivityResultLauncher<Intent> launcherCamera;
+    private ActivityResultLauncher<Intent> launcherFlie;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +83,8 @@ public class ChiTietNguoiDungFragment extends Fragment {
         navController = Navigation.findNavController(view);
         drawable = appCompatActivity.getDrawable(R.drawable.ic_menu);
         img_nv = view.findViewById(R.id.imgNguoiDung);
+        img_chonAnh = view.findViewById(R.id.imgChonAnh);
+        img_pencle = view.findViewById(R.id.imgUpdateperson);
         tvHoTen = view.findViewById(R.id.tvHoTenNguoiDung);
         tvDienThoai = view.findViewById(R.id.tvPhoneNguoiDung);
         tvDiaChi = view.findViewById(R.id.tvDiacChiNguoiDung);
@@ -72,6 +92,36 @@ public class ChiTietNguoiDungFragment extends Fragment {
         btnChangePass = view.findViewById(R.id.btnChangePass);
         SharedPreferences preferences = appCompatActivity.getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
         tenTK = preferences.getString("USER", "");
+
+        launcherFlie = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == appCompatActivity.RESULT_OK && result.getData() != null) {
+                            Uri uri = result.getData().getData();
+                            try {
+                                InputStream inputStream = appCompatActivity.getContentResolver().openInputStream(uri);
+                                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                                img_nv.setImageBitmap(bitmap);
+                                UpdateAnh(nhanVien);
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                });
+        launcherCamera = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == appCompatActivity.RESULT_OK && result.getData() != null) {
+                            Bundle bundle = result.getData().getExtras();
+                            Bitmap bitmap = (Bitmap) bundle.get("data");
+                            img_nv.setImageBitmap(bitmap);
+                            UpdateAnh(nhanVien);
+                        }
+                    }
+                });
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
         appCompatActivity.getSupportActionBar().setTitle("Thông tin tài khoản");
@@ -80,29 +130,85 @@ public class ChiTietNguoiDungFragment extends Fragment {
         dao.openNV();
         nhanVien = dao.gettaiKhoan(tenTK);
 
-        if (nhanVien.getHinhAnh() == null) {
-            textDrawable = TextDrawable.builder().beginConfig().width(100).height(100).endConfig().buildRound(nhanVien.getTaiKhoan().substring(0, 1).toUpperCase(), getRandomColor());
-            img_nv.setImageDrawable(textDrawable);
-        } else {
+        if (nhanVien.getHinhAnh() != null) {
             Bitmap bitmap = BitmapFactory.decodeByteArray(nhanVien.getHinhAnh(), 0, nhanVien.getHinhAnh().length);
             img_nv.setImageBitmap(bitmap);
         }
+
         tvHoTen.setText(nhanVien.getHoTen());
         tvDienThoai.setText(nhanVien.getDienThoai());
         tvDiaChi.setText(nhanVien.getDiaChi());
         tvNamSinh.setText(nhanVien.getNamSinh());
+        img_chonAnh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickOpenfile();
+
+            }
+        });
+
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.chiTietNguoiDung_to_doiMatKhau);
             }
         });
+
     }
 
     public int getRandomColor() {
         Random rnd = new Random();
         return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
     }
+
+    public void clickOpenfile() {
+        View viewDialog = appCompatActivity.getLayoutInflater().inflate(R.layout.bottom_sheet, null);
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(appCompatActivity);
+        bottomSheetDialog.setContentView(viewDialog);
+
+        lnlChupAnh = viewDialog.findViewById(R.id.lnlChupAnh);
+        lnlChonFile = viewDialog.findViewById(R.id.lnlChonAnh);
+
+        lnlChupAnh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                launcherCamera.launch(intent);
+                bottomSheetDialog.cancel();
+            }
+        });
+        lnlChonFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                launcherFlie.launch(intent);
+                bottomSheetDialog.cancel();
+            }
+        });
+        bottomSheetDialog.show();
+    }
+
+    public void UpdateAnh(NhanVien nhanVien) {
+
+        convertImage();
+        nhanVien.setHinhAnh(hinhAnh);
+        int kq = dao.updateNV(nhanVien, nhanVien.getMaNV());
+        if (kq > 0) {
+            Toast.makeText(appCompatActivity, "Thêm ảnh thành công", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(appCompatActivity, "Thêm ảnh thất bại", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void convertImage() {
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) img_nv.getDrawable();
+        Bitmap bitmap = bitmapDrawable.getBitmap();
+        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
+        hinhAnh = byteArray.toByteArray();
+    }
+
 
     @Override
     public void onDestroy() {

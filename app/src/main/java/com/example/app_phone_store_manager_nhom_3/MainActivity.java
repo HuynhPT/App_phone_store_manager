@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.example.app_phone_store_manager_nhom_3.adapter.NhanVienAdapter;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoNhanVien;
 import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
 import com.google.android.material.snackbar.Snackbar;
@@ -32,6 +33,8 @@ import com.example.app_phone_store_manager_nhom_3.databinding.ActivityMainBindin
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private NhanVien nhanVien;
     private DaoNhanVien dao;
+    private NhanVienAdapter adapter;
+    List<NhanVien> list;
 
 
     View mHeaderView;
@@ -87,20 +92,24 @@ public class MainActivity extends AppCompatActivity {
         tvUser = (TextView) mHeaderView.findViewById(R.id.tvMember);
         tvHello = (TextView) mHeaderView.findViewById(R.id.tvHello);
         imgUser = (ImageView) mHeaderView.findViewById(R.id.imgUserName);
+        list = new ArrayList<>();
+        adapter = new NhanVienAdapter(list);
         dao = new DaoNhanVien(this);
         dao.openNV();
         Intent intent = getIntent();
         String user = intent.getStringExtra("user");
         nhanVien = dao.gettaiKhoan(user);
+//        dao.updateNV(nhanVien,user);
+//        adapter.filter(list);
         if (nhanVien.getHinhAnh() == null) {
             String taiK = nhanVien.getTaiKhoan();
-            TextDrawable drawable = TextDrawable.builder().beginConfig().width(64).height(64).endConfig().buildRound(taiK.substring(0, 1).toUpperCase(), getRandomColor());
+            TextDrawable drawable = TextDrawable.builder().beginConfig().width(70).height(70).endConfig().buildRound(taiK.substring(0, 1).toUpperCase(), getRandomColor());
             imgUser.setImageDrawable(drawable);
         } else {
             Bitmap bitmap = BitmapFactory.decodeByteArray(nhanVien.getHinhAnh(), 0, nhanVien.getHinhAnh().length);
             imgUser.setImageBitmap(bitmap);
         }
-        tvUser.setText(user);
+        tvUser.setText(user.toUpperCase());
         if (user.equalsIgnoreCase("admin")) {
             tvHello.setText("Xin chào Quản trị viên! ");
             navigationView.getMenu().findItem(R.id.nav_account).setVisible(true);
@@ -119,5 +128,11 @@ public class MainActivity extends AppCompatActivity {
     public int getRandomColor() {
         Random rnd = new Random();
         return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dao.closeNV();
     }
 }
