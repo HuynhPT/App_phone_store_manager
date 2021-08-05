@@ -117,7 +117,10 @@ public class MainActivity extends AppCompatActivity {
             tvHello.setText("Xin chào Member! ");
         }
     }
-
+    public void setAvatar(NhanVien nhanVien){
+        Bitmap bitmap = BitmapFactory.decodeByteArray(nhanVien.getHinhAnh(), 0, nhanVien.getHinhAnh().length);
+        imgUser.setImageBitmap(bitmap);
+    }
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);

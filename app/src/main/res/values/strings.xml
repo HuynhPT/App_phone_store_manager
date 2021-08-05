@@ -61,6 +61,7 @@
     <string name="sp_phukien">Phụ kiện</string>
     <string name="sp_status">Tình trạng</string>
     <string name="status">Trạng thái</string>
+    <string name="status_s">Trạng thái:</string>
     <string name="sp_money">Giá tiền</string>
     <string name="sp_bonho">Bộ nhớ</string>
     <string name="sp_ram">RAM</string>
@@ -91,6 +92,12 @@
     <string name="nv_ban">Nhân viên bán</string>
     <string name="chup_anh">Chụp ảnh</string>
     <string name="chon_file">Tải ảnh lên</string>
+    <string name="sl_nhap">Số lượng Nhập:</string>
+    <string name="sl_xuat">Số lượng Xuất:</string>
+    <string name="sl_ton">Tồn kho:</string>
+    <string name="sp_moneys">Giá tiền:</string>
+    <string name="done">Chọn</string>
+
     <string-array name="filter">
         <item>Mặc định</item>
         <item>A-Z theo Tên</item>

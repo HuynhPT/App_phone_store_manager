@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin"
+    app:cardCornerRadius="@dimen/margin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgSPItem"
+            android:layout_width="@dimen/item_height"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/image_defaut" />
+
+        <TextView
+            android:id="@+id/tvMaSPItem"
+            style="@style/custom_TV_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgSPItem"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTinhTrangSPItem"
+            style="@style/custom_TV_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgSPItem"
+            app:layout_constraintTop_toBottomOf="@+id/tvTenSPItem" />
+
+        <TextView
+            android:id="@+id/tvMaSPItem4"
+            style="@style/custom_TV_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@string/sl_nhap"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTinhTrangSPItem" />
+
+        <TextView
+            android:id="@+id/tvSLNhapItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/soluong"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/imgHangSPItem"
+            app:layout_constraintStart_toEndOf="@+id/tvMaSPItem4"
+            app:layout_constraintTop_toBottomOf="@+id/tvTinhTrangSPItem" />
+
+        <TextView
+            android:id="@+id/tvSLXuatItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/soluong"
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/imgHangSPItem"
+            app:layout_constraintStart_toEndOf="@+id/tvMaSPItem5"
+            app:layout_constraintTop_toBottomOf="@+id/tvSLNhapItem" />
+
+        <TextView
+            android:id="@+id/tvTonKhoItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/soluong"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvHangSPItem"
+            app:layout_constraintStart_toEndOf="@+id/tvMaSPItem6"
+            app:layout_constraintTop_toBottomOf="@+id/tvSLXuatItem" />
+
+        <TextView
+            android:id="@+id/tvTrangThaiSPItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/status"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgDeleteSPItem"
+            app:layout_constraintStart_toEndOf="@+id/tvMaSPItem14"
+            app:layout_constraintTop_toBottomOf="@+id/tvGiaTienSPItem" />
+
+        <TextView
+            android:id="@+id/tvMaSPItem5"
+            style="@style/custom_TV_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@string/sl_xuat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMaSPItem4" />
+
+        <TextView
+            android:id="@+id/tvMaSPItem6"
+            style="@style/custom_TV_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@string/sl_ton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMaSPItem5" />
+
+        <TextView
+            android:id="@+id/tvHangSPItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgHangSPItem" />
+
+        <TextView
+            android:id="@+id/tvTenSPItem"
+            style="@style/custom_TV_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            android:textSize="@dimen/text_medium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgSPItem"
+            app:layout_constraintTop_toBottomOf="@+id/tvMaSPItem" />
+
+        <TextView
+            android:id="@+id/tvMaSPItem8"
+            style="@style/custom_TV_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@string/sp_moneys"
+            android:textSize="@dimen/text_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMaSPItem6" />
+
+        <TextView
+            android:id="@+id/tvMaSPItem14"
+            style="@style/custom_TV_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/status_s"
+            android:textSize="@dimen/text_little"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMaSPItem8" />
+
+        <TextView
+            android:id="@+id/tvGiaTienSPItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/sp_money"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_medium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvHangSPItem"
+            app:layout_constraintStart_toEndOf="@+id/tvMaSPItem8"
+            app:layout_constraintTop_toBottomOf="@+id/tvTonKhoItem" />
+
+        <ImageView
+            android:id="@+id/imgHangSPItem"
+            android:layout_width="@dimen/seach_height"
+            android:layout_height="@dimen/seach_height"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTinhTrangSPItem"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imgDeleteSPItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_cancel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

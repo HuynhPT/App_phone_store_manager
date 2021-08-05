@@ -27,7 +27,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -115,6 +114,7 @@ public class AddHangFragment extends Fragment {
         dao = new DaoHang(appCompatActivity);
         dao.open();
         bitmapOld = ((BitmapDrawable) imgHang.getDrawable()).getBitmap();
+
         imgChonAnhHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

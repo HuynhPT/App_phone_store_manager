@@ -26,6 +26,9 @@
             android:id="@+id/addSP_to_listSP"
             app:destination="@id/nav_listSP"
             app:popUpTo="@id/nav_sanpham" />
+        <action
+            android:id="@+id/addSP_to_chonHang"
+            app:destination="@id/nav_chonHang" />
     </fragment>
     <fragment
         android:id="@+id/nav_editSP"
@@ -52,6 +55,16 @@
         <action
             android:id="@+id/chitetSP_to_listSP"
             app:destination="@id/nav_listSP"
+            app:popUpTo="@id/nav_sanpham" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_chonHang"
+        android:name="com.example.app_phone_store_manager_nhom_3.ui.SanPham.ChonHangFragment"
+        android:label="fragment_chon_hang"
+        tools:layout="@layout/fragment_chon_hang" >
+        <action
+            android:id="@+id/chonHang_to_addSP"
+            app:destination="@id/nav_addSP"
             app:popUpTo="@id/nav_sanpham" />
     </fragment>
 </navigation>

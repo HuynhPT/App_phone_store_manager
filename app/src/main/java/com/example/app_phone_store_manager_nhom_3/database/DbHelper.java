@@ -45,7 +45,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "maSP TEXT NOT NULL PRIMARY KEY," +
                 "maHang TEXT NOT NULL REFERENCES Hang(maHang)," +
                 "tenSP TEXT NOT NULL," +
-                "hinhAnh BOLD NOT NULL," +
+                "hinhAnh BOLD," +
                 "phanLoai INTEGER NOT NULL," +
                 "tinhTrang INTEGER NOT NULL," +
                 "giaTien TEXT NOT NULL," +

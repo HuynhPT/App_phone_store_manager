@@ -34,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.example.app_phone_store_manager_nhom_3.MainActivity;
 import com.example.app_phone_store_manager_nhom_3.R;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoHang;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoNhanVien;
@@ -196,6 +197,7 @@ public class ChiTietNguoiDungFragment extends Fragment {
         int kq = dao.updateNV(nhanVien, nhanVien.getMaNV());
         if (kq > 0) {
             Toast.makeText(appCompatActivity, "Thêm ảnh thành công", Toast.LENGTH_SHORT).show();
+            ((MainActivity) getActivity()).setAvatar(nhanVien);
         } else {
             Toast.makeText(appCompatActivity, "Thêm ảnh thất bại", Toast.LENGTH_SHORT).show();
         }
