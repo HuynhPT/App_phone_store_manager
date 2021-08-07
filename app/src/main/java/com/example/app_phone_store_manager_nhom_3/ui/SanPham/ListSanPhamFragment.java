@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,9 +24,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.app_phone_store_manager_nhom_3.R;
+import com.example.app_phone_store_manager_nhom_3.adapter.SanPhamAdapter;
+import com.example.app_phone_store_manager_nhom_3.dao.DaoSanPham;
 import com.example.app_phone_store_manager_nhom_3.databinding.FragmentListSanPhamBinding;
+import com.example.app_phone_store_manager_nhom_3.model.SanPham;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ListSanPhamFragment extends Fragment {
@@ -34,6 +41,9 @@ public class ListSanPhamFragment extends Fragment {
     private Drawable drawable;
     private SearchView searchView;
     private FragmentListSanPhamBinding binding;
+    private DaoSanPham dao;
+    private List<SanPham> list;
+    private SanPhamAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,16 +54,41 @@ public class ListSanPhamFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        appCompatActivity = (AppCompatActivity) getActivity();
-        drawable = appCompatActivity.getDrawable(R.drawable.ic_menu);
-        navController = Navigation.findNavController(view);
+        anhXa(view);
 
-        binding.tlbSP.inflateMenu(R.menu.menu_header);
-        drawable = getActivity().getDrawable(R.drawable.ic_menu);
-        appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        appCompatActivity.getSupportActionBar().setTitle("Sản phẩm");
-        appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
+        seachToolBar();
 
+        tbEvent();
+
+        dao = new DaoSanPham(appCompatActivity);
+        dao.open();
+
+        list = new ArrayList<>();
+        list = dao.getAll();
+
+        adapter = new SanPhamAdapter(list);
+
+        binding.rvSP.setAdapter(adapter);
+        binding.rvSP.setLayoutManager(new LinearLayoutManager(appCompatActivity));
+
+    }
+
+    private void tbEvent() {
+        binding.tlbSP.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_loc:
+                        navController.navigate(R.id.listSP_to_chitetSP);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+    }
+
+    private void seachToolBar() {
         MenuItem menu = binding.tlbSP.getMenu().findItem(R.id.menu_search);
         searchView = (SearchView) menu.getActionView();
         searchView.setQueryHint("Tên sản phẩm, Mã sản phẩm, Ram, ...");
@@ -63,8 +98,8 @@ public class ListSanPhamFragment extends Fragment {
         edSeach.setTextColor(Color.BLACK);
         edSeach.setHintTextColor(Color.LTGRAY);
 
-        ImageView iconSeach =(ImageView) searchView.findViewById(androidx.appcompat.R.id.search_button);
-        ImageView iconClose =(ImageView) searchView.findViewById(androidx.appcompat.R.id.search_close_btn);
+        ImageView iconSeach = (ImageView) searchView.findViewById(androidx.appcompat.R.id.search_button);
+        ImageView iconClose = (ImageView) searchView.findViewById(androidx.appcompat.R.id.search_close_btn);
         iconSeach.setColorFilter(Color.BLACK);
         iconClose.setColorFilter(Color.BLACK);
 
@@ -79,18 +114,18 @@ public class ListSanPhamFragment extends Fragment {
                 return false;
             }
         });
-        binding.tlbSP.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.menu_loc:
-                        navController.navigate(R.id.listSP_to_chitetSP);
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
+    }
+
+    private void anhXa(@NotNull View view) {
+        appCompatActivity = (AppCompatActivity) getActivity();
+        drawable = appCompatActivity.getDrawable(R.drawable.ic_menu);
+        navController = Navigation.findNavController(view);
+
+        binding.tlbSP.inflateMenu(R.menu.menu_header);
+        drawable = getActivity().getDrawable(R.drawable.ic_menu);
+        appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        appCompatActivity.getSupportActionBar().setTitle("Sản phẩm");
+        appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
     }
 
     @Override
@@ -100,6 +135,7 @@ public class ListSanPhamFragment extends Fragment {
         View view = binding.getRoot();
         return view;
     }
+
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -108,12 +144,18 @@ public class ListSanPhamFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menu_add:
                 navController.navigate(R.id.listSP_to_addSP);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dao.close();
     }
 }

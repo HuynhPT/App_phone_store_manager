@@ -1,7 +1,7 @@
 package com.example.app_phone_store_manager_nhom_3.model;
 
 public class ThuocTinhSanPham {
-    private String maTT;
+    private int maTT;
     private String maSP;
     private String boNho;
     private String RAM;
@@ -22,13 +22,13 @@ public class ThuocTinhSanPham {
     public static final String TB_COL_SCREEN = "manHinh";
     public static final String TB_COL_BATTERY = "dungLuongPin";
     public static final String TB_COL_TYPE = "congSac";
-    public static final String TB_COL_LOAI = "loaiPhuKiem";
+    public static final String TB_COL_LOAI = "loaiPhuKien";
 
-    public String getMaTT() {
+    public int getMaTT() {
         return maTT;
     }
 
-    public void setMaTT(String maTT) {
+    public void setMaTT(int maTT) {
         this.maTT = maTT;
     }
 

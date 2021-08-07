@@ -197,26 +197,46 @@
                 android:hint="@string/sp_money" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilTrangThaiSP"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/status"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilGiaTienSP" />
+
+        <RadioGroup
+            android:id="@+id/cbTrangThaiSP"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            app:endIconMode="clear_text"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/padding_defaut"
+            android:paddingRight="@dimen/padding_defaut"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilGiaTienSP"
-            app:startIconDrawable="@drawable/ic_status">
+            app:layout_constraintTop_toBottomOf="@+id/textView8">
 
-            <EditText
-                android:id="@+id/edTrangThaiSP"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Trạng thái" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <RadioButton
+                android:id="@+id/cbChuaLKSP"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="@string/chuaLK" />
+
+            <RadioButton
+                android:id="@+id/cbDaLKSP"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="@string/daLK" />
+        </RadioGroup>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilBoNhoSP"
@@ -229,7 +249,7 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilTrangThaiSP"
+            app:layout_constraintTop_toBottomOf="@+id/cbTrangThaiSP"
             app:startIconDrawable="@drawable/ic_bo_nho">
 
             <EditText

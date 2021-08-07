@@ -36,6 +36,7 @@ import com.example.app_phone_store_manager_nhom_3.dao.DaoSanPham;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoThuocTinhSanPham;
 import com.example.app_phone_store_manager_nhom_3.databinding.FragmentAddSanPhamBinding;
 import com.example.app_phone_store_manager_nhom_3.model.SanPham;
+import com.example.app_phone_store_manager_nhom_3.model.ThuocTinhSanPham;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.jetbrains.annotations.NotNull;
@@ -67,7 +68,6 @@ public class AddSanPhamFragment extends Fragment {
     private double giaTien;
     private int trangThai;
     private String moTa;
-    private String maTT;
     private String boNho;
     private String RAM;
     private String chipSet;
@@ -86,14 +86,39 @@ public class AddSanPhamFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        navController = Navigation.findNavController(view);
-        appCompatActivity = (AppCompatActivity) getActivity();
 
-        appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        appCompatActivity.getSupportActionBar().setTitle("Thêm sản phẩm");
-        drawable = getActivity().getDrawable(R.drawable.ic_backspace);
-        appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
+        anhXa(view);
 
+        laucherSelected();
+
+        phanLoaiSP();
+
+        bitmapOld = ((BitmapDrawable) binding.imgSP.getDrawable()).getBitmap();
+        binding.imgSelectPick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickOpenBottomShet();
+            }
+        });
+
+        openData();
+
+        binding.edHangSP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (binding.edHangSP.getText().length() == 0) {
+                    navController.navigate(R.id.addSP_to_chonHang);
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("maHang", maHang);
+                    navController.navigate(R.id.addSP_to_chonHang, bundle);
+                }
+            }
+        });
+        checkBundle();
+    }
+
+    private void laucherSelected() {
         launcherCamera = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
@@ -121,16 +146,27 @@ public class AddSanPhamFragment extends Fragment {
                         }
                     }
                 });
+    }
 
-        phanLoaiSP();
+    private void anhXa(@NotNull View view) {
+        navController = Navigation.findNavController(view);
+        appCompatActivity = (AppCompatActivity) getActivity();
 
-        bitmapOld = ((BitmapDrawable) binding.imgSP.getDrawable()).getBitmap();
-        binding.imgSelectPick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickOpenBottomShet();
-            }
-        });
+        appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        appCompatActivity.getSupportActionBar().setTitle("Thêm sản phẩm");
+        drawable = getActivity().getDrawable(R.drawable.ic_backspace);
+        appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
+    }
+
+    private void checkBundle() {
+        if (getArguments() != null) {
+            maHang = getArguments().getString("maHangSelected");
+            tenHang = daoHang.getMaHang(maHang).getTenHang();
+            binding.edHangSP.setText(tenHang);
+        }
+    }
+
+    private void openData() {
         daoSanPham = new DaoSanPham(appCompatActivity);
         daoTTSP = new DaoThuocTinhSanPham(appCompatActivity);
         daoHang = new DaoHang(appCompatActivity);
@@ -138,24 +174,6 @@ public class AddSanPhamFragment extends Fragment {
         daoSanPham.open();
         daoTTSP.open();
         daoHang.open();
-
-        binding.edHangSP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (binding.edHangSP.getText().length() == 0){
-                    navController.navigate(R.id.addSP_to_chonHang);
-                } else{
-                    Bundle bundle = new Bundle();
-                    bundle.putString("maHang", maHang);
-                    navController.navigate(R.id.addSP_to_chonHang, bundle);
-                }
-            }
-        });
-        if (getArguments() != null) {
-            maHang = getArguments().getString("maHangSelected");
-            tenHang = daoHang.getMaHang(maHang).getTenHang();
-            binding.edHangSP.setText(tenHang);
-        }
     }
 
     public void phanLoaiSP() {
@@ -193,6 +211,7 @@ public class AddSanPhamFragment extends Fragment {
         });
         binding.cbSPDienThoai.setChecked(true);
         binding.cbSPNew.setChecked(true);
+        binding.cbChuaLKSP.setChecked(true);
     }
 
     @Override
@@ -216,54 +235,101 @@ public class AddSanPhamFragment extends Fragment {
                 navController.navigate(R.id.addSP_to_listSP);
                 return true;
             case R.id.menu_reset:
-
-                drawable = appCompatActivity.getDrawable(R.drawable.image_defaut);
-                binding.imgSP.setImageDrawable(drawable);
-                binding.edMaSP.setText("");
-                binding.edTenSP.setText("");
-                binding.edHangSP.setText("");
-                binding.cbSPDienThoai.setChecked(true);
-                binding.cbSPPhuKien.setChecked(false);
-                binding.cbSPOld.setChecked(false);
-                binding.cbSPLikeNew.setChecked(false);
-                binding.cbSPNew.setChecked(true);
-                binding.edGiaTienSP.setText("");
-                binding.edTrangThaiSP.setText("");
-                binding.edBoNhoSP.setText("");
-                binding.edRAMSP.setText("");
-                binding.edChipSetSP.setText("");
-                binding.edOSSP.setText("");
-                binding.edManHinhSP.setText("");
-                binding.edPinSP.setText("");
-                binding.edLoaiPKSP.setText("");
-                binding.edMoTaSP.setText("");
-
+                resetFrom();
                 return true;
             case R.id.menu_save:
 
-                if (checkSP()) {
+//                if (checkSP()) {
                     bitmapNew = ((BitmapDrawable) binding.imgSP.getDrawable()).getBitmap();
+                    if (bitmapNew != bitmapOld) {
+                        convertImage();
+                    }
+                    formatPhanLoai();
+                    formatTinhTrang();
+                    formatTrangThai();
+
                     maSP = binding.edMaSP.getText().toString();
                     tenSP = binding.edTenSP.getText().toString();
-                    giaTien = Double.parseDouble(binding.edTenSP.getText().toString());
+                    giaTien = Double.parseDouble(binding.edGiaTienSP.getText().toString());
                     moTa = binding.edMoTaSP.getText().toString();
+                    boNho = binding.edBoNhoSP.getText().toString();
+                    RAM = binding.edRAMSP.getText().toString();
+                    chipSet = binding.edChipSetSP.getText().toString();
+                    heDieuHanh = binding.edOSSP.getText().toString();
+                    manHinh = binding.edManHinhSP.getText().toString();
+                    dungLuongPin = binding.edPinSP.getText().toString();
+                    congSac = binding.edTypeSP.getText().toString();
+                    loaiPhuKien = binding.edLoaiPKSP.getText().toString();
 
                     SanPham sanPham = new SanPham();
                     sanPham.setMaSP(maSP);
-                    sanPham.setTenSP(maSP);
-                    sanPham.setTenSP(maSP);
+                    sanPham.setMaHang(maHang);
+                    sanPham.setTenSP(tenSP);
+                    sanPham.setHinhAnh(hinhAnh);
+                    sanPham.setPhanLoai(phanLoai);
+                    sanPham.setTinhTrang(tinhTrang);
+                    sanPham.setGiaTien(giaTien);
+                    sanPham.setTrangThai(trangThai);
+                    sanPham.setMoTa(moTa);
 
-                    if (bitmapNew != bitmapOld) {
-                        convertImage();
+                    long kq = daoSanPham.add(sanPham);
+                    if (kq > 0) {
+                        ThuocTinhSanPham thuocTinhSanPham = new ThuocTinhSanPham();
+                        thuocTinhSanPham.setMaSP(maSP);
 
+                        if (phanLoai == 0) {
+                            thuocTinhSanPham.setBoNho(boNho);
+                            thuocTinhSanPham.setRAM(RAM);
+                            thuocTinhSanPham.setChipSet(chipSet);
+                            thuocTinhSanPham.setHeDieuHanh(heDieuHanh);
+                            thuocTinhSanPham.setManHinh(manHinh);
+                            thuocTinhSanPham.setDungLuongPin(dungLuongPin);
+                            thuocTinhSanPham.setCongSac(congSac);
+                        } else {
+                            thuocTinhSanPham.setLoaiPhuKien(loaiPhuKien);
+                        }
+                        long kqTTSP = daoTTSP.add(thuocTinhSanPham);
+                        if (kqTTSP > 0) {
+                            Toast.makeText(appCompatActivity, "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                            navController.navigate(R.id.addSP_to_listSP);
+                        } else {
+                            Toast.makeText(appCompatActivity, "Thêm thuộc tính sản phẩm thất bại", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } else {
+                        Toast.makeText(appCompatActivity, "Lưu thất bại", Toast.LENGTH_SHORT).show();
                     }
-                }
 
-                navController.navigate(R.id.addSP_to_listSP);
+//                }
+
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void resetFrom() {
+        drawable = appCompatActivity.getDrawable(R.drawable.image_defaut);
+        binding.imgSP.setImageDrawable(drawable);
+        binding.edMaSP.setText("");
+        binding.edTenSP.setText("");
+        binding.edHangSP.setText("");
+        binding.cbSPDienThoai.setChecked(true);
+        binding.cbSPPhuKien.setChecked(false);
+        binding.cbSPOld.setChecked(false);
+        binding.cbSPLikeNew.setChecked(false);
+        binding.cbSPNew.setChecked(true);
+        binding.edGiaTienSP.setText("");
+        binding.cbChuaLKSP.setChecked(true);
+        binding.edBoNhoSP.setText("");
+        binding.edRAMSP.setText("");
+        binding.edChipSetSP.setText("");
+        binding.edOSSP.setText("");
+        binding.edManHinhSP.setText("");
+        binding.edPinSP.setText("");
+        binding.edLoaiPKSP.setText("");
+        binding.edMoTaSP.setText("");
     }
 
     public void clickOpenBottomShet() {
@@ -299,7 +365,6 @@ public class AddSanPhamFragment extends Fragment {
                 binding.edTenSP.getText().length() == 0 ||
                 binding.edHangSP.getText().length() == 0 ||
                 binding.edGiaTienSP.getText().length() == 0 ||
-                binding.edTrangThaiSP.getText().length() == 0 ||
                 binding.edMoTaSP.getText().length() == 0 ||
                 binding.edBoNhoSP.getText().length() == 0 ||
                 binding.edRAMSP.getText().length() == 0 ||
@@ -346,7 +411,6 @@ public class AddSanPhamFragment extends Fragment {
                 binding.edTenSP.getText().length() == 0 ||
                 binding.edHangSP.getText().length() == 0 ||
                 binding.edGiaTienSP.getText().length() == 0 ||
-                binding.edTrangThaiSP.getText().length() == 0 ||
                 binding.edMoTaSP.getText().length() == 0 ||
                 binding.edLoaiPKSP.getText().length() == 0) {
             Toast.makeText(appCompatActivity, "Bạn phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
@@ -367,8 +431,17 @@ public class AddSanPhamFragment extends Fragment {
         if (binding.cbSPDienThoai.isChecked()) {
             phanLoai = 0;
         }
-        if (binding.cbSPDienThoai.isChecked()) {
+        if (binding.cbSPPhuKien.isChecked()) {
             phanLoai = 1;
+        }
+    }
+
+    public void formatTrangThai() {
+        if (binding.cbChuaLKSP.isChecked()) {
+            trangThai = 0;
+        }
+        if (binding.cbDaLKSP.isChecked()) {
+            trangThai = 1;
         }
     }
 
@@ -379,7 +452,7 @@ public class AddSanPhamFragment extends Fragment {
         if (binding.cbSPLikeNew.isChecked()) {
             tinhTrang = 0;
         }
-        if (binding.cbSPLikeNew.isChecked()) {
+        if (binding.cbSPNew.isChecked()) {
             tinhTrang = 1;
         }
     }

@@ -107,6 +107,7 @@ public class ChonHangAdapter extends RecyclerView.Adapter<ChonHangAdapter.ViewHo
     public void filter(List<Hang> list) {
         this.list = list;
         notifyDataSetChanged();
+        checkedPositon = -1;
     }
 
     public int getRandomColor() {

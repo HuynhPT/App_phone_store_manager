@@ -37,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     View mHeaderView;
     TextView tvUser;
     TextView tvHello;
-    ImageView imgUser;
+    CircleImageView imgUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         mHeaderView = navigationView.getHeaderView(0);
         tvUser = (TextView) mHeaderView.findViewById(R.id.tvMember);
         tvHello = (TextView) mHeaderView.findViewById(R.id.tvHello);
-        imgUser = (ImageView) mHeaderView.findViewById(R.id.imgUserName);
+        imgUser = (CircleImageView) mHeaderView.findViewById(R.id.imgUserName);
         list = new ArrayList<>();
         adapter = new NhanVienAdapter(list);
         dao = new DaoNhanVien(this);

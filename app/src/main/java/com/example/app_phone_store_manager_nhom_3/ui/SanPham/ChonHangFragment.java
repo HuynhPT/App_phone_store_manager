@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -18,7 +19,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.app_phone_store_manager_nhom_3.R;
@@ -40,7 +40,6 @@ public class ChonHangFragment extends Fragment {
     private Drawable drawable;
     private NavController navController;
     private RecyclerView rvHang;
-    private SearchView svHang;
     private String maHang = "";
     private int positon;
 
@@ -60,14 +59,7 @@ public class ChonHangFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        navController = Navigation.findNavController(view);
-        activity = (AppCompatActivity) getActivity();
-        drawable = activity.getDrawable(R.drawable.ic_backspace);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        activity.getSupportActionBar().setHomeAsUpIndicator(drawable);
-        activity.getSupportActionBar().setTitle("Chọn hãng");
-        rvHang = view.findViewById(R.id.rvChonHang);
-        svHang = view.findViewById(R.id.svChonHang);
+        anhXa(view);
 
         daoHang = new DaoHang(activity);
         daoHang.open();
@@ -76,32 +68,13 @@ public class ChonHangFragment extends Fragment {
         list = daoHang.getAll();
         adapter = new ChonHangAdapter(list);
 
-        svHang.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                filter(s);
-                return true;
-            }
-        });
         rvHang.setAdapter(adapter);
         rvHang.setLayoutManager(new GridLayoutManager(activity, 3));
 
-        if (getArguments() != null) {
-            for (Hang x : list) {
-                if (x.getMaHang().equals(getArguments().getString("maHang"))) {
-                    positon = list.indexOf(x);
-                }
-            }
-            adapter.setCheckedPositon(positon);
-        }
-        if (getArguments() != null){
-            maHang = getArguments().getString("maHang");
-        }
+        checkSelected();
+
+        checkMaHang();
+
         adapter.setItemHangClick(new ItemHangClick() {
             @Override
             public void ItemClick(Hang hang) {
@@ -113,7 +86,33 @@ public class ChonHangFragment extends Fragment {
                 }
             }
         });
+    }
 
+    private void anhXa(@NotNull View view) {
+        navController = Navigation.findNavController(view);
+        activity = (AppCompatActivity) getActivity();
+        drawable = activity.getDrawable(R.drawable.ic_backspace);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setHomeAsUpIndicator(drawable);
+        activity.getSupportActionBar().setTitle("Chọn hãng");
+        rvHang = view.findViewById(R.id.rvChonHang);
+    }
+
+    private void checkMaHang() {
+        if (getArguments() != null){
+            maHang = getArguments().getString("maHang");
+        }
+    }
+
+    private void checkSelected() {
+        if (getArguments() != null) {
+            for (Hang x : list) {
+                if (x.getMaHang().equals(getArguments().getString("maHang"))) {
+                    positon = list.indexOf(x);
+                }
+            }
+            adapter.setCheckedPositon(positon);
+        }
     }
 
     private void filter(String newText) {
@@ -130,6 +129,30 @@ public class ChonHangFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_done, menu);
+        SearchView searchView = (SearchView) menu.findItem(R.id.menu_seach_hang).getActionView();
+        searchView.setQueryHint("Tên hãng");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return true;
+            }
+        });
+        searchView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(View view) {
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(View view) {
+                checkSelected();
+            }
+        });
     }
 
     @Override
@@ -154,7 +177,6 @@ public class ChonHangFragment extends Fragment {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
     @Override

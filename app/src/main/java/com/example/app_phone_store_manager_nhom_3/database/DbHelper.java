@@ -54,7 +54,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(createTableSanPham);
         // Tạo bảng thuộc tính SP
         String createTableThuocTinhSanPham = "CREATE TABLE ThuocTinhSanPham(" +
-                "maTT TEXT NOT NULL PRIMARY KEY," +
+                "maTT INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "maSP TEXT NOT NULL REFERENCES SanPham(maSP)," +
                 "boNho TEXT," +
                 "RAM TEXT," +

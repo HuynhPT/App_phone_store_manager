@@ -97,12 +97,15 @@
     <string name="sl_ton">Tồn kho:</string>
     <string name="sp_moneys">Giá tiền:</string>
     <string name="done">Chọn</string>
+    <string name="chuaLK">Chưa lưu kho</string>
+    <string name="daLK">Đã lưu kho</string>
 
     <string-array name="filter">
         <item>Mặc định</item>
         <item>A-Z theo Tên</item>
         <item>A-Z theo Mã</item>
     </string-array>
+
     <string-array name="filterNV">
         <item>Mặc định</item>
         <item>A-Z theo Tên</item>

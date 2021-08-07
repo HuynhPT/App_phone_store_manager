@@ -30,7 +30,6 @@ public class DaoThuocTinhSanPham {
     public long add(ThuocTinhSanPham thuocTinhSanPham) {
         ContentValues values = new ContentValues();
 
-        values.put(ThuocTinhSanPham.TB_COL_ID_SP, thuocTinhSanPham.getMaTT());
         values.put(ThuocTinhSanPham.TB_COL_ID_SP, thuocTinhSanPham.getMaSP());
         values.put(ThuocTinhSanPham.TB_COL_MEMORY, thuocTinhSanPham.getBoNho());
         values.put(ThuocTinhSanPham.TB_COL_RAM, thuocTinhSanPham.getRAM());
@@ -44,11 +43,11 @@ public class DaoThuocTinhSanPham {
         return database.insert(ThuocTinhSanPham.TB_NAME, null, values);
     }
 
-    public int delete(String maTT) {
-        return database.delete(ThuocTinhSanPham.TB_COL_ID_SP, "maTT = ?", new String[]{maTT});
+    public int delete(int maTT) {
+        return database.delete(ThuocTinhSanPham.TB_COL_ID_SP, "maTT = ?", new String[]{maTT + ""});
     }
 
-    public int update(ThuocTinhSanPham thuocTinhSanPham, String maTT) {
+    public int update(ThuocTinhSanPham thuocTinhSanPham) {
         ContentValues values = new ContentValues();
 
         values.put(ThuocTinhSanPham.TB_COL_ID_SP, thuocTinhSanPham.getMaTT());
@@ -62,7 +61,7 @@ public class DaoThuocTinhSanPham {
         values.put(ThuocTinhSanPham.TB_COL_TYPE, thuocTinhSanPham.getCongSac());
         values.put(ThuocTinhSanPham.TB_COL_LOAI, thuocTinhSanPham.getLoaiPhuKien());
 
-        return database.update(ThuocTinhSanPham.TB_NAME, values, "maTT = ?", new String[]{maTT});
+        return database.update(ThuocTinhSanPham.TB_NAME, values, "maTT = ?", new String[]{thuocTinhSanPham.getMaTT() + ""});
     }
 
     public List<ThuocTinhSanPham> getAll() {
@@ -71,7 +70,7 @@ public class DaoThuocTinhSanPham {
         return list;
     }
 
-    public ThuocTinhSanPham getMaTT(String maTT) {
+    public ThuocTinhSanPham getMaTT(int maTT) {
         String sql = "SELECT * FROM ThuocTinhSanPham WHERE maTT = ? ";
         List<ThuocTinhSanPham> list = getData(sql);
         return list.get(0);
@@ -83,10 +82,9 @@ public class DaoThuocTinhSanPham {
         while (cursor.moveToNext()) {
             ThuocTinhSanPham thuocTinhSanPham = new ThuocTinhSanPham();
 
-            thuocTinhSanPham.setMaTT(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_ID_TT)));
+            thuocTinhSanPham.setMaTT(cursor.getInt(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_ID_TT)));
             thuocTinhSanPham.setMaSP(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_ID_SP)));
             thuocTinhSanPham.setBoNho(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_MEMORY)));
-            thuocTinhSanPham.setMaTT(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_ID_TT)));
             thuocTinhSanPham.setRAM(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_RAM)));
             thuocTinhSanPham.setHeDieuHanh(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_OS)));
             thuocTinhSanPham.setManHinh(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_SCREEN)));
