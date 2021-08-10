@@ -36,7 +36,6 @@ public class HomeFragment extends Fragment {
     private TextView tv_SLKH, tv_SLSP, tv_SLHDN, tv_SLHDX;
     private LinearLayout ln_KH, ln_SP, ln_HDN, ln_HDX;
     private DaoKhachHang daoKH;
-    private DaoSanPham daoSP;
     private List<KhachHang> list;
 
     @Override
@@ -64,12 +63,10 @@ public class HomeFragment extends Fragment {
         onClick();
         daoKH = new DaoKhachHang(getContext());
         daoKH.open();
-        daoSP = new DaoSanPham(getContext());
-        daoSP.open();
-        tv_SLKH.setText(daoKH.getCountma() + "");
-        tv_SLSP.setText(daoSP.getCountma() + "");
-        tv_SLHDN.setText(daoSP.getCountma() + "");
-        tv_SLHDX.setText(daoSP.getCountma() + "");
+        tv_SLKH.setText(daoKH.getCountKH() + "");
+        tv_SLSP.setText(daoKH.getCountSP() + "");
+        tv_SLHDN.setText(daoKH.getCountKH() + "");
+        tv_SLHDX.setText(daoKH.getCountKH() + "");
     }
 
     private void onClick() {

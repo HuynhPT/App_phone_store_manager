@@ -62,7 +62,25 @@ public class DaoKhachHang {
         return list.get(0);
     }
 
-    public int getCountma() {
+    public int getCountKH() {
+        String sql = "SELECT COUNT(*) AS SoLuong FROM KhachHang";
+        Cursor cursor = database.rawQuery(sql, null);
+        cursor.moveToFirst();
+        return cursor.getInt(cursor.getColumnIndex("SoLuong"));
+    }
+    public int getCountSP() {
+        String sql = "SELECT COUNT(*) AS SoLuong FROM SanPham";
+        Cursor cursor = database.rawQuery(sql, null);
+        cursor.moveToFirst();
+        return cursor.getInt(cursor.getColumnIndex("SoLuong"));
+    }
+    public int getCountHDN() {
+        String sql = "SELECT COUNT(*) AS SoLuong FROM KhachHang";
+        Cursor cursor = database.rawQuery(sql, null);
+        cursor.moveToFirst();
+        return cursor.getInt(cursor.getColumnIndex("SoLuong"));
+    }
+    public int getCountHDX() {
         String sql = "SELECT COUNT(*) AS SoLuong FROM KhachHang";
         Cursor cursor = database.rawQuery(sql, null);
         cursor.moveToFirst();

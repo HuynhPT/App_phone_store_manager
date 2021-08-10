@@ -81,13 +81,6 @@ public class DaoSanPham {
         return list;
     }
 
-    public int getCountma() {
-        String sql = "SELECT COUNT(*) AS SoLuong FROM SanPham";
-        Cursor cursor = database.rawQuery(sql, null);
-        cursor.moveToFirst();
-        return cursor.getInt(cursor.getColumnIndex("SoLuong"));
-    }
-
     public SanPham getMaSP(String maSP) {
         String sql = "SELECT * FROM SanPham WHERE maSP = ?";
         List<SanPham> list = getData(sql, maSP);

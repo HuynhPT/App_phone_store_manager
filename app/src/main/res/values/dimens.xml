@@ -28,4 +28,5 @@
     <dimen name="size">100dp</dimen>
     <dimen name="size_top2">125dp</dimen>
     <dimen name="size_left">50dp</dimen>
+    <dimen name="size_focus">10dp</dimen>
 </resources>
