@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/padding_defaut">
+    android:layout_margin="@dimen/margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/img_size"

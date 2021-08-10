@@ -12,17 +12,17 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imgSanPhamDeltail"
             android:layout_width="@dimen/img_size"
             android:layout_height="@dimen/img_size"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@drawable/image_defaut" />
 
         <LinearLayout
-            android:id="@+id/lnlTenSP"
+            android:id="@+id/lnlTenSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
             android:layout_marginTop="16dp"
@@ -30,9 +30,10 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+            app:layout_constraintTop_toBottomOf="@+id/imgSanPhamDeltail">
 
             <TextView
+                android:id="@+id/tvTitleTenSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -42,7 +43,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvTenSP"
+                android:id="@+id/tvTenSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -51,17 +52,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlHangSP"
+            android:id="@+id/lnlHangSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlTenSP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlTenSPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleHangSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -71,7 +73,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvHangSP"
+                android:id="@+id/tvHangSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -80,17 +82,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlLoaiSP"
+            android:id="@+id/lnlLoaiSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlHangSP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlHangSPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleLoaiSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -100,7 +103,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvLoaiSP"
+                android:id="@+id/tvLoaiSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -109,17 +112,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlTTSP"
+            android:id="@+id/lnlTTSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlLoaiSP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlLoaiSPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleTinhTrangSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -129,26 +133,28 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvTinhTrangSP"
+                android:id="@+id/tvTinhTrangSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
+                android:paddingBottom="@dimen/padding_defaut"
                 android:textSize="@dimen/text_little" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlGiaTienSP"
+            android:id="@+id/lnlGiaTienSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlTTSP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlTTSPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleGiaTienSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -158,7 +164,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvGiaTienSP"
+                android:id="@+id/tvGiaTienSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -168,17 +174,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlTrangThaiSP"
+            android:id="@+id/lnlTrangThaiSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlGiaTienSP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlGiaTienSPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleTrangThaiSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -188,7 +195,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvTrangThaiSP"
+                android:id="@+id/tvTrangThaiSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -197,7 +204,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvTitleCTSP"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -207,10 +214,9 @@
             android:textColor="@color/black"
             android:textSize="@dimen/text_small"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlTrangThaiSP" />
-
+            app:layout_constraintTop_toBottomOf="@+id/lnlTrangThaiSPDeltail" />
         <LinearLayout
-            android:id="@+id/lnlBoNhoSP"
+            android:id="@+id/lnlBoNhoSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
             android:layout_marginTop="16dp"
@@ -218,19 +224,21 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleCTSP">
 
             <TextView
+                android:id="@+id/tvTitleBoNhoSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:paddingLeft="@dimen/padding_defaut"
                 android:text="@string/sp_bonho"
+                android:layout_marginBottom="@dimen/padding_defaut"
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvBoNhoSP"
+                android:id="@+id/tvBoNhoSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -239,17 +247,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlRAMSP"
+            android:id="@+id/lnlRAMSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlBoNhoSP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlBoNhoSPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleRAMSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -259,7 +268,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvRAMSP"
+                android:id="@+id/tvRAMSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -268,17 +277,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlChipSP"
+            android:id="@+id/lnlChipSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlRAMSP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlRAMSPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleChipSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -288,7 +298,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvChipSP"
+                android:id="@+id/tvChipSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -297,17 +307,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlOSSP"
+            android:id="@+id/lnlOSSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlChipSP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlChipSPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleOSSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -317,7 +328,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvOSSP"
+                android:id="@+id/tvOSSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -326,17 +337,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlManHinhSP"
+            android:id="@+id/lnlManHinhSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlOSSP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlOSSPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleManHinhSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -346,7 +358,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvManHinhSP"
+                android:id="@+id/tvManHinhSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -355,17 +367,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlBatterySP"
+            android:id="@+id/lnlBatterySPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlManHinhSP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlManHinhSPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleBatterySP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -375,7 +388,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvBatterySP"
+                android:id="@+id/tvBatterySPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -384,17 +397,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlCongSacSP"
+            android:id="@+id/lnlCongSacSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlBatterySP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlBatterySPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleCongSacSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -404,7 +418,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvCongSacSP"
+                android:id="@+id/tvCongSacSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -413,17 +427,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlLoaiPKSP"
+            android:id="@+id/lnlLoaiPKSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="16dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlCongSacSP">
+            app:layout_constraintTop_toBottomOf="@+id/lnlCongSacSPDeltail">
 
             <TextView
+                android:id="@+id/tvTitleLoaiPKSP"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -433,7 +448,7 @@
                 android:textSize="@dimen/text_little" />
 
             <TextView
-                android:id="@+id/tvLoaiPKSP"
+                android:id="@+id/tvLoaiPKSPDeltail"
                 style="@style/custom_TV"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -443,7 +458,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/tvTitleMT"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -453,10 +468,10 @@
             android:textColor="@color/black"
             android:textSize="@dimen/text_small"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlLoaiPKSP" />
+            app:layout_constraintTop_toBottomOf="@+id/lnlLoaiPKSPDeltail" />
 
         <LinearLayout
-            android:id="@+id/lnlMoTaSP"
+            android:id="@+id/lnlMoTaSPDeltail"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
             android:layout_marginTop="16dp"
@@ -466,14 +481,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8">
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleMT">
 
             <TextView
-                android:id="@+id/tvMotaSP"
+                android:id="@+id/tvMotaSPDeltail"
                 style="@style/custom_TV"
+                android:layout_marginLeft="@dimen/padding_defaut"
+                android:layout_marginRight="@dimen/padding_defaut"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/text_little" />
+                android:textSize="@dimen/text_medium" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

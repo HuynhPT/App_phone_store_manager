@@ -70,9 +70,9 @@ public class DaoThuocTinhSanPham {
         return list;
     }
 
-    public ThuocTinhSanPham getMaTT(int maTT) {
-        String sql = "SELECT * FROM ThuocTinhSanPham WHERE maTT = ? ";
-        List<ThuocTinhSanPham> list = getData(sql);
+    public ThuocTinhSanPham getMaSP(String maSP) {
+        String sql = "SELECT * FROM ThuocTinhSanPham WHERE maSP = ? ";
+        List<ThuocTinhSanPham> list = getData(sql,maSP);
         return list.get(0);
     }
 
@@ -86,6 +86,7 @@ public class DaoThuocTinhSanPham {
             thuocTinhSanPham.setMaSP(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_ID_SP)));
             thuocTinhSanPham.setBoNho(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_MEMORY)));
             thuocTinhSanPham.setRAM(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_RAM)));
+            thuocTinhSanPham.setChipSet(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_CHIP)));
             thuocTinhSanPham.setHeDieuHanh(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_OS)));
             thuocTinhSanPham.setManHinh(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_SCREEN)));
             thuocTinhSanPham.setDungLuongPin(cursor.getString(cursor.getColumnIndex(ThuocTinhSanPham.TB_COL_BATTERY)));

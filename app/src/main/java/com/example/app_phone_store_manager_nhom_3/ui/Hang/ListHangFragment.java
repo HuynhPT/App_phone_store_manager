@@ -79,37 +79,7 @@ public class ListHangFragment extends Fragment {
         appCompatActivity.getSupportActionBar().setTitle("Hãng");
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
 
-        ArrayAdapter<CharSequence> spAdapter = ArrayAdapter.createFromResource(appCompatActivity, R.array.filter, R.layout.custom_item_sp);
-        spAdapter.setDropDownViewResource(R.layout.custom_item_sp_drop_down);
-        binding.spListFilter.setAdapter(spAdapter);
-
-        binding.spListFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i) {
-                    case 0:
-                        list.clear();
-                        list.addAll(dao.getAll());
-                        adapter.filter(list);
-                        break;
-                    case 1:
-                        list.clear();
-                        list.addAll(dao.getAllSXTen());
-                        adapter.filter(list);
-                        break;
-                    case 2:
-                        list.clear();
-                        list.addAll(dao.getAllSXMa());
-                        adapter.filter(list);
-                        break;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+        spinnerFilter();
 
         MenuItem menu = binding.tlbHang.getMenu().findItem(R.id.menu_extra_seach);
         searchView = (SearchView) menu.getActionView();
@@ -159,6 +129,40 @@ public class ListHangFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("maHang", hang.getMaHang());
                 navController.navigate(R.id.listHang_to_chiTietHang, bundle);
+            }
+        });
+    }
+
+    private void spinnerFilter() {
+        ArrayAdapter<CharSequence> spAdapter = ArrayAdapter.createFromResource(appCompatActivity, R.array.filter, R.layout.custom_item_sp);
+        spAdapter.setDropDownViewResource(R.layout.custom_item_sp_drop_down);
+        binding.spListHangFilter.setAdapter(spAdapter);
+
+        binding.spListHangFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0:
+                        list.clear();
+                        list.addAll(dao.getAll());
+                        adapter.filter(list);
+                        break;
+                    case 1:
+                        list.clear();
+                        list.addAll(dao.getAllSXTen());
+                        adapter.filter(list);
+                        break;
+                    case 2:
+                        list.clear();
+                        list.addAll(dao.getAllSXMa());
+                        adapter.filter(list);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }

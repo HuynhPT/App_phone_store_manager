@@ -30,6 +30,8 @@
     <string name="login">Đăng nhập</string>
     <string name="remember">Lưu tài khoản</string>
     <string name="cancel">Hủy</string>
+    <string name="exit">Cancel</string>
+    <string name="ok">OK</string>
     <string name="edit">Sửa</string>
     <string name="khachhang_title">Mã Khách Hàng</string>
     <string name="tile_HotenKH">Họ Tên</string>
@@ -97,6 +99,7 @@
     <string name="sl_ton">Tồn kho:</string>
     <string name="sp_moneys">Giá tiền:</string>
     <string name="done">Chọn</string>
+    <string name="done_class">Chọn hãng</string>
     <string name="chuaLK">Chưa lưu kho</string>
     <string name="daLK">Đã lưu kho</string>
 

@@ -1,5 +1,9 @@
 package com.example.app_phone_store_manager_nhom_3.adapter;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,26 +13,45 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.app_phone_store_manager_nhom_3.R;
+import com.example.app_phone_store_manager_nhom_3.dao.DaoHang;
+import com.example.app_phone_store_manager_nhom_3.model.Hang;
 import com.example.app_phone_store_manager_nhom_3.model.SanPham;
+import com.example.app_phone_store_manager_nhom_3.utilities.ItemSanPhamClick;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Random;
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHolder> {
     private List<SanPham> list;
+    private Context context;
+    private DaoHang daoHang;
+    private TextDrawable textDrawable;
+    private ItemSanPhamClick itemDelete;
+    private ItemSanPhamClick itemClick;
 
-    public SanPhamAdapter(List<SanPham> list) {
+    public void setItemDelete(ItemSanPhamClick itemDelete) {
+        this.itemDelete = itemDelete;
+    }
+
+    public void setItemClick(ItemSanPhamClick itemClick) {
+        this.itemClick = itemClick;
+    }
+
+    public SanPhamAdapter(List<SanPham> list, Context context) {
         this.list = list;
+        this.context = context;
     }
 
     @NonNull
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_item_sanpham, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.custom_item_sanpham, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,6 +61,33 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         if (sanPham == null) {
             return;
         }
+        if (sanPham.getHinhAnh() == null) {
+            String ten = sanPham.getTenSP();
+            setImage(ten, holder.imgSP);
+        } else {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(sanPham.getHinhAnh(), 0, sanPham.getHinhAnh().length);
+            holder.imgSP.setImageBitmap(bitmap);
+        }
+
+        daoHang = new DaoHang(context);
+        daoHang.open();
+
+        Hang hang = daoHang.getMaHang(sanPham.getMaHang());
+
+        if (hang.getHinhAnh() == null) {
+            String tenHang = hang.getTenHang();
+            setImage(tenHang, holder.imgHang);
+        } else {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(hang.getHinhAnh(), 0, hang.getHinhAnh().length);
+            holder.imgSP.setImageBitmap(bitmap);
+        }
+        holder.tvHang.setText(hang.getTenHang());
+        holder.tvSLNhap.setText("Đang cập nhập");
+        holder.tvSLXuat.setText("Đang cập nhập");
+        holder.tvTonKho.setText("Đang cập nhập");
+
+        daoHang.close();
+
         holder.tvMaSP.setText("Mã sản phẩm: " + sanPham.getMaSP());
         holder.tvTenSP.setText("Sản phẩm: " + sanPham.getTenSP());
         switch (sanPham.getTinhTrang()) {
@@ -51,19 +101,31 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
                 holder.tvTinhTrang.setText("Tình trạng: Cũ");
                 break;
         }
-        holder.tvSLNhap.setText("Đang cập nhập");
-        holder.tvSLXuat.setText("Đang cập nhập");
-        holder.tvTonKho.setText("Đang cập nhập");
+
 
         DecimalFormat formatter = new DecimalFormat("###,###,###");
+        holder.tvGiaTien.setText(formatter.format(sanPham.getGiaTien()) + " đ");
 
-        holder.tvGiaTien.setText(formatter.format(sanPham.getGiaTien()) +"đ");
-
-        if (sanPham.getTrangThai() == 0){
+        if (sanPham.getTrangThai() == 0) {
             holder.tvTrangThai.setText("Chưa lưu kho");
-        }else {
+        } else {
             holder.tvTrangThai.setText("Đã lưu kho");
         }
+
+        holder.imgDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemDelete.ItemClick(sanPham);
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemClick.ItemClick(sanPham);
+            }
+        });
+
     }
 
     @Override
@@ -72,6 +134,11 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             return 0;
         }
         return list.size();
+    }
+
+    public void filter(List<SanPham> list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -96,4 +163,13 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         }
     }
 
+    public void setImage(String s, ImageView imageView) {
+        textDrawable = TextDrawable.builder().beginConfig().width(48).height(48).endConfig().buildRect(s.substring(0, 1).toUpperCase(), getRandomColor());
+        imageView.setImageDrawable(textDrawable);
+    }
+
+    public int getRandomColor() {
+        Random rnd = new Random();
+        return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+    }
 }

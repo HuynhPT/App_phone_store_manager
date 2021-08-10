@@ -1,11 +1,13 @@
 package com.example.app_phone_store_manager_nhom_3.ui.SanPham;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -20,14 +22,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.app_phone_store_manager_nhom_3.R;
 import com.example.app_phone_store_manager_nhom_3.adapter.SanPhamAdapter;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoSanPham;
 import com.example.app_phone_store_manager_nhom_3.databinding.FragmentListSanPhamBinding;
 import com.example.app_phone_store_manager_nhom_3.model.SanPham;
+import com.example.app_phone_store_manager_nhom_3.utilities.ItemSanPhamClick;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -58,7 +64,7 @@ public class ListSanPhamFragment extends Fragment {
 
         seachToolBar();
 
-        tbEvent();
+        spinnerFilter();
 
         dao = new DaoSanPham(appCompatActivity);
         dao.open();
@@ -66,32 +72,35 @@ public class ListSanPhamFragment extends Fragment {
         list = new ArrayList<>();
         list = dao.getAll();
 
-        adapter = new SanPhamAdapter(list);
+        adapter = new SanPhamAdapter(list, appCompatActivity);
 
         binding.rvSP.setAdapter(adapter);
         binding.rvSP.setLayoutManager(new LinearLayoutManager(appCompatActivity));
 
+        apdaterEvent();
     }
 
-    private void tbEvent() {
-        binding.tlbSP.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+    public void apdaterEvent(){
+        adapter.setItemDelete(new ItemSanPhamClick() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.menu_loc:
-                        navController.navigate(R.id.listSP_to_chitetSP);
-                        return true;
-                    default:
-                        return false;
-                }
+            public void ItemClick(SanPham sanPham) {
+                dialogDelete(sanPham);
+            }
+        });
+        adapter.setItemClick(new ItemSanPhamClick() {
+            @Override
+            public void ItemClick(SanPham sanPham) {
+                Bundle bundle = new Bundle();
+                bundle.putString("maSP", sanPham.getMaSP());
+                navController.navigate(R.id.listSP_to_chitetSP, bundle);
             }
         });
     }
-
     private void seachToolBar() {
-        MenuItem menu = binding.tlbSP.getMenu().findItem(R.id.menu_search);
+
+        MenuItem menu = binding.tlbSP.getMenu().findItem(R.id.menu_extra_seach);
         searchView = (SearchView) menu.getActionView();
-        searchView.setQueryHint("Tên sản phẩm, Mã sản phẩm, Ram, ...");
+        searchView.setQueryHint("Tên sản phẩm, Mã sản phẩm ...");
         searchView.setMaxWidth(Integer.MAX_VALUE);
 
         EditText edSeach = (EditText) searchView.findViewById(androidx.appcompat.R.id.search_src_text);
@@ -111,17 +120,77 @@ public class ListSanPhamFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                return false;
+                filter(newText);
+                return true;
             }
         });
     }
 
+    private void spinnerFilter() {
+        ArrayAdapter<CharSequence> spAdapter = ArrayAdapter.createFromResource(appCompatActivity, R.array.filter, R.layout.custom_item_sp);
+        spAdapter.setDropDownViewResource(R.layout.custom_item_sp_drop_down);
+        binding.spListSPFilter.setAdapter(spAdapter);
+
+        binding.spListSPFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0:
+                        list.clear();
+                        list.addAll(dao.getAll());
+                        adapter.filter(list);
+                        break;
+                    case 1:
+                        list.clear();
+                        list.addAll(dao.getAllTen());
+                        adapter.filter(list);
+                        break;
+                    case 2:
+                        list.clear();
+                        list.addAll(dao.getAllMa());
+                        adapter.filter(list);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    public void dialogDelete(SanPham sanPham) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(appCompatActivity);
+        builder.setTitle("Xóa");
+        builder.setMessage("Bạn có chắc chắn muốn xóa không!");
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                int kq = dao.delete(sanPham.getMaSP());
+                if (kq > 0) {
+                    Toast.makeText(appCompatActivity, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    list.clear();
+                    list.addAll(dao.getAll());
+                    adapter.filter(list);
+                } else {
+                    Toast.makeText(appCompatActivity, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.show();
+    }
     private void anhXa(@NotNull View view) {
         appCompatActivity = (AppCompatActivity) getActivity();
         drawable = appCompatActivity.getDrawable(R.drawable.ic_menu);
         navController = Navigation.findNavController(view);
 
-        binding.tlbSP.inflateMenu(R.menu.menu_header);
+        binding.tlbSP.inflateMenu(R.menu.menu_seach);
         drawable = getActivity().getDrawable(R.drawable.ic_menu);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setTitle("Sản phẩm");
@@ -134,6 +203,17 @@ public class ListSanPhamFragment extends Fragment {
         binding = FragmentListSanPhamBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         return view;
+    }
+
+    private void filter(String newText) {
+        List<SanPham> filterList = new ArrayList<>();
+        for (SanPham item : list) {
+            if (item.getMaSP().toLowerCase().contains(newText.toLowerCase()) ||
+                    item.getTenSP().toLowerCase().contains(newText.toLowerCase())) {
+                filterList.add(item);
+            }
+        }
+        adapter.filter(filterList);
     }
 
     @Override

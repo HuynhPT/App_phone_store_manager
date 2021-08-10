@@ -51,9 +51,9 @@
         tools:layout="@layout/fragment_hang" />
     <fragment
         android:id="@+id/nav_logout"
-        android:name="com.example.app_phone_store_manager_nhom_3.ui.HoaDonXuat.HoaDonXuatFragment"
-        android:label="@string/menu_hd_xuat"
-        tools:layout="@layout/fragment_hoa_don_xuat" />
+        android:name="com.example.app_phone_store_manager_nhom_3.ui.TrangChu.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.app_phone_store_manager_nhom_3.ui.TrangChu.HomeFragment"

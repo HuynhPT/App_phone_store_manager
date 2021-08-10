@@ -24,16 +24,16 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/mg_sp"
             app:srcCompat="@drawable/ic_filter"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="24dp"
-            android:layout_marginRight="5dp"/>
+            tools:layout_editor_absoluteY="24dp" />
 
         <Spinner
-            android:id="@+id/spListFilter"
+            android:id="@+id/spListHangFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"/>
+            android:backgroundTint="@color/black" />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView

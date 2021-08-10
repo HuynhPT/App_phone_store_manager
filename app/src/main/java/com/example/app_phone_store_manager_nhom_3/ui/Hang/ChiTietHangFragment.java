@@ -61,7 +61,9 @@ public class ChiTietHangFragment extends Fragment {
         appCompatActivity = (AppCompatActivity) getActivity();
         imgHang = view.findViewById(R.id.imgHangShow);
         tvHang = view.findViewById(R.id.tvTenHangShow);
-        maHang = getArguments().getString("maHang");
+        if (getArguments() != null){
+            maHang = getArguments().getString("maHang");
+        }
 
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
