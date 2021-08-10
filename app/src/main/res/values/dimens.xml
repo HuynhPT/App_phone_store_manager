@@ -23,4 +23,9 @@
     <dimen name="ly_height">54dp</dimen>
     <dimen name="inputtext_padding">12dp</dimen>
     <dimen name="img_size">100dp</dimen>
+    <dimen name="layout_size">150dp</dimen>
+    <dimen name="item_img_size">50dp</dimen>
+    <dimen name="size">100dp</dimen>
+    <dimen name="size_top2">125dp</dimen>
+    <dimen name="size_left">50dp</dimen>
 </resources>

@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             imgUser.setImageDrawable(drawable);
         } else {
             Bitmap bitmap = BitmapFactory.decodeByteArray(nhanVien.getHinhAnh(), 0, nhanVien.getHinhAnh().length);
-            imgUser.setImageBitmap(Bitmap.createScaledBitmap(bitmap,1000,1000,false));
+            imgUser.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 1000, 1000, false));
         }
         tvUser.setText(user.toUpperCase());
         if (user.equalsIgnoreCase("admin")) {
@@ -133,6 +133,11 @@ public class MainActivity extends AppCompatActivity {
     public int getRandomColor() {
         Random rnd = new Random();
         return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+    }
+
+    public void setClick(int i) {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        navController.navigate(i);
     }
 
     @Override

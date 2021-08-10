@@ -7,13 +7,13 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Tổng quan</string>
+    <string name="menu_home">Trang chủ</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="doanh_thu">Doanh thu</string>
-    <string name="home">Tổng quan</string>
+    <string name="home">Trang chủ</string>
     <string name="menu_hd_xuat">Hóa đơn Xuất</string>
     <string name="menu_hd_nhap">Hóa đơn Nhập</string>
     <string name="san_pham">Sản phẩm</string>
