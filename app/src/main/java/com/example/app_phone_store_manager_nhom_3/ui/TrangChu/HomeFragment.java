@@ -17,10 +17,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.app_phone_store_manager_nhom_3.MainActivity;
 import com.example.app_phone_store_manager_nhom_3.R;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoKhachHang;
+import com.example.app_phone_store_manager_nhom_3.dao.DaoSanPham;
 import com.example.app_phone_store_manager_nhom_3.databinding.FragmentAddSanPhamBinding;
 import com.example.app_phone_store_manager_nhom_3.databinding.FragmentHomeBinding;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
@@ -31,8 +33,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    private FragmentHomeBinding binding;
-    private DaoKhachHang dao;
+    private TextView tv_SLKH, tv_SLSP, tv_SLHDN, tv_SLHDX;
+    private LinearLayout ln_KH, ln_SP, ln_HDN, ln_HDX;
+    private DaoKhachHang daoKH;
+    private DaoSanPham daoSP;
     private List<KhachHang> list;
 
     @Override
@@ -43,37 +47,51 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
-        return view;
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ln_KH = view.findViewById(R.id.car_KH);
+        ln_SP = view.findViewById(R.id.car_SP);
+        ln_HDN = view.findViewById(R.id.car_HDN);
+        ln_HDX = view.findViewById(R.id.car_HDX);
+        tv_SLKH = view.findViewById(R.id.tv_SLKH);
+        tv_SLSP = view.findViewById(R.id.tv_SLSP);
+        tv_SLHDN = view.findViewById(R.id.tv_SLHDN);
+        tv_SLHDX = view.findViewById(R.id.tv_SLHDX);
         onClick();
+        daoKH = new DaoKhachHang(getContext());
+        daoKH.open();
+        daoSP = new DaoSanPham(getContext());
+        daoSP.open();
+        tv_SLKH.setText(daoKH.getCountma() + "");
+        tv_SLSP.setText(daoSP.getCountma() + "");
+        tv_SLHDN.setText(daoSP.getCountma() + "");
+        tv_SLHDX.setText(daoSP.getCountma() + "");
     }
 
     private void onClick() {
-        binding.carSP.setOnClickListener(new View.OnClickListener() {
+        ln_SP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity) getActivity()).setClick(R.id.nav_sanPham);
             }
         });
-        binding.carKH.setOnClickListener(new View.OnClickListener() {
+        ln_KH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity) getActivity()).setClick(R.id.nav_khachHang);
             }
         });
-        binding.carHDX.setOnClickListener(new View.OnClickListener() {
+        ln_HDX.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity) getActivity()).setClick(R.id.nav_hoaDonXuat);
             }
         });
-        binding.carHDN.setOnClickListener(new View.OnClickListener() {
+        ln_HDN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity) getActivity()).setClick(R.id.nav_hoaDonNhap);
@@ -81,9 +99,4 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        dao.close();
-    }
 }

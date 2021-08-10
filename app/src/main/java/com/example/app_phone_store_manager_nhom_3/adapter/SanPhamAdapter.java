@@ -79,7 +79,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             setImage(tenHang, holder.imgHang);
         } else {
             Bitmap bitmap = BitmapFactory.decodeByteArray(hang.getHinhAnh(), 0, hang.getHinhAnh().length);
-            holder.imgSP.setImageBitmap(bitmap);
+            holder.imgHang.setImageBitmap(bitmap);
         }
         holder.tvHang.setText(hang.getTenHang());
         holder.tvSLNhap.setText("Đang cập nhập");

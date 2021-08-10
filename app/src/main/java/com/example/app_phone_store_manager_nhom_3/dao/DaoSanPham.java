@@ -68,15 +68,24 @@ public class DaoSanPham {
         List<SanPham> list = getData(sql);
         return list;
     }
+
     public List<SanPham> getAllTen() {
         String sql = "SELECT * FROM SanPham ORDER BY tenSP ASC";
         List<SanPham> list = getData(sql);
         return list;
     }
+
     public List<SanPham> getAllMa() {
         String sql = "SELECT * FROM SanPham ORDER BY maSP ASC";
         List<SanPham> list = getData(sql);
         return list;
+    }
+
+    public int getCountma() {
+        String sql = "SELECT COUNT(*) AS SoLuong FROM SanPham";
+        Cursor cursor = database.rawQuery(sql, null);
+        cursor.moveToFirst();
+        return cursor.getInt(cursor.getColumnIndex("SoLuong"));
     }
 
     public SanPham getMaSP(String maSP) {

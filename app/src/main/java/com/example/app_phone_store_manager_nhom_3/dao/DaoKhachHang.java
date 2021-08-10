@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.app_phone_store_manager_nhom_3.database.DbHelper;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
@@ -61,10 +62,11 @@ public class DaoKhachHang {
         return list.get(0);
     }
 
-    public List<KhachHang> getCountma() {
-        String sql = "SELECT COUNT(maKH) FROM KhachHang";
-        List<KhachHang> list = getData(sql);
-        return list;
+    public int getCountma() {
+        String sql = "SELECT COUNT(*) AS SoLuong FROM KhachHang";
+        Cursor cursor = database.rawQuery(sql, null);
+        cursor.moveToFirst();
+        return cursor.getInt(cursor.getColumnIndex("SoLuong"));
     }
 
     public List<KhachHang> getAllSXTenKH() {
