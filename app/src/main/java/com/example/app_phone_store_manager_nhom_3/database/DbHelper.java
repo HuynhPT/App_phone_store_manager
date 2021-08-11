@@ -43,7 +43,7 @@ public class DbHelper extends SQLiteOpenHelper {
         //Tạo bảng Sản Phẩm
         String createTableSanPham = "CREATE TABLE SanPham(" +
                 "maSP TEXT NOT NULL PRIMARY KEY," +
-                "maHang TEXT NOT NULL REFERENCES Hang(maHang)," +
+                "maHang TEXT NOT NULL REFERENCES Hang(maHang) ON UPDATE CASCADE ON DELETE CASCADE," +
                 "tenSP TEXT NOT NULL," +
                 "hinhAnh BOLD," +
                 "phanLoai INTEGER NOT NULL," +
@@ -55,7 +55,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // Tạo bảng thuộc tính SP
         String createTableThuocTinhSanPham = "CREATE TABLE ThuocTinhSanPham(" +
                 "maTT INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "maSP TEXT NOT NULL REFERENCES SanPham(maSP)," +
+                "maSP TEXT NOT NULL REFERENCES SanPham(maSP) ON UPDATE CASCADE ON DELETE CASCADE," +
                 "boNho TEXT," +
                 "RAM TEXT," +
                 "chipSet TEXT," +
@@ -68,21 +68,21 @@ public class DbHelper extends SQLiteOpenHelper {
         //Tạo bảng hóa đơn
         String createTableHoaDon = "CREATE TABLE HoaDon(" +
                 "maHD TEXT NOT NULL PRIMARY KEY," +
-                "maNV TEXT NOT NULL REFERENCES NhanVien(maNV)," +
+                "maNV TEXT NOT NULL REFERENCES NhanVien(maNV) ON UPDATE CASCADE ON DELETE CASCADE," +
                 "maKH TEXT REFERENCES KhachHang(maKH)," +
                 "phanLoai INTEGER NOT NULL," +
-                "trangThai INTEGER NOT NULL," +
+                "trangThai INTEGER," +
                 "ngay TEXT NOT NULL)";
         db.execSQL(createTableHoaDon);
         //Tạo bảng Chi tiết HĐ
         String createTableChiTietHoaDon = "CREATE TABLE ChiTietHoaDon(" +
-                "maHD NOT NULL REFERENCES HoaDon(maHD)," +
-                "maSP NOT NULL REFERENCES SanPham(maSP)," +
+                "maCTHD INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "maHD NOT NULL REFERENCES HoaDon(maHD) ON UPDATE CASCADE ON DELETE CASCADE," +
+                "maSP NOT NULL REFERENCES SanPham(maSP) ON UPDATE CASCADE ON DELETE CASCADE," +
                 "soLuong INTEGER NOT NULL," +
-                "giamGia TEXT NOT NULL," +
+                "giamGia TEXT," +
                 "donGia TEXT NOT NULL," +
-                "baoHanh INTEGER," +
-                "PRIMARY KEY (maHD, maSP))";
+                "baoHanh INTEGER)";
         db.execSQL(createTableChiTietHoaDon);
     }
 
@@ -110,15 +110,14 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String dropTableChiTietHoaDon = "DROP TABLE IF EXISTS ChiTietHoaDon";
         db.execSQL(dropTableChiTietHoaDon);
-        //Khởi tạo lại CSDL
         onCreate(db);
     }
-    //Bật rằng buộc khóa ngoại SQLite
-//    @Override
-//    public void onOpen(SQLiteDatabase db) {
-//        super.onOpen(db);
-//        if (!db.isReadOnly()) {
-//            db.execSQL("PRAGMA forengin_key = ON");
-//        }
-//    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        if (!db.isReadOnly()) {
+            db.execSQL("PRAGMA foreign_keys = ON");
+        }
+    }
 }

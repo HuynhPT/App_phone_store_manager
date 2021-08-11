@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.example.app_phone_store_manager_nhom_3.R;
 import com.example.app_phone_store_manager_nhom_3.adapter.SanPhamAdapter;
+import com.example.app_phone_store_manager_nhom_3.dao.DaoCTHD;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoSanPham;
 import com.example.app_phone_store_manager_nhom_3.databinding.FragmentListSanPhamBinding;
 import com.example.app_phone_store_manager_nhom_3.model.SanPham;

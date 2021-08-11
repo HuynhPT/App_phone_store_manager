@@ -84,7 +84,7 @@
         android:id="@+id/lnlNguoiTaoNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="2dp"
         android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,36 +110,6 @@
             android:textSize="@dimen/text_little" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/lnlTrangThaiNhap"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_height"
-        android:layout_marginTop="1dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lnlNguoiTaoNhap">
-
-        <TextView
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:paddingLeft="@dimen/padding_defaut"
-            android:text="@string/status"
-            android:textSize="@dimen/text_little" />
-
-        <TextView
-            android:id="@+id/tvTrangThaiNhap"
-            style="@style/custom_TV"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:textSize="@dimen/text_little" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/tvCTHDN"
         android:layout_width="wrap_content"
@@ -150,7 +120,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/text_small"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lnlTrangThaiNhap"
+        app:layout_constraintTop_toBottomOf="@+id/lnlNguoiTaoNhap"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
@@ -187,7 +157,7 @@
         android:id="@+id/lnlTinhTrangNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="2dp"
         android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -217,15 +187,13 @@
         android:id="@+id/lnlSlNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
-        android:layout_marginBottom="1dp"
+        android:layout_marginTop="2dp"
         android:background="@color/white"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lnlTinhTrangNhap"
-        app:layout_constraintVertical_bias="0.010">
+        app:layout_constraintTop_toBottomOf="@+id/lnlTinhTrangNhap">
 
         <TextView
             style="@style/custom_TV"
@@ -249,7 +217,7 @@
         android:id="@+id/lnlDonGiaNhap"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="2dp"
         android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
