@@ -72,8 +72,7 @@ public class LoginActivity extends AppCompatActivity {
         String user = edUser.getText().toString();
         String pass = edPass.getText().toString();
         if (user.isEmpty() || pass.isEmpty()) {
-            Toast.makeText(getBaseContext(), "Nhập đầy đủ thông tin \n " +
-                    "Không được để trống! ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Bạn cần nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
         } else {
             if (dao.getlogin(user, pass) > 0) {
                 rememberUser(user, pass, ckbLuuTK.isChecked());
@@ -85,8 +84,8 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
 
             } else {
-                Toast.makeText(getBaseContext(), "Đăng Nhập Thất Bại! \n " +
-                        "Sai thông tin tài khoản, mật khẩu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Đăng Nhập Thất Bại!" +
+                        "\nSai thông tin tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
             }
         }
     }

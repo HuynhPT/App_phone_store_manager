@@ -38,6 +38,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:endIconMode="clear_text"
+        android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +52,9 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/date"
-            android:inputType="date" />
+            android:inputType="textNoSuggestions"
+            android:focusable="false"
+            android:clickable="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -64,6 +67,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilNgayNhapChange"
         app:startIconDrawable="@drawable/ic_hang">
@@ -76,13 +80,10 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/san_pham"
-            android:inputType="textPersonName" />
+            android:inputType="textNoSuggestions"
+            android:focusable="false"
+            android:clickable="true"/>
 
-        <Spinner
-            android:id="@+id/SpnSpNhapChange"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-35dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -131,40 +132,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/don_gia"
-            android:inputType="number" />
+            android:hint="@string/don_gia" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilTTChange"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilDonGiaNhapChange"
-        app:startIconDrawable="@drawable/ic_status">
-
-        <EditText
-            android:id="@+id/edTTHDNhapChange"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/status"
-            android:inputType="textPersonName" />
-
-        <Spinner
-            android:id="@+id/SpnTrangThaiNhapChange"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-35dp" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilTongTienNhapChange"
@@ -178,7 +148,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilTTChange"
+        app:layout_constraintTop_toBottomOf="@+id/tilDonGiaNhapChange"
         app:startIconDrawable="@drawable/ic_money">
 
         <EditText
@@ -187,8 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/money"
-            android:inputType="number" />
+            android:hint="@string/money" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,67 +35,43 @@
 
         <TextView
             android:id="@+id/tvTinhTrangSPItem"
-            style="@style/custom_TV_show"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:layout_marginEnd="8dp"
             android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/tvPhanLoaiSPItem"
+            app:layout_constraintTop_toBottomOf="@+id/tvTenSPItem" />
+
+        <TextView
+            android:id="@+id/tvPhanLoaiSPItem"
+            style="@style/custom_TV_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/imgSPItem"
             app:layout_constraintTop_toBottomOf="@+id/tvTenSPItem" />
 
         <TextView
-            android:id="@+id/tvMaSPItem4"
+            android:id="@+id/tvCTSPItem"
             style="@style/custom_TV_show"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:text="@string/sl_nhap"
+            android:text="TextView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTinhTrangSPItem" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPhanLoaiSPItem" />
 
         <TextView
-            android:id="@+id/tvSLNhapItem"
+            android:id="@+id/tvMTSPItem"
+            style="@style/custom_TV_show"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:layout_marginTop="1dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/soluong"
-            android:textColor="@color/green"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/imgHangSPItem"
-            app:layout_constraintStart_toEndOf="@+id/tvMaSPItem4"
-            app:layout_constraintTop_toBottomOf="@+id/tvTinhTrangSPItem" />
-
-        <TextView
-            android:id="@+id/tvSLXuatItem"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/soluong"
-            android:textColor="@color/green"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/imgHangSPItem"
-            app:layout_constraintStart_toEndOf="@+id/tvMaSPItem5"
-            app:layout_constraintTop_toBottomOf="@+id/tvSLNhapItem" />
-
-        <TextView
-            android:id="@+id/tvTonKhoItem"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/soluong"
-            android:textColor="@color/green"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/tvHangSPItem"
-            app:layout_constraintStart_toEndOf="@+id/tvMaSPItem6"
-            app:layout_constraintTop_toBottomOf="@+id/tvSLXuatItem" />
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCTSPItem" />
 
         <TextView
             android:id="@+id/tvTrangThaiSPItem"
@@ -103,35 +79,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="1dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:text="@string/status"
             android:textColor="@color/orange"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imgDeleteSPItem"
+            app:layout_constraintBottom_toBottomOf="@+id/tvMaSPItem14"
             app:layout_constraintStart_toEndOf="@+id/tvMaSPItem14"
             app:layout_constraintTop_toBottomOf="@+id/tvGiaTienSPItem" />
-
-        <TextView
-            android:id="@+id/tvMaSPItem5"
-            style="@style/custom_TV_show"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:text="@string/sl_xuat"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMaSPItem4" />
-
-        <TextView
-            android:id="@+id/tvMaSPItem6"
-            style="@style/custom_TV_show"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:text="@string/sl_ton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMaSPItem5" />
 
         <TextView
             android:id="@+id/tvHangSPItem"
@@ -169,7 +122,7 @@
             android:textSize="@dimen/text_medium"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMaSPItem6" />
+            app:layout_constraintTop_toBottomOf="@+id/tvMTSPItem" />
 
         <TextView
             android:id="@+id/tvMaSPItem14"
@@ -190,15 +143,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="32dp"
             android:text="@string/sp_money"
             android:textColor="@color/red"
             android:textSize="@dimen/text_medium"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/tvHangSPItem"
-            app:layout_constraintStart_toEndOf="@+id/tvMaSPItem8"
-            app:layout_constraintTop_toBottomOf="@+id/tvTonKhoItem" />
+            app:layout_constraintBottom_toBottomOf="@+id/tvMaSPItem8"
+            app:layout_constraintStart_toEndOf="@+id/tvMaSPItem8" />
 
         <ImageView
             android:id="@+id/imgHangSPItem"
@@ -207,7 +157,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/tvHangSPItem"
             app:layout_constraintStart_toStartOf="@+id/tvHangSPItem"
-            app:layout_constraintTop_toBottomOf="@+id/tvTinhTrangSPItem"
+            app:layout_constraintTop_toBottomOf="@+id/tvTenSPItem"
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView

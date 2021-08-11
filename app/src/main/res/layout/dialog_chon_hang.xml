@@ -16,7 +16,7 @@
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleDL" />
 
     <Button
         android:id="@+id/btnCancelChonHang"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rvChonHang" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tvTitleDL"
         android:layout_width="0dp"
         android:layout_height="@dimen/item_height"
         android:background="@color/bg_title"

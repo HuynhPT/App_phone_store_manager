@@ -104,7 +104,6 @@ public class ChonHangAdapter extends RecyclerView.Adapter<ChonHangAdapter.ViewHo
         }
     }
 
-
     public int getRandomColor() {
         Random rnd = new Random();
         return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));

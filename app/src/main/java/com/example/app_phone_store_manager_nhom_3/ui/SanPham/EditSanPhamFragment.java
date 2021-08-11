@@ -391,53 +391,61 @@ public class EditSanPhamFragment extends Fragment {
 
 
     public boolean checkSP() {
-        try {
 
-            if (binding.cbSPDienThoaiChange.isChecked()) {
-                if (binding.edMaSPChange.getText().length() == 0 ||
-                        binding.edTenSPChange.getText().length() == 0 ||
-                        binding.edHangSPChange.getText().length() == 0 ||
-                        binding.edGiaTienSPChange.getText().length() == 0 ||
-                        binding.edMoTaSPChange.getText().length() == 0 ||
-                        binding.edBoNhoSPChange.getText().length() == 0 ||
-                        binding.edRAMSPChange.getText().length() == 0 ||
-                        binding.edChipSetSPChange.getText().length() == 0 ||
-                        binding.edOSSPChange.getText().length() == 0 ||
-                        binding.edManHinhSPChange.getText().length() == 0 ||
-                        binding.edPinSPChange.getText().length() == 0 ||
-                        binding.edTypeSPChange.getText().length() == 0) {
-                    Toast.makeText(appCompatActivity, "Bạn phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-            } else {
-                if (binding.edMaSPChange.getText().length() == 0 ||
-                        binding.edTenSPChange.getText().length() == 0 ||
-                        binding.edHangSPChange.getText().length() == 0 ||
-                        binding.edGiaTienSPChange.getText().length() == 0 ||
-                        binding.edMoTaSPChange.getText().length() == 0 ||
-                        binding.edLoaiPKSPChange.getText().length() == 0) {
-                    Toast.makeText(appCompatActivity, "Bạn phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-            }
-            if (binding.edMaSPChange.getText().length() < 6 || binding.edMaSPChange.getText().length() > 10) {
-                Toast.makeText(appCompatActivity, "Mã sản phẩm có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
+        if (binding.cbSPDienThoaiChange.isChecked()) {
+            if (binding.edMaSPChange.getText().length() == 0 ||
+                    binding.edTenSPChange.getText().length() == 0 ||
+                    binding.edHangSPChange.getText().length() == 0 ||
+                    binding.edGiaTienSPChange.getText().length() == 0 ||
+                    binding.edMoTaSPChange.getText().length() == 0 ||
+                    binding.edBoNhoSPChange.getText().length() == 0 ||
+                    binding.edRAMSPChange.getText().length() == 0 ||
+                    binding.edChipSetSPChange.getText().length() == 0 ||
+                    binding.edOSSPChange.getText().length() == 0 ||
+                    binding.edManHinhSPChange.getText().length() == 0 ||
+                    binding.edPinSPChange.getText().length() == 0 ||
+                    binding.edTypeSPChange.getText().length() == 0) {
+                Toast.makeText(appCompatActivity, "Bạn phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            if (!binding.edTenSPChange.getText().toString().substring(0, 1).toUpperCase().equals(binding.edTenSPChange.getText().toString().substring(0, 1))) {
-                Toast.makeText(appCompatActivity, "Chữ cái đầu tiên tên sản phảm phải viết hoa", Toast.LENGTH_SHORT).show();
+        } else {
+            if (binding.edMaSPChange.getText().length() == 0 ||
+                    binding.edTenSPChange.getText().length() == 0 ||
+                    binding.edHangSPChange.getText().length() == 0 ||
+                    binding.edGiaTienSPChange.getText().length() == 0 ||
+                    binding.edMoTaSPChange.getText().length() == 0 ||
+                    binding.edLoaiPKSPChange.getText().length() == 0) {
+                Toast.makeText(appCompatActivity, "Bạn phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            giaTien = Double.parseDouble(binding.edGiaTienSPChange.getText().toString());
-            if (giaTien < 0) {
-                Toast.makeText(appCompatActivity, "Giá tiền không phải là số âm", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            return true;
-        } catch (Exception e) {
-            Toast.makeText(appCompatActivity, "Giá tiền phải là số", Toast.LENGTH_SHORT).show();
+        }
+        if (binding.edMaSPChange.getText().length() < 6 || binding.edMaSPChange.getText().length() > 10) {
+            Toast.makeText(appCompatActivity, "Mã sản phẩm có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
             return false;
         }
+        if (!binding.edTenSPChange.getText().toString().substring(0, 1).toUpperCase().equals(binding.edTenSPChange.getText().toString().substring(0, 1))) {
+            Toast.makeText(appCompatActivity, "Chữ cái đầu tiên tên sản phảm phải viết hoa", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        giaTien = Double.parseDouble(binding.edGiaTienSPChange.getText().toString());
+        if (giaTien < 0) {
+            Toast.makeText(appCompatActivity, "Giá tiền không phải là số âm", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (binding.edGiaTienSPChange.getText().length() > 0) {
+            try {
+                giaTien = Double.parseDouble(binding.edGiaTienSPChange.getText().toString());
+                if (giaTien < 0) {
+                    Toast.makeText(appCompatActivity, "Giá tiền không phải là số âm", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            } catch (Exception e) {
+                Toast.makeText(appCompatActivity, "Giá tiền phải là số", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+        return true;
+
     }
 
 
@@ -553,8 +561,6 @@ public class EditSanPhamFragment extends Fragment {
                     sanPham.setGiaTien(giaTien);
                     sanPham.setTrangThai(trangThai);
                     sanPham.setMoTa(moTa);
-                    Log.e("New", maSP);
-                    Log.e("Old", maSPOld);
 
                     int kq = daoSP.update(sanPham, maSPOld);
 

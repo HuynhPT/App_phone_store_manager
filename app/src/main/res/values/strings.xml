@@ -84,11 +84,13 @@
     <string name="hd_deital">Chi tiết hóa đơn</string>
     <string name="sp_tinhtrang">Tình trạng sản phẩm</string>
     <string name="money">Thành tiền</string>
+    <string name="money_show">Thành tiền:</string>
     <string name="proted">Bảo hành</string>
     <string name="proted_no">Không bảo hành</string>
     <string name="proted_tittle">6 tháng</string>
     <string name="proted_big">12 tháng</string>
     <string name="don_gia">Đơn giá</string>
+    <string name="don_gia_show">Đơn giá:</string>
     <string name="hd_title">Hóa đơn</string>
     <string name="sale">Khuyến mãi</string>
     <string name="nv_ban">Nhân viên bán</string>
@@ -114,5 +116,12 @@
         <item>A-Z theo Tên</item>
         <item>A-Z theo Mã</item>
         <item>A-Z theo TK</item>
+    </string-array>
+
+    <string-array name="date">
+        <item>Tất cả</item>
+        <item>Hôm nay</item>
+        <item>7 ngày</item>
+        <item>30 ngày</item>
     </string-array>
 </resources>

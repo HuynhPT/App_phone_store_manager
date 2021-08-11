@@ -16,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.app_phone_store_manager_nhom_3.R;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoHang;
+import com.example.app_phone_store_manager_nhom_3.dao.DaoThuocTinhSanPham;
 import com.example.app_phone_store_manager_nhom_3.model.Hang;
 import com.example.app_phone_store_manager_nhom_3.model.SanPham;
+import com.example.app_phone_store_manager_nhom_3.model.ThuocTinhSanPham;
 import com.example.app_phone_store_manager_nhom_3.utilities.ItemSanPhamClick;
 
 import org.jetbrains.annotations.NotNull;
@@ -30,6 +32,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     private List<SanPham> list;
     private Context context;
     private DaoHang daoHang;
+    private DaoThuocTinhSanPham daoTTSP;
     private TextDrawable textDrawable;
     private ItemSanPhamClick itemDelete;
     private ItemSanPhamClick itemClick;
@@ -71,7 +74,10 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
 
         daoHang = new DaoHang(context);
         daoHang.open();
+        daoTTSP = new DaoThuocTinhSanPham(context);
+        daoTTSP.open();
 
+        ThuocTinhSanPham ttSP = daoTTSP.getMaSP(sanPham.getMaSP());
         Hang hang = daoHang.getMaHang(sanPham.getMaHang());
 
         if (hang.getHinhAnh() == null) {
@@ -82,26 +88,31 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             holder.imgHang.setImageBitmap(bitmap);
         }
         holder.tvHang.setText(hang.getTenHang());
-        holder.tvSLNhap.setText("Đang cập nhập");
-        holder.tvSLXuat.setText("Đang cập nhập");
-        holder.tvTonKho.setText("Đang cập nhập");
+        if (sanPham.getPhanLoai()>0){
+            holder.tvPLSP.setText("Loại: Phụ kiện  ");
+            holder.tvCTSP.setText("Loại phụ kiện: " + ttSP.getLoaiPhuKien());
+        }else {
+            holder.tvPLSP.setText("Loại: Điện thoại  ");
+            holder.tvCTSP.setText("RAM: " + ttSP.getRAM() +"  -  Bộ nhớ: "+ ttSP.getBoNho());
+        }
 
+        daoTTSP.close();
         daoHang.close();
 
         holder.tvMaSP.setText("Mã sản phẩm: " + sanPham.getMaSP());
         holder.tvTenSP.setText("Sản phẩm: " + sanPham.getTenSP());
         switch (sanPham.getTinhTrang()) {
             case 0:
-                holder.tvTinhTrang.setText("Tình trạng: Like new 99%");
+                holder.tvTinhTrang.setText("-  Tình trạng: Like new 99%");
                 break;
             case 1:
-                holder.tvTinhTrang.setText("Tình trạng: Mới 100%");
+                holder.tvTinhTrang.setText("-  Tình trạng: Mới 100%");
                 break;
             default:
-                holder.tvTinhTrang.setText("Tình trạng: Cũ");
+                holder.tvTinhTrang.setText("-  Tình trạng: Cũ");
                 break;
         }
-
+        holder.tvMTSP.setText("Mô tả: "+ sanPham.getMoTa());
 
         DecimalFormat formatter = new DecimalFormat("###,###,###");
         holder.tvGiaTien.setText(formatter.format(sanPham.getGiaTien()) + " đ");
@@ -110,6 +121,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             holder.tvTrangThai.setText("Chưa lưu kho");
         } else {
             holder.tvTrangThai.setText("Đã lưu kho");
+            holder.tvTrangThai.setTextColor(context.getResources().getColor(R.color.green));
         }
 
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
@@ -143,7 +155,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgSP, imgHang, imgDelete;
-        TextView tvMaSP, tvTenSP, tvTinhTrang, tvSLNhap, tvSLXuat, tvTonKho, tvGiaTien, tvTrangThai, tvHang;
+        TextView tvMaSP, tvTenSP, tvTinhTrang,tvPLSP,  tvMTSP, tvCTSP, tvGiaTien, tvTrangThai, tvHang;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -153,9 +165,9 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             tvMaSP = itemView.findViewById(R.id.tvMaSPItem);
             tvTenSP = itemView.findViewById(R.id.tvTenSPItem);
             tvTinhTrang = itemView.findViewById(R.id.tvTinhTrangSPItem);
-            tvSLNhap = itemView.findViewById(R.id.tvSLNhapItem);
-            tvSLXuat = itemView.findViewById(R.id.tvSLXuatItem);
-            tvTonKho = itemView.findViewById(R.id.tvTonKhoItem);
+            tvMTSP = itemView.findViewById(R.id.tvMTSPItem);
+            tvPLSP = itemView.findViewById(R.id.tvPhanLoaiSPItem);
+            tvCTSP = itemView.findViewById(R.id.tvCTSPItem);
             tvGiaTien = itemView.findViewById(R.id.tvGiaTienSPItem);
             tvTrangThai = itemView.findViewById(R.id.tvTrangThaiSPItem);
             tvHang = itemView.findViewById(R.id.tvHangSPItem);
