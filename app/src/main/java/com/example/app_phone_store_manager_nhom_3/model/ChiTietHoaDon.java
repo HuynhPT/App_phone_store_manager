@@ -8,6 +8,7 @@ public class ChiTietHoaDon {
     private double donGia;
     private int giamGia;
     private int baoHanh;
+    private String ngay;
 
     public ChiTietHoaDon() {
     }
@@ -79,5 +80,13 @@ public class ChiTietHoaDon {
 
     public void setBaoHanh(int baoHanh) {
         this.baoHanh = baoHanh;
+    }
+
+    public String getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
     }
 }

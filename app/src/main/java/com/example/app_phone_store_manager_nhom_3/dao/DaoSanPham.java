@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.app_phone_store_manager_nhom_3.database.DbHelper;
 import com.example.app_phone_store_manager_nhom_3.model.SanPham;
+import com.example.app_phone_store_manager_nhom_3.model.Top10SanPham;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,6 +108,20 @@ public class DaoSanPham {
             sanPham.setTrangThai(cursor.getInt(cursor.getColumnIndex(SanPham.TB_COL_STATUS)));
             sanPham.setMoTa(cursor.getString(cursor.getColumnIndex(SanPham.TB_COL_NOTE)));
             list.add(sanPham);
+        }
+        return list;
+    }
+
+    public List<Top10SanPham> getTop() {
+        List<Top10SanPham> list = new ArrayList<>();
+        String selectTop = "SELECT maSP, count(maSP) AS soLuong FROM ChiTietHoaDon GROUP BY maSP ORDER BY soLuong DESC LIMIT 10";
+        Cursor cursor = database.rawQuery(selectTop, null);
+        while (cursor.moveToNext()) {
+            Top10SanPham top = new Top10SanPham();
+            SanPham sanPham = getMaSP(cursor.getString(cursor.getColumnIndex("maSP")));
+            top.setTenSP(sanPham.getTenSP());
+            top.setSoLuong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("soLuong"))));
+            list.add(top);
         }
         return list;
     }

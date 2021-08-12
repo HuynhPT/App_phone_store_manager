@@ -95,4 +95,17 @@ public class DaoCTHD {
         }
         return list;
     }
+
+    public int getDoanhThu(String startDay, String endDay) {
+        String doanhThu = "SELECT SUM(donGia) AS doanhThu FROM ChiTietHoaDon WHERE ngay >= ? AND ngay <= ?";
+        Cursor cursor = database.rawQuery(doanhThu, new String[]{startDay, endDay});
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+    }
+
+    public List<ChiTietHoaDon> getDoanhThuCT(String startDay, String endDay) {
+        String sql = "SELECT * FROM ChiTietHoaDon WHERE ngay >= ? AND ngay <= ? ORDER BY ngay";
+        List<ChiTietHoaDon> list = getData(sql, startDay, endDay);
+        return list;
+    }
 }
