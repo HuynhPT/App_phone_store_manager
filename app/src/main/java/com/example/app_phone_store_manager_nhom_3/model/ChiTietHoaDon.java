@@ -5,9 +5,12 @@ public class ChiTietHoaDon {
     private String maHD;
     private String maSP;
     private int soLuong;
-    private Double donGia;
-    private String giamGia;
+    private double donGia;
+    private int giamGia;
     private int baoHanh;
+
+    public ChiTietHoaDon() {
+    }
 
     public static final String TB_NAME = "ChiTietHoaDon";
     public static final String TB_COL_ID_HD = "maHD";
@@ -58,11 +61,15 @@ public class ChiTietHoaDon {
         this.donGia = donGia;
     }
 
-    public String getGiamGia() {
+    public void setDonGia(double donGia) {
+        this.donGia = donGia;
+    }
+
+    public int getGiamGia() {
         return giamGia;
     }
 
-    public void setGiamGia(String giamGia) {
+    public void setGiamGia(int giamGia) {
         this.giamGia = giamGia;
     }
 
