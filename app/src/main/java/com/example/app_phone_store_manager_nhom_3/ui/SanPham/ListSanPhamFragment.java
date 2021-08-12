@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -30,7 +29,6 @@ import android.widget.Toast;
 
 import com.example.app_phone_store_manager_nhom_3.R;
 import com.example.app_phone_store_manager_nhom_3.adapter.SanPhamAdapter;
-import com.example.app_phone_store_manager_nhom_3.dao.DaoCTHD;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoSanPham;
 import com.example.app_phone_store_manager_nhom_3.databinding.FragmentListSanPhamBinding;
 import com.example.app_phone_store_manager_nhom_3.model.SanPham;

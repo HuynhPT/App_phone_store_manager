@@ -93,6 +93,7 @@
     <string name="don_gia_show">Đơn giá:</string>
     <string name="hd_title">Hóa đơn</string>
     <string name="sale">Khuyến mãi</string>
+    <string name="sale_show">Khuyến mãi:</string>
     <string name="nv_ban">Nhân viên bán</string>
     <string name="chup_anh">Chụp ảnh</string>
     <string name="chon_file">Tải ảnh lên</string>
@@ -123,5 +124,21 @@
         <item>Hôm nay</item>
         <item>7 ngày</item>
         <item>30 ngày</item>
+    </string-array>
+
+    <string-array name="tinhTrang">
+        <item>Đang xử lý</item>
+        <item>Đã được xử lý</item>
+        <item>Vận chuyển</item>
+        <item>Hoàn thành</item>
+    </string-array>
+    <string-array name="khuyenMai">
+        <item>Không khuyến mãi</item>
+        <item>5%</item>
+        <item>10%</item>
+        <item>15%</item>
+        <item>20%</item>
+        <item>25%</item>
+        <item>30%</item>
     </string-array>
 </resources>

@@ -57,29 +57,48 @@ public class DaoHD {
 
         return database.update(HoaDon.TB_NAME, values, "maHD = ?", new String[]{maHD});
     }
-    public List<HoaDon> getAll() {
-        String sql = "SELECT * FROM HoaDon";
+    public List<HoaDon> getAllNhap() {
+        String sql = "SELECT * FROM HoaDon WHERE phanLoai = 0";
         List<HoaDon> list = getData(sql);
         return list;
     }
-
+    public List<HoaDon> getAllXuat() {
+        String sql = "SELECT * FROM HoaDon WHERE phanLoai = 1";
+        List<HoaDon> list = getData(sql);
+        return list;
+    }
     public HoaDon getMaHD(String maHD){
         String sql = "SELECT * FROM HoaDon WHERE maHD = ?";
         List<HoaDon> list = getData(sql, maHD);
         return  list.get(0);
     }
+    public List<HoaDon> getDaysXuat(){
+        String sql = "SELECT * FROM HoaDon WHERE ngay >= DATETIME('now', '-1 day') AND phanLoai = 1";
+        List<HoaDon> list = getData(sql);
+        return list;
+    }
+    public List<HoaDon> getWeekXuat(){
+        String sql = "SELECT * FROM HoaDon WHERE ngay > DATETIME('now', '-7 day') AND phanLoai = 1 ";
+        List<HoaDon> list = getData(sql);
+        return list;
+    }
+    public List<HoaDon> getMonthXuat(){
+        String sql = "SELECT * FROM HoaDon WHERE ngay > DATETIME('now', '-30 day') AND phanLoai = 1";
+        List<HoaDon> list = getData(sql);
+        return list;
+    }
     public List<HoaDon> getDays(){
-        String sql = "SELECT * FROM HoaDon WHERE ngay >= DATETIME('now', '-1 day') ";
+        String sql = "SELECT * FROM HoaDon WHERE ngay >= DATETIME('now', '-1 day') AND phanLoai = 0";
         List<HoaDon> list = getData(sql);
         return list;
     }
     public List<HoaDon> getWeek(){
-        String sql = "SELECT * FROM HoaDon WHERE ngay > DATETIME('now', '-7 day')";
+        String sql = "SELECT * FROM HoaDon WHERE ngay > DATETIME('now', '-7 day') AND phanLoai = 0 ";
         List<HoaDon> list = getData(sql);
         return list;
     }
     public List<HoaDon> getMonth(){
-        String sql = "SELECT * FROM HoaDon WHERE ngay > DATETIME('now', '-30 day')";
+        String sql = "SELECT * FROM HoaDon WHERE ngay > DATETIME('now', '-30 day') AND phanLoai = 0";
         List<HoaDon> list = getData(sql);
         return list;
     }
