@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/hd_title"
             android:textColor="@color/black"
             android:textSize="@dimen/text_small"
@@ -70,7 +70,7 @@
             android:id="@+id/lnlNgayTaoXuat"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +100,7 @@
             android:id="@+id/lnlNvBanXuat"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -130,7 +130,7 @@
             android:id="@+id/lnlNguoiTaoXuat"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +160,7 @@
             android:id="@+id/lnlTrangThaiXuat"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -191,7 +191,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/hd_deital"
             android:textColor="@color/black"
             android:textSize="@dimen/text_small"
@@ -203,7 +203,7 @@
             android:id="@+id/lnlTenSpXuat"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -230,46 +230,16 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lnlTinhTrangXuat"
+            android:id="@+id/lnlSlXuat"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lnlTenSpXuat">
-
-            <TextView
-                style="@style/custom_TV"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:paddingLeft="@dimen/padding_defaut"
-                android:text="@string/sp_tinhtrang"
-                android:textSize="@dimen/text_little" />
-
-            <TextView
-                android:id="@+id/tvTinhTrangXuat"
-                style="@style/custom_TV"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:textSize="@dimen/text_little" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lnlSlXuat"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnlTinhTrangXuat">
 
             <TextView
                 style="@style/custom_TV"
@@ -293,7 +263,7 @@
             android:id="@+id/lnlDonGiaXuat"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -323,7 +293,7 @@
             android:id="@+id/lnlBaoHanhXuat"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -353,7 +323,7 @@
             android:id="@+id/lnlGiamGiaXuat"
             android:layout_width="0dp"
             android:layout_height="@dimen/item_height"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp"
             android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -367,7 +337,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:paddingLeft="@dimen/padding_defaut"
-                android:text="Giảm Giá"
+                android:text="@string/sale"
                 android:textSize="@dimen/text_little" />
 
             <TextView
@@ -399,7 +369,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:paddingLeft="@dimen/padding_defaut"
-                android:text="Thành Tiền"
+                android:text="@string/money"
                 android:textSize="@dimen/text_little" />
 
             <TextView

@@ -69,7 +69,11 @@ public class DaoSanPham {
         List<SanPham> list = getData(sql);
         return list;
     }
-
+    public List<SanPham> getAllSPBan() {
+        String sql = "SELECT * FROM SanPham WHERE trangThai = 1";
+        List<SanPham> list = getData(sql);
+        return list;
+    }
     public List<SanPham> getAllTen() {
         String sql = "SELECT * FROM SanPham ORDER BY tenSP ASC";
         List<SanPham> list = getData(sql);

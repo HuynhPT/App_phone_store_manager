@@ -98,7 +98,7 @@ public class HoaDonNhapAdapter extends RecyclerView.Adapter<HoaDonNhapAdapter.Vi
         holder.tvDonGia.setText(formatter.format(chiTietHoaDon.getDonGia()) + " đ");
         holder.tvSL.setText("Số lượng: " + chiTietHoaDon.getSoLuong());
         double thanhTien = chiTietHoaDon.getDonGia() * chiTietHoaDon.getSoLuong();
-        holder.tvThanhTien.setText(formatter.format(thanhTien)+" đ");
+        holder.tvThanhTien.setText(formatter.format(thanhTien) + " đ");
         daoCTHD.close();
         daoSanPham.close();
 
@@ -123,10 +123,12 @@ public class HoaDonNhapAdapter extends RecyclerView.Adapter<HoaDonNhapAdapter.Vi
         }
         return list.size();
     }
+
     public void filter(List<HoaDon> list) {
         this.list = list;
         notifyDataSetChanged();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvMaHD, tvTenSP, tvTTSP, tvSL, tvNgayNhap, tvDonGia, tvThanhTien;
         ImageView imgDelete, imgSP;
@@ -145,6 +147,7 @@ public class HoaDonNhapAdapter extends RecyclerView.Adapter<HoaDonNhapAdapter.Vi
             imgSP = itemView.findViewById(R.id.imgSPHDNItem);
         }
     }
+
     public int getRandomColor() {
         Random rnd = new Random();
         return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));

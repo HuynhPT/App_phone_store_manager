@@ -127,7 +127,7 @@ public class ListHoaDonNhapFragment extends Fragment {
 
     private void setViewData() {
         list = new ArrayList<>();
-        list = daoHD.getAll();
+        list = daoHD.getAllNhap();
         adapter = new HoaDonNhapAdapter(list, appCompatActivity);
 
         binding.rvHDN.setAdapter(adapter);
@@ -176,7 +176,7 @@ public class ListHoaDonNhapFragment extends Fragment {
                 if (kq > 0) {
                     Toast.makeText(appCompatActivity, "Xóa thành công", Toast.LENGTH_SHORT).show();
                     list.clear();
-                    list.addAll(daoHD.getAll());
+                    list.addAll(daoHD.getAllNhap());
                     adapter.filter(list);
                 } else {
                     Toast.makeText(appCompatActivity, "Xóa thất bại", Toast.LENGTH_SHORT).show();
@@ -209,9 +209,9 @@ public class ListHoaDonNhapFragment extends Fragment {
                         list.addAll(daoHD.getMonth());
                         adapter.filter(list);
                         break;
-                    default:
+                    case 0:
                         list.clear();
-                        list.addAll(daoHD.getAll());
+                        list.addAll(daoHD.getAllNhap());
                         adapter.filter(list);
                         break;
                 }

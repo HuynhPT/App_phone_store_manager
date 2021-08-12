@@ -43,7 +43,7 @@ public class DbHelper extends SQLiteOpenHelper {
         //Tạo bảng Sản Phẩm
         String createTableSanPham = "CREATE TABLE SanPham(" +
                 "maSP TEXT NOT NULL PRIMARY KEY," +
-                "maHang TEXT NOT NULL REFERENCES Hang(maHang) ON UPDATE CASCADE ON DELETE CASCADE," +
+                "maHang TEXT NOT NULL REFERENCES Hang(maHang)," +
                 "tenSP TEXT NOT NULL," +
                 "hinhAnh BOLD," +
                 "phanLoai INTEGER NOT NULL," +
@@ -55,7 +55,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // Tạo bảng thuộc tính SP
         String createTableThuocTinhSanPham = "CREATE TABLE ThuocTinhSanPham(" +
                 "maTT INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "maSP TEXT NOT NULL REFERENCES SanPham(maSP) ON UPDATE CASCADE ON DELETE CASCADE," +
+                "maSP TEXT NOT NULL REFERENCES SanPham(maSP)," +
                 "boNho TEXT," +
                 "RAM TEXT," +
                 "chipSet TEXT," +
@@ -68,7 +68,7 @@ public class DbHelper extends SQLiteOpenHelper {
         //Tạo bảng hóa đơn
         String createTableHoaDon = "CREATE TABLE HoaDon(" +
                 "maHD TEXT NOT NULL PRIMARY KEY," +
-                "maNV TEXT NOT NULL REFERENCES NhanVien(maNV) ON UPDATE CASCADE ON DELETE CASCADE," +
+                "maNV TEXT NOT NULL REFERENCES NhanVien(maNV)," +
                 "maKH TEXT REFERENCES KhachHang(maKH)," +
                 "phanLoai INTEGER NOT NULL," +
                 "trangThai INTEGER," +
@@ -77,10 +77,10 @@ public class DbHelper extends SQLiteOpenHelper {
         //Tạo bảng Chi tiết HĐ
         String createTableChiTietHoaDon = "CREATE TABLE ChiTietHoaDon(" +
                 "maCTHD INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "maHD NOT NULL REFERENCES HoaDon(maHD) ON UPDATE CASCADE ON DELETE CASCADE," +
-                "maSP NOT NULL REFERENCES SanPham(maSP) ON UPDATE CASCADE ON DELETE CASCADE," +
+                "maHD NOT NULL REFERENCES HoaDon(maHD) ON DELETE CASCADE ON UPDATE CASCADE," +
+                "maSP NOT NULL REFERENCES SanPham(maSP)," +
                 "soLuong INTEGER NOT NULL," +
-                "giamGia TEXT," +
+                "giamGia INTEGER," +
                 "donGia TEXT NOT NULL," +
                 "baoHanh INTEGER)";
         db.execSQL(createTableChiTietHoaDon);

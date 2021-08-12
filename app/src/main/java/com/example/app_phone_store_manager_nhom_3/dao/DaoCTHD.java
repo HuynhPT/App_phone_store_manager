@@ -40,8 +40,8 @@ public class DaoCTHD {
         return database.insert(ChiTietHoaDon.TB_NAME, null, values);
     }
 
-    public int delete(String maCTHD) {
-        return database.delete(ChiTietHoaDon.TB_NAME, "maCTHD = ?", new String[]{maCTHD});
+    public int delete(ChiTietHoaDon chiTietHoaDon) {
+        return database.delete(ChiTietHoaDon.TB_NAME, "maCTHD = ?", new String[]{chiTietHoaDon.getIdCTHD() + ""});
     }
 
     public int update(ChiTietHoaDon chiTietHoaDon) {
@@ -54,7 +54,7 @@ public class DaoCTHD {
         values.put(ChiTietHoaDon.TB_COL_PRICE, chiTietHoaDon.getDonGia());
         values.put(ChiTietHoaDon.TB_COL_BH, chiTietHoaDon.getBaoHanh());
 
-        return database.update(ChiTietHoaDon.TB_NAME, values, "maCTHD = ?", new String[]{chiTietHoaDon.getIdCTHD()+""});
+        return database.update(ChiTietHoaDon.TB_NAME, values, "maCTHD = ?", new String[]{chiTietHoaDon.getIdCTHD() + ""});
     }
 
     public List<ChiTietHoaDon> getAll() {
@@ -64,9 +64,16 @@ public class DaoCTHD {
     }
 
     public ChiTietHoaDon getMaHD(String maHD) {
+        List<ChiTietHoaDon> list = new ArrayList<>();
         String sql = "SELECT * FROM ChiTietHoaDon WHERE maHD = ?";
-        List<ChiTietHoaDon> list = getData(sql, maHD);
+        list = getData(sql, maHD);
         return list.get(0);
+    }
+    public List<ChiTietHoaDon> getListMaHD(String maHD) {
+        List<ChiTietHoaDon> list = new ArrayList<>();
+        String sql = "SELECT * FROM ChiTietHoaDon WHERE maHD = ?";
+        list = getData(sql, maHD);
+        return list;
     }
 
     public List<ChiTietHoaDon> getData(String sql, String... args) {
@@ -80,7 +87,7 @@ public class DaoCTHD {
             chiTietHoaDon.setMaHD(cursor.getString(cursor.getColumnIndex(ChiTietHoaDon.TB_COL_ID_HD)));
             chiTietHoaDon.setMaSP(cursor.getString(cursor.getColumnIndex(ChiTietHoaDon.TB_COL_ID_SP)));
             chiTietHoaDon.setSoLuong(cursor.getInt(cursor.getColumnIndex(ChiTietHoaDon.TB_COL_AMOUNT)));
-            chiTietHoaDon.setGiamGia(cursor.getString(cursor.getColumnIndex(ChiTietHoaDon.TB_COL_SALE)));
+            chiTietHoaDon.setGiamGia(cursor.getInt(cursor.getColumnIndex(ChiTietHoaDon.TB_COL_SALE)));
             chiTietHoaDon.setDonGia(cursor.getDouble(cursor.getColumnIndex(ChiTietHoaDon.TB_COL_PRICE)));
             chiTietHoaDon.setBaoHanh(cursor.getInt(cursor.getColumnIndex(ChiTietHoaDon.TB_COL_BH)));
 
