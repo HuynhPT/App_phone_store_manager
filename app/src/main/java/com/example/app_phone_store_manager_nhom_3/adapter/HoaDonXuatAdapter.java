@@ -86,17 +86,17 @@ public class HoaDonXuatAdapter extends RecyclerView.Adapter<HoaDonXuatAdapter.Vi
             SanPham sanPham = daoSP.getMaSP(x.getMaSP());
             if (tenSP.equals("")) {
                 tenSP = sanPham.getTenSP();
-                soLuong = sanPham.getTenSP() + ": " + sanPham.getTinhTrang();
-                donGia = sanPham.getTenSP() + ": " + formatter.format(sanPham.getGiaTien()) + " đ";
-                tien = sanPham.getGiaTien() * sanPham.getTinhTrang();
+                soLuong = sanPham.getTenSP() + ": " + x.getSoLuong();
+                donGia = sanPham.getTenSP() + ": " + formatter.format(x.getDonGia()) + " đ";
+                tien = x.getDonGia() * x.getSoLuong();
                 khuyenMai = x.getGiamGia();
                 baohanh = x.getBaoHanh();
 
             } else {
                 tenSP += " , " + sanPham.getTenSP();
-                soLuong += " , " + sanPham.getTenSP() + ": " + sanPham.getTinhTrang();
-                donGia += " , " + sanPham.getTenSP() + ": " + formatter.format(sanPham.getGiaTien()) + " đ";
-                tien += (sanPham.getGiaTien() * sanPham.getTinhTrang());
+                soLuong += " , " + sanPham.getTenSP() + ": " + x.getSoLuong();
+                donGia += " , " + sanPham.getTenSP() + ": " + formatter.format(x.getDonGia()) + " đ";
+                tien += (x.getDonGia() * x.getSoLuong());
             }
         }
         switch (khuyenMai) {

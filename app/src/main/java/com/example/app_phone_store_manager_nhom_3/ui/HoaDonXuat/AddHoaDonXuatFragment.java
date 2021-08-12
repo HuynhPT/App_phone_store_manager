@@ -16,7 +16,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,7 +34,6 @@ import android.widget.Toast;
 
 import com.example.app_phone_store_manager_nhom_3.R;
 import com.example.app_phone_store_manager_nhom_3.adapter.ChonKHAdapter;
-import com.example.app_phone_store_manager_nhom_3.adapter.ChonSPAdapter;
 import com.example.app_phone_store_manager_nhom_3.adapter.ChonSanPhamAdapter;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoCTHD;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoHD;
@@ -47,7 +45,6 @@ import com.example.app_phone_store_manager_nhom_3.model.HoaDon;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 import com.example.app_phone_store_manager_nhom_3.model.SanPham;
 import com.example.app_phone_store_manager_nhom_3.utilities.ItemKhachHangClick;
-import com.example.app_phone_store_manager_nhom_3.utilities.ItemSanPhamClick;
 import com.google.android.flexbox.AlignItems;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
