@@ -377,10 +377,11 @@ public class AddHoaDonNhapFragment extends Fragment {
                             SanPham sanPham = daoSP.getMaSP(chiTietHoaDon.getMaSP());
                             sanPham.setTrangThai(1);
                             int updateSP = daoSP.update(sanPham, chiTietHoaDon.getMaSP());
-                            if (updateSP > 0){
-                                navController.navigate(R.id.addHDNhap_to_listHDNhap);
+                            if (updateSP > 0) {
+
                                 Toast.makeText(appCompatActivity, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                            }else {
+                                navController.navigate(R.id.addHDNhap_to_listHDNhap);
+                            } else {
                                 Toast.makeText(appCompatActivity, "Cập nhập trạng thái Sản Phẩm thất bại", Toast.LENGTH_SHORT).show();
                             }
 

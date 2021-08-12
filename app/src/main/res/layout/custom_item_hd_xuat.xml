@@ -36,24 +36,28 @@
 
         <TextView
             android:id="@+id/tvSLXuatItem"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/tvBaoHanh"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTenSPXItem" />
 
         <TextView
             android:id="@+id/tvTenSPXItem"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textColor="@color/black"
             android:textSize="@dimen/text_little"
+            app:layout_constraintEnd_toStartOf="@+id/tvBaoHanh"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTenKHXItem"
             tools:textStyle="bold" />
@@ -78,7 +82,7 @@
             android:text="@string/sale_show"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTTSPItem2" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDonGiaXItem" />
 
         <TextView
             android:id="@+id/tvTTSPItem4"
@@ -90,16 +94,17 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTTSPItem" />
+            app:layout_constraintTop_toBottomOf="@+id/tvKMXItem" />
 
         <TextView
             android:id="@+id/tvDonGiaXItem"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/tvTTSPItem2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvTTSPItem2"
             app:layout_constraintTop_toTopOf="@+id/tvTTSPItem2" />
 
@@ -165,6 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/proted_no"
             android:textSize="@dimen/text_small"
             app:layout_constraintEnd_toEndOf="@+id/imgBaoHanh"

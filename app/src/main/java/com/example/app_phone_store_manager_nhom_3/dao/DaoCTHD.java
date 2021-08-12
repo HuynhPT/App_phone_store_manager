@@ -69,6 +69,7 @@ public class DaoCTHD {
         list = getData(sql, maHD);
         return list.get(0);
     }
+
     public List<ChiTietHoaDon> getListMaHD(String maHD) {
         List<ChiTietHoaDon> list = new ArrayList<>();
         String sql = "SELECT * FROM ChiTietHoaDon WHERE maHD = ?";

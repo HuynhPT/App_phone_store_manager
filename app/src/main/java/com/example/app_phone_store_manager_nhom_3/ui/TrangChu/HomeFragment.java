@@ -21,10 +21,9 @@ import android.widget.TextView;
 
 import com.example.app_phone_store_manager_nhom_3.MainActivity;
 import com.example.app_phone_store_manager_nhom_3.R;
+import com.example.app_phone_store_manager_nhom_3.dao.DaoCTHD;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoKhachHang;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoSanPham;
-import com.example.app_phone_store_manager_nhom_3.databinding.FragmentAddSanPhamBinding;
-import com.example.app_phone_store_manager_nhom_3.databinding.FragmentHomeBinding;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 import com.example.app_phone_store_manager_nhom_3.ui.SanPham.ListSanPhamFragment;
 import com.example.app_phone_store_manager_nhom_3.ui.SanPham.SanPhamFragment;
@@ -33,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    private TextView tv_SLKH, tv_SLSP, tv_SLHDN, tv_SLHDX;
+    private TextView tv_SLKH, tv_SLSP, tv_SLHDN, tv_SLHDX, tvsoHD, tv_thanhtien, tv_tongsl;
     private LinearLayout ln_KH, ln_SP, ln_HDN, ln_HDX;
     private DaoKhachHang daoKH;
     private List<KhachHang> list;
@@ -60,13 +59,19 @@ public class HomeFragment extends Fragment {
         tv_SLSP = view.findViewById(R.id.tv_SLSP);
         tv_SLHDN = view.findViewById(R.id.tv_SLHDN);
         tv_SLHDX = view.findViewById(R.id.tv_SLHDX);
+        tvsoHD = view.findViewById(R.id.tv_soHD);
+        tv_thanhtien = view.findViewById(R.id.tv_tongTien);
+        tv_tongsl = view.findViewById(R.id.tv_bank);
         onClick();
         daoKH = new DaoKhachHang(getContext());
         daoKH.open();
         tv_SLKH.setText(daoKH.getCountKH() + "");
         tv_SLSP.setText(daoKH.getCountSP() + "");
-        tv_SLHDN.setText(daoKH.getCountKH() + "");
-        tv_SLHDX.setText(daoKH.getCountKH() + "");
+        tv_SLHDN.setText(daoKH.getCountHDN() + "");
+        tv_SLHDX.setText(daoKH.getCountHDX() + "");
+        tvsoHD.setText(daoKH.getCountHDX() + "");
+        tv_thanhtien.setText(daoKH.getTongsl() + "");
+        tv_tongsl.setText(daoKH.getTongtien() + "");
     }
 
     private void onClick() {
@@ -96,4 +101,9 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        daoKH.close();
+    }
 }

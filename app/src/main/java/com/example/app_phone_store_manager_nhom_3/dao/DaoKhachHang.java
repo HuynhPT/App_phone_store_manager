@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.app_phone_store_manager_nhom_3.database.DbHelper;
+import com.example.app_phone_store_manager_nhom_3.model.ChiTietHoaDon;
+import com.example.app_phone_store_manager_nhom_3.model.HoaDon;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 
 import java.util.ArrayList;
@@ -68,23 +70,39 @@ public class DaoKhachHang {
         cursor.moveToFirst();
         return cursor.getInt(cursor.getColumnIndex("SoLuong"));
     }
+
     public int getCountSP() {
         String sql = "SELECT COUNT(*) AS SoLuong FROM SanPham";
         Cursor cursor = database.rawQuery(sql, null);
         cursor.moveToFirst();
         return cursor.getInt(cursor.getColumnIndex("SoLuong"));
     }
+
     public int getCountHDN() {
-        String sql = "SELECT COUNT(*) AS SoLuong FROM KhachHang";
+        String sql = "SELECT COUNT(maHD) AS SoLuong FROM HoaDon WHERE phanLoai='0'";
         Cursor cursor = database.rawQuery(sql, null);
         cursor.moveToFirst();
         return cursor.getInt(cursor.getColumnIndex("SoLuong"));
     }
+
     public int getCountHDX() {
-        String sql = "SELECT COUNT(*) AS SoLuong FROM KhachHang";
+        String sql = "SELECT COUNT(maHD) AS SoLuong FROM HoaDon WHERE phanLoai='1'";
         Cursor cursor = database.rawQuery(sql, null);
         cursor.moveToFirst();
         return cursor.getInt(cursor.getColumnIndex("SoLuong"));
+    }
+
+    public int getTongtien() {
+        String sql = "SELECT SUM(donGia*giamGia) AS thanhTien FROM ChiTietHoaDon";
+        Cursor cursor = database.rawQuery(sql, null);
+        cursor.moveToFirst();
+        return cursor.getInt(cursor.getColumnIndex("thanhTien"));
+    }
+    public int getTongsl() {
+        String sql = "SELECT Sum(soLuong) as tongsl FROM ChiTietHoaDon WHERE giamGia !='0'";
+        Cursor cursor = database.rawQuery(sql, null);
+        cursor.moveToFirst();
+        return cursor.getInt(cursor.getColumnIndex("tongsl"));
     }
 
     public List<KhachHang> getAllSXTenKH() {
