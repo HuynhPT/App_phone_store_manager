@@ -1,49 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginRight="16dp"
-    app:cardCornerRadius="15dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_marginLeft="@dimen/margin"
+    android:layout_marginTop="@dimen/margin"
+    android:layout_marginRight="@dimen/margin"
+    app:cardCornerRadius="@dimen/margin">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/lnlTable"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
         <TextView
-            android:id="@+id/tvNgayDT"
+            android:id="@+id/tvDateDT"
+            style="@style/custom_TV_show"
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:gravity="center_vertical"
-            android:text="TextView"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_small"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvTienDT"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:text="@string/date"
+            android:textSize="@dimen/text_medium" />
 
         <TextView
-            android:id="@+id/tvTienDT"
-            android:layout_width="185dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:gravity="center_vertical"
-            android:text="TextView"
-            android:textColor="@color/design_default_color_primary"
-            android:textSize="@dimen/text_small"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:id="@+id/tvPlDT"
+            style="@style/custom_TV_show"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:text="@string/phan_loai"
+            android:textSize="@dimen/text_medium" />
+
+        <TextView
+            android:id="@+id/tvDT"
+            style="@style/custom_TV_show"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.4"
+            android:gravity="center"
+            android:text="@string/doanh_thu"
+            android:textSize="@dimen/text_medium" />
+
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

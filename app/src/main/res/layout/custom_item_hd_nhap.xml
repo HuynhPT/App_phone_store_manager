@@ -13,12 +13,14 @@
 
         <TextView
             android:id="@+id/tvMaHDNItem"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/tvNgayNhapItem"
             app:layout_constraintStart_toEndOf="@+id/imgSPHDNItem"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,12 +49,14 @@
 
         <TextView
             android:id="@+id/tvTTSPNItem"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/tvSLNhapItem"
             app:layout_constraintStart_toEndOf="@+id/imgSPHDNItem"
             app:layout_constraintTop_toBottomOf="@+id/tvTenSPNItem" />
 
@@ -84,27 +88,31 @@
 
         <TextView
             android:id="@+id/tvDonGiaItem"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textColor="@color/red"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tvTTSPItem2"
+            app:layout_constraintEnd_toStartOf="@+id/imgDeleteHDNItem"
             app:layout_constraintStart_toEndOf="@+id/tvTTSPItem2"
             app:layout_constraintTop_toBottomOf="@+id/tvTTSPNItem" />
 
         <TextView
             android:id="@+id/tvThanhTienItem"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textColor="@color/red"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tvTTSPItem4"
+            app:layout_constraintEnd_toStartOf="@+id/imgDeleteHDNItem"
             app:layout_constraintStart_toEndOf="@+id/tvTTSPItem4"
             app:layout_constraintTop_toBottomOf="@+id/tvDonGiaItem" />
 
@@ -114,10 +122,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textColor="@color/black"
             android:textSize="@dimen/text_medium"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvSLNhapItem"
             app:layout_constraintStart_toEndOf="@+id/imgSPHDNItem"
             app:layout_constraintTop_toBottomOf="@+id/tvMaHDNItem" />
 

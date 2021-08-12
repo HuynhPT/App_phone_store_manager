@@ -99,8 +99,12 @@
     <string name="chon_file">Tải ảnh lên</string>
     <string name="sl_nhap">Số lượng Nhập:</string>
     <string name="sl_xuat">Số lượng Xuất:</string>
+    <string name="phan_loai">Phân loại</string>
     <string name="sl_ton">Tồn kho:</string>
     <string name="sp_moneys">Giá tiền:</string>
+    <string name="xuat">Tổng tiền xuất hàng</string>
+    <string name="xem">Xem</string>
+    <string name="nhap">Tổng tiền nhập hàng</string>
     <string name="done">Chọn</string>
     <string name="done_class">Chọn hãng</string>
     <string name="chuaLK">Chưa lưu kho</string>

@@ -9,6 +9,7 @@ import com.example.app_phone_store_manager_nhom_3.database.DbHelper;
 import com.example.app_phone_store_manager_nhom_3.model.ChiTietHoaDon;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DaoCTHD {
@@ -97,11 +98,24 @@ public class DaoCTHD {
         return list;
     }
 
-    public int getDoanhThu(String startDay, String endDay) {
-        String doanhThu = "SELECT SUM(donGia) AS doanhThu FROM ChiTietHoaDon WHERE ngay >= ? AND ngay <= ?";
-        Cursor cursor = database.rawQuery(doanhThu, new String[]{startDay, endDay});
+    public int getSUM(String startDay, String endDay, String pl) {
+        String doanhThu = "SELECT SUM(donGia * soLuong) AS tongTien FROM ChiTietHoaDon INNER JOIN HoaDon ON ChiTietHoaDon.maHD = HoaDon.maHD WHERE ngay >= ? AND ngay <= ? AND phanLoai = ? ";
+        Cursor cursor = database.rawQuery(doanhThu, new String[]{startDay,endDay,pl});
         cursor.moveToFirst();
-        return cursor.getInt(0);
+        return cursor.getInt(cursor.getColumnIndex("tongTien"));
+    }
+    public List<HashMap<String, Integer>> getNhap(String startDay, String endDay, String pl) {
+        List<HashMap<String,Integer>> list = new ArrayList<>();
+        String doanhThu = "SELECT donGia , soLuong, giamGia FROM ChiTietHoaDon INNER JOIN HoaDon ON ChiTietHoaDon.maHD = HoaDon.maHD WHERE ngay >= ? AND ngay <= ? AND phanLoai = ? ";
+        Cursor cursor = database.rawQuery(doanhThu, new String[]{startDay,endDay,pl});
+        while (cursor.moveToNext()){
+            HashMap<String,Integer> data = new HashMap<>();
+            data.put("donGia", cursor.getInt(cursor.getColumnIndex("donGia")));
+            data.put("soLuong", cursor.getInt(cursor.getColumnIndex("soLuong")));
+            data.put("giamGia", cursor.getInt(cursor.getColumnIndex("giamGia")));
+            list.add(data);
+        }
+        return list;
     }
 
     public List<ChiTietHoaDon> getDoanhThuCT(String startDay, String endDay) {

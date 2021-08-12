@@ -147,7 +147,7 @@ public class HoaDonXuatAdapter extends RecyclerView.Adapter<HoaDonXuatAdapter.Vi
                 break;
         }
         holder.tvSP.setText("Sản phẩm: " + tenSP);
-        holder.tvDonGia.setText(donGia);
+        holder.tvDonGia.setText("Đơn giá: " +donGia);
         holder.tvSL.setText("Số lượng: " + soLuong);
 
         daoCTHD.close();
