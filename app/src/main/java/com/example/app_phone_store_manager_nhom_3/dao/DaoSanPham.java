@@ -122,13 +122,13 @@ public class DaoSanPham {
 
     public List<Top10SanPham> getTop() {
         List<Top10SanPham> list = new ArrayList<>();
-        String selectTop = "SELECT maSP, soLuong FROM ChiTietHoaDon ORDER BY soLuong DESC LIMIT 10";
+        String selectTop = "SELECT maSP, sum(soLuong) as tongSL FROM ChiTietHoaDon INNER JOIN HoaDon ON ChiTietHoaDon.maHD = HoaDon.maHD WHERE HoaDon.phanLoai=1 GROUP BY maSP HAVING count(maSP) ORDER BY tongSL DESC LIMIT 10";
         Cursor cursor = database.rawQuery(selectTop, null);
         while (cursor.moveToNext()) {
             Top10SanPham top = new Top10SanPham();
             SanPham sanPham = getMaSP(cursor.getString(cursor.getColumnIndex("maSP")));
             top.setTenSP(sanPham.getTenSP());
-            top.setSoLuong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("soLuong"))));
+            top.setSoLuong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("tongSL"))));
             list.add(top);
         }
         return list;

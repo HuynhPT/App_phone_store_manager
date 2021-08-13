@@ -37,6 +37,7 @@ import com.example.app_phone_store_manager_nhom_3.dao.DaoKhachHang;
 import com.example.app_phone_store_manager_nhom_3.databinding.FragmentListKhachHangBinding;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 import com.example.app_phone_store_manager_nhom_3.utilities.ItemKhachHangClick;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -151,7 +152,6 @@ public class ListKhachHangFragment extends Fragment {
                 }
             }
         });
-
 
         dao = new DaoKhachHang(getActivity());
         dao.open();
