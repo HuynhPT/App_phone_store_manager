@@ -33,6 +33,9 @@ public class Top10Adapter extends RecyclerView.Adapter<Top10Adapter.Top10ViewHol
     @Override
     public void onBindViewHolder(@NonNull @NotNull Top10ViewHoler holder, int position) {
         Top10SanPham top = list.get(position);
+        if(top == null){
+            return;
+        }
         holder.tvTenSpTop.setText("Tên Sản Phẩm: " + top.getTenSP());
         holder.tvSlTop.setText("Số lượng: " + top.getSoLuong());
     }

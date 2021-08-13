@@ -134,9 +134,11 @@
 
         <RadioGroup
             android:id="@+id/cbBHChange"
-            android:layout_width="375dp"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.555"
@@ -145,21 +147,21 @@
 
             <RadioButton
                 android:id="@+id/cbKoBHChange"
-                android:layout_width="305dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="1.1"
                 android:text="@string/proted_no" />
 
             <RadioButton
                 android:id="@+id/cbBH6TChange"
-                android:layout_width="285dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.9"
                 android:text="@string/proted_tittle" />
 
             <RadioButton
                 android:id="@+id/cbBH12TChange"
-                android:layout_width="285dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/proted_big" />
@@ -171,7 +173,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -184,9 +186,9 @@
                 android:id="@+id/edSoLuongXuatChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/soluong"
                 android:focusable="false"
-                android:inputType="textNoSuggestions"/>
+                android:hint="@string/soluong"
+                android:inputType="textNoSuggestions" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -218,7 +220,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="@string/sale"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
@@ -240,7 +242,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="@string/status"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
@@ -263,7 +265,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
             app:endIconMode="clear_text"
@@ -278,9 +280,9 @@
                 android:id="@+id/edThanhTienChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/money"
                 android:focusable="false"
-                android:inputType="textNoSuggestions"/>
+                android:hint="@string/money"
+                android:inputType="textNoSuggestions" />
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

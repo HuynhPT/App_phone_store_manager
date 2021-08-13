@@ -89,7 +89,6 @@ public class ChonSanPhamAdapter extends RecyclerView.Adapter<ChonSanPhamAdapter.
             @Override
             public void onClick(View view) {
                 setcheked = true;
-
                 if (listSelected.contains(sanPham)){
                     holder.itemView.setBackgroundResource(R.color.white);
                     listSelected.remove(sanPham);

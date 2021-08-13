@@ -21,11 +21,9 @@
         android:id="@+id/imgChonAnh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="8dp"
         android:src="@drawable/ic_camera"
         app:layout_constraintBottom_toBottomOf="@+id/imgNguoiDung"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/imgNguoiDung" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"

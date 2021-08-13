@@ -27,12 +27,10 @@
         android:layout_height="@dimen/layout_size"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="40dp"
         android:background="@drawable/focus_liner"
         android:gravity="center"
         android:orientation="vertical"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/car_KH"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_lt">
 
@@ -100,11 +98,9 @@
         android:layout_height="@dimen/layout_size"
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
         android:background="@drawable/focus_liner"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/car_HDX"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/car_SP">
 
@@ -196,7 +192,7 @@
             android:id="@+id/textView12"
             android:layout_width="@dimen/size"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:text="Số hóa đơn"
             android:textAlignment="center"
@@ -208,11 +204,11 @@
             android:id="@+id/textView9"
             android:layout_width="@dimen/size"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:text="Số lượng bán"
             android:textAlignment="center"
             android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/textView11"
             app:layout_constraintStart_toEndOf="@+id/textView12"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -220,21 +216,19 @@
             android:id="@+id/textView11"
             android:layout_width="@dimen/size"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="8dp"
             android:text="Tổng tiền"
             android:textAlignment="center"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_soHD"
             android:layout_width="@dimen/size"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="24dp"
             android:text="0"
@@ -249,7 +243,6 @@
             android:id="@+id/tv_SLBan"
             android:layout_width="@dimen/size"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="24dp"
             android:text="0"
@@ -257,6 +250,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bank"
             app:layout_constraintStart_toEndOf="@+id/tv_soHD"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -264,9 +258,8 @@
             android:id="@+id/tv_bank"
             android:layout_width="@dimen/size"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="24dp"
             android:text="0"
             android:textAlignment="center"
@@ -274,7 +267,6 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_SLBan"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
