@@ -1,18 +1,12 @@
 package com.example.app_phone_store_manager_nhom_3.ui.TrangChu;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,21 +15,16 @@ import android.widget.TextView;
 
 import com.example.app_phone_store_manager_nhom_3.MainActivity;
 import com.example.app_phone_store_manager_nhom_3.R;
-import com.example.app_phone_store_manager_nhom_3.dao.DaoCTHD;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoKhachHang;
-import com.example.app_phone_store_manager_nhom_3.dao.DaoSanPham;
-import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
-import com.example.app_phone_store_manager_nhom_3.ui.SanPham.ListSanPhamFragment;
-import com.example.app_phone_store_manager_nhom_3.ui.SanPham.SanPhamFragment;
 
-import java.util.ArrayList;
+import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    private TextView tv_SLKH, tv_SLSP, tv_SLHDN, tv_SLHDX, tvsoHD, tv_thanhtien, tv_tongsl;
+    private TextView tv_SLKH, tv_SLSP, tv_SLHDN, tv_SLHDX, tvsoHD, tv_SLBan, tv_tongsl;
     private LinearLayout ln_KH, ln_SP, ln_HDN, ln_HDX;
     private DaoKhachHang daoKH;
-    private List<KhachHang> list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +49,7 @@ public class HomeFragment extends Fragment {
         tv_SLHDN = view.findViewById(R.id.tv_SLHDN);
         tv_SLHDX = view.findViewById(R.id.tv_SLHDX);
         tvsoHD = view.findViewById(R.id.tv_soHD);
-        tv_thanhtien = view.findViewById(R.id.tv_tongTien);
+        tv_SLBan = view.findViewById(R.id.tv_SLBan);
         tv_tongsl = view.findViewById(R.id.tv_bank);
         onClick();
         daoKH = new DaoKhachHang(getContext());
@@ -70,8 +59,44 @@ public class HomeFragment extends Fragment {
         tv_SLHDN.setText(daoKH.getCountHDN() + "");
         tv_SLHDX.setText(daoKH.getCountHDX() + "");
         tvsoHD.setText(daoKH.getCountHDX() + "");
-        tv_thanhtien.setText(daoKH.getTongsl() + "");
-        tv_tongsl.setText(daoKH.getTongtien() + "");
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+
+        double sumXuat = 0;
+        int sl = 0;
+
+        List<HashMap<String, Integer>> listData = daoKH.getNhap(1 + "");
+        for (HashMap<String, Integer> x : listData) {
+            int donGia = x.get("donGia");
+            int soLuong = x.get("soLuong");
+            int khuyenMai = x.get("giamGia");
+            int giaTien = donGia * soLuong;
+            sl += soLuong;
+            switch (khuyenMai) {
+                case 0:
+                    sumXuat += giaTien;
+                    break;
+                case 1:
+                    sumXuat += giaTien - (giaTien * 0.5);
+                    break;
+                case 2:
+                    sumXuat += giaTien - (giaTien * 0.1);
+                    break;
+                case 3:
+                    sumXuat += giaTien - (giaTien * 0.15);
+                    break;
+                case 4:
+                    sumXuat += giaTien - (giaTien * 0.2);
+                    break;
+                case 5:
+                    sumXuat += giaTien - (giaTien * 0.25);
+                    break;
+                case 6:
+                    sumXuat += giaTien - (giaTien * 0.3);
+                    break;
+            }
+        }
+        tv_SLBan.setText(sl + "");
+        tv_tongsl.setText(formatter.format(sumXuat) + " đ");
     }
 
     private void onClick() {

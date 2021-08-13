@@ -184,7 +184,9 @@
                 android:id="@+id/edSoLuongXuatChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/soluong" />
+                android:hint="@string/soluong"
+                android:focusable="false"
+                android:inputType="textNoSuggestions"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -206,7 +208,9 @@
                 android:id="@+id/edDonGiaXuatChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/don_gia" />
+                android:hint="@string/don_gia"
+                android:focusable="false"
+                android:inputType="textNoSuggestions"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -274,7 +278,9 @@
                 android:id="@+id/edThanhTienChange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/money" />
+                android:hint="@string/money"
+                android:focusable="false"
+                android:inputType="textNoSuggestions"/>
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -170,7 +170,7 @@ public class ChiTietHoaDonXuatFragment extends Fragment {
         appCompatActivity = (AppCompatActivity) getActivity();
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
-        appCompatActivity.getSupportActionBar().setTitle("Chi Tiết Hoá ĐƠn Xuất");
+        appCompatActivity.getSupportActionBar().setTitle(maHD);
     }
 
     public void checkBundle() {

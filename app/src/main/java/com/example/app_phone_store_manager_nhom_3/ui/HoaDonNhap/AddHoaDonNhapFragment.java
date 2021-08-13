@@ -3,6 +3,10 @@ package com.example.app_phone_store_manager_nhom_3.ui.HoaDonNhap;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteAccessPermException;
+import android.database.sqlite.SQLiteConstraintException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -15,6 +19,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -357,39 +362,43 @@ public class AddHoaDonNhapFragment extends Fragment {
                     soLuong = Integer.parseInt(edSL.getText().toString());
                     donGia = Double.parseDouble(edDonGia.getText().toString());
 
-                    HoaDon hoaDon = new HoaDon();
-                    hoaDon.setMaHD(maHD);
-                    hoaDon.setMaNV(maNV);
-                    hoaDon.setPhanLoai(0);
-                    hoaDon.setNgay(ngay);
+                    if (daoHD.checkMaHD(maHD) > 0){
+                        Toast.makeText(appCompatActivity, "Mã hóa đơn đã tồn tại trong hệ thống!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        HoaDon hoaDon = new HoaDon();
+                        hoaDon.setMaHD(maHD);
+                        hoaDon.setMaNV(maNV);
+                        hoaDon.setPhanLoai(0);
+                        hoaDon.setNgay(ngay);
 
-                    long kq = daoHD.add(hoaDon);
-                    if (kq > 0) {
+                        long kq = daoHD.add(hoaDon);
+                        if (kq > 0) {
 
-                        ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon();
-                        chiTietHoaDon.setMaHD(maHD);
-                        chiTietHoaDon.setMaSP(maSP);
-                        chiTietHoaDon.setSoLuong(soLuong);
-                        chiTietHoaDon.setDonGia(donGia);
+                            ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon();
+                            chiTietHoaDon.setMaHD(maHD);
+                            chiTietHoaDon.setMaSP(maSP);
+                            chiTietHoaDon.setSoLuong(soLuong);
+                            chiTietHoaDon.setDonGia(donGia);
+                            long kqCT = daoCTHD.add(chiTietHoaDon);
+                            if (kqCT > 0) {
+                                SanPham sanPham = daoSP.getMaSP(chiTietHoaDon.getMaSP());
+                                sanPham.setTrangThai(1);
+                                int updateSP = daoSP.update(sanPham, chiTietHoaDon.getMaSP());
+                                if (updateSP > 0) {
 
-                        long kqCT = daoCTHD.add(chiTietHoaDon);
-                        if (kqCT > 0) {
-                            SanPham sanPham = daoSP.getMaSP(chiTietHoaDon.getMaSP());
-                            sanPham.setTrangThai(1);
-                            int updateSP = daoSP.update(sanPham, chiTietHoaDon.getMaSP());
-                            if (updateSP > 0) {
+                                    Toast.makeText(appCompatActivity, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                                    navController.navigate(R.id.addHDNhap_to_listHDNhap);
+                                } else {
+                                    Toast.makeText(appCompatActivity, "Cập nhập trạng thái Sản Phẩm thất bại", Toast.LENGTH_SHORT).show();
+                                }
 
-                                Toast.makeText(appCompatActivity, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                                navController.navigate(R.id.addHDNhap_to_listHDNhap);
                             } else {
-                                Toast.makeText(appCompatActivity, "Cập nhập trạng thái Sản Phẩm thất bại", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(appCompatActivity, "Thêm hóa đơn chi tiết thất bại", Toast.LENGTH_SHORT).show();
                             }
-
                         } else {
-                            Toast.makeText(appCompatActivity, "Thêm hóa đơn chi tiết thất bại", Toast.LENGTH_SHORT).show();
+                            Log.e("kq", kq +"");
+                            Toast.makeText(appCompatActivity, "Thêm thất bại", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        Toast.makeText(appCompatActivity, "Thêm thất bại", Toast.LENGTH_SHORT).show();
                     }
                 }
                 return true;

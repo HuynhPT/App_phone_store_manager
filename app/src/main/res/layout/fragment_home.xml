@@ -4,15 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_seach"
     tools:context=".ui.TrangChu.HomeFragment">
 
     <TextView
         android:id="@+id/tv_lt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Tổng quan"
-      android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/tog_quan"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_big"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -139,8 +143,8 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_lt">
 
         <ImageView
-            android:layout_width="@dimen/item_img_size"
-            android:layout_height="@dimen/item_img_size"
+            android:layout_width="46dp"
+            android:layout_height="56dp"
             android:src="@drawable/ic_people" />
 
         <TextView
@@ -168,6 +172,9 @@
         android:layout_marginBottom="24dp"
         android:text="Doanh thu"
         android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_big"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -193,6 +200,7 @@
             android:layout_marginTop="24dp"
             android:text="Số hóa đơn"
             android:textAlignment="center"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -204,6 +212,7 @@
             android:layout_marginTop="24dp"
             android:text="Số lượng bán"
             android:textAlignment="center"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/textView12"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -216,6 +225,7 @@
             android:layout_marginEnd="24dp"
             android:text="Tổng tiền"
             android:textAlignment="center"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView9"
             app:layout_constraintTop_toTopOf="parent" />
@@ -236,7 +246,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <TextView
-            android:id="@+id/tv_tongTien"
+            android:id="@+id/tv_SLBan"
             android:layout_width="@dimen/size"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -264,7 +274,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_tongTien"
+            app:layout_constraintStart_toEndOf="@+id/tv_SLBan"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

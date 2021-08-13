@@ -3,7 +3,9 @@ package com.example.app_phone_store_manager_nhom_3.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.example.app_phone_store_manager_nhom_3.database.DbHelper;
 import com.example.app_phone_store_manager_nhom_3.model.HoaDon;
@@ -30,15 +32,14 @@ public class DaoHD {
 
     public long add(HoaDon hoaDon) {
         ContentValues values = new ContentValues();
-
         values.put(HoaDon.TB_COL_ID_HD, hoaDon.getMaHD());
         values.put(HoaDon.TB_COL_ID_NV, hoaDon.getMaNV());
         values.put(HoaDon.TB_COL_ID_KH, hoaDon.getMaKH());
         values.put(HoaDon.TB_COL_CLASS, hoaDon.getPhanLoai());
         values.put(HoaDon.TB_COL_DATE, hoaDon.getNgay());
         values.put(HoaDon.TB_COL_STATUS, hoaDon.getTrangThai());
-
         return database.insert(HoaDon.TB_NAME, null, values);
+
     }
 
     public int delete(String maHD) {
@@ -80,6 +81,12 @@ public class DaoHD {
         String sql = "SELECT * FROM HoaDon WHERE maHD = ?";
         List<HoaDon> list = getData(sql, maHD);
         return list.get(0);
+    }
+
+    public int checkMaHD(String maHD) {
+        String sql = "SELECT * FROM HoaDon WHERE maHD = ?";
+        List<HoaDon> list = getData(sql, maHD);
+        return list.size() == 0 ? -1 : 1;
     }
 
     public List<HoaDon> getDaysXuat() {

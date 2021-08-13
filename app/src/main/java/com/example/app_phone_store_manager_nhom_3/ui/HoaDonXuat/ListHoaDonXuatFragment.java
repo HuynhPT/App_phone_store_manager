@@ -160,7 +160,7 @@ public class ListHoaDonXuatFragment extends Fragment  {
                 if (kq > 0) {
                     Toast.makeText(appCompatActivity, "Xóa thành công", Toast.LENGTH_SHORT).show();
                     list.clear();
-                    list.addAll(daoHD.getAllNhap());
+                    list.addAll(daoHD.getAllXuat());
                     adapter.filter(list);
                 } else {
                     Toast.makeText(appCompatActivity, "Xóa thất bại", Toast.LENGTH_SHORT).show();

@@ -143,20 +143,24 @@ public class AddHangFragment extends Fragment {
                 return true;
             case R.id.menu_save:
                 if (valueDate()) {
-                    bitmapNew = ((BitmapDrawable) imgHang.getDrawable()).getBitmap();
-                    Hang hang = new Hang();
-                    hang.setTenHang(edTenHang.getText().toString());
-                    hang.setMaHang(edMaHang.getText().toString());
-                    if (bitmapOld != bitmapNew) {
-                        convertImage();
-                        hang.setHinhAnh(hinhAnh);
-                    }
-                    long kq = dao.add(hang);
-                    if (kq > 0) {
-                        Toast.makeText(appCompatActivity, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        navController.navigate(R.id.addHang_to_listHang);
-                    } else {
-                        Toast.makeText(appCompatActivity, "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    if (dao.checkMaHang(edMaHang.getText().toString()) >0){
+                        Toast.makeText(appCompatActivity, "Mã hãng đã tồn tại trong hệ thống!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        bitmapNew = ((BitmapDrawable) imgHang.getDrawable()).getBitmap();
+                        Hang hang = new Hang();
+                        hang.setTenHang(edTenHang.getText().toString());
+                        hang.setMaHang(edMaHang.getText().toString());
+                        if (bitmapOld != bitmapNew) {
+                            convertImage();
+                            hang.setHinhAnh(hinhAnh);
+                        }
+                        long kq = dao.add(hang);
+                        if (kq > 0) {
+                            Toast.makeText(appCompatActivity, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                            navController.navigate(R.id.addHang_to_listHang);
+                        } else {
+                            Toast.makeText(appCompatActivity, "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
                 return true;
@@ -202,7 +206,7 @@ public class AddHangFragment extends Fragment {
             Toast.makeText(appCompatActivity, "Mã hãng có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (!edMaHang.getText().toString().substring(0, 1).toUpperCase().equals(edMaHang.getText().toString().substring(0, 1))) {
+        if (!edTenHang.getText().toString().substring(0, 1).toUpperCase().equals(edTenHang.getText().toString().substring(0, 1))) {
             Toast.makeText(appCompatActivity, "Chữ cái đầu tiên tên hãng phải viết hoa", Toast.LENGTH_SHORT).show();
             return false;
         }

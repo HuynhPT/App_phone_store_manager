@@ -69,11 +69,13 @@ public class DaoSanPham {
         List<SanPham> list = getData(sql);
         return list;
     }
+
     public List<SanPham> getAllSPBan() {
         String sql = "SELECT * FROM SanPham WHERE trangThai = 1";
         List<SanPham> list = getData(sql);
         return list;
     }
+
     public List<SanPham> getAllTen() {
         String sql = "SELECT * FROM SanPham ORDER BY tenSP ASC";
         List<SanPham> list = getData(sql);
@@ -90,6 +92,12 @@ public class DaoSanPham {
         String sql = "SELECT * FROM SanPham WHERE maSP = ?";
         List<SanPham> list = getData(sql, maSP);
         return list.get(0);
+    }
+
+    public int checkMaSP(String maSP) {
+        String sql = "SELECT * FROM SanPham WHERE maSP = ?";
+        List<SanPham> list = getData(sql, maSP);
+        return list.size() == 0 ? -1 : 1;
     }
 
     public List<SanPham> getData(String sql, String... args) {
@@ -114,7 +122,7 @@ public class DaoSanPham {
 
     public List<Top10SanPham> getTop() {
         List<Top10SanPham> list = new ArrayList<>();
-        String selectTop = "SELECT maSP, count(maSP) AS soLuong FROM ChiTietHoaDon GROUP BY maSP ORDER BY soLuong DESC LIMIT 10";
+        String selectTop = "SELECT maSP, soLuong FROM ChiTietHoaDon ORDER BY soLuong DESC LIMIT 10";
         Cursor cursor = database.rawQuery(selectTop, null);
         while (cursor.moveToNext()) {
             Top10SanPham top = new Top10SanPham();

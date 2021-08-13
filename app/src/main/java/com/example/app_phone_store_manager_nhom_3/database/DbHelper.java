@@ -18,7 +18,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //Tạo bảng Nhân Viên
         String createTableNhanVien = "CREATE TABLE NhanVien(" +
-                "maNV TEXT NOT NULL PRIMARY KEY," +
+                "maNV TEXT NOT NULL UNIQUE PRIMARY KEY," +
                 "hoTen TEXT NOT NULL," +
                 "dienThoai TEXT NOT NULL," +
                 "diaChi TEXT," +
@@ -29,20 +29,20 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(createTableNhanVien);
         //Tạo bảng Khách hàng
         String createTableKhachHang = "CREATE TABLE KhachHang(" +
-                "maKH TEXT NOT NULL PRIMARY KEY," +
+                "maKH TEXT NOT NULL UNIQUE PRIMARY KEY," +
                 "hoTen TEXT NOT NULL ," +
                 "dienThoai TEXT NOT NULL," +
                 "diaChi TEXT NOT NULL)";
         db.execSQL(createTableKhachHang);
         //Tạo bảng Hãng
         String createTableHang = "CREATE TABLE Hang(" +
-                "maHang TEXT NOT NULL PRIMARY KEY," +
+                "maHang TEXT NOT NULL UNIQUE PRIMARY KEY," +
                 "tenHang TEXT NOT NULL," +
                 "hinhAnh BLOB)";
         db.execSQL(createTableHang);
         //Tạo bảng Sản Phẩm
         String createTableSanPham = "CREATE TABLE SanPham(" +
-                "maSP TEXT NOT NULL PRIMARY KEY," +
+                "maSP TEXT NOT NULL UNIQUE PRIMARY KEY," +
                 "maHang TEXT NOT NULL REFERENCES Hang(maHang)," +
                 "tenSP TEXT NOT NULL," +
                 "hinhAnh BOLD," +
@@ -67,7 +67,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(createTableThuocTinhSanPham);
         //Tạo bảng hóa đơn
         String createTableHoaDon = "CREATE TABLE HoaDon(" +
-                "maHD TEXT NOT NULL PRIMARY KEY," +
+                "maHD TEXT NOT NULL UNIQUE PRIMARY KEY," +
                 "maNV TEXT NOT NULL REFERENCES NhanVien(maNV)," +
                 "maKH TEXT REFERENCES KhachHang(maKH)," +
                 "phanLoai INTEGER NOT NULL," +

@@ -344,46 +344,48 @@ public class AddSanPhamFragment extends Fragment {
                     dungLuongPin = binding.edPinSP.getText().toString();
                     congSac = binding.edTypeSP.getText().toString();
                     loaiPhuKien = binding.edLoaiPKSP.getText().toString();
-
-                    SanPham sanPham = new SanPham();
-                    sanPham.setMaSP(maSP);
-                    sanPham.setMaHang(maHang);
-                    sanPham.setTenSP(tenSP);
-                    sanPham.setHinhAnh(hinhAnh);
-                    sanPham.setPhanLoai(phanLoai);
-                    sanPham.setTinhTrang(tinhTrang);
-                    sanPham.setGiaTien(giaTien);
-                    sanPham.setTrangThai(trangThai);
-                    sanPham.setMoTa(moTa);
-
-                    long kq = daoSanPham.add(sanPham);
-                    if (kq > 0) {
-                        ThuocTinhSanPham thuocTinhSanPham = new ThuocTinhSanPham();
-                        thuocTinhSanPham.setMaSP(maSP);
-
-                        if (phanLoai == 0) {
-                            thuocTinhSanPham.setBoNho(boNho);
-                            thuocTinhSanPham.setRAM(RAM);
-                            thuocTinhSanPham.setChipSet(chipSet);
-                            thuocTinhSanPham.setHeDieuHanh(heDieuHanh);
-                            thuocTinhSanPham.setManHinh(manHinh);
-                            thuocTinhSanPham.setDungLuongPin(dungLuongPin);
-                            thuocTinhSanPham.setCongSac(congSac);
-                        } else {
-                            thuocTinhSanPham.setLoaiPhuKien(loaiPhuKien);
-                        }
-                        long kqTTSP = daoTTSP.add(thuocTinhSanPham);
-                        if (kqTTSP > 0) {
-                            Toast.makeText(appCompatActivity, "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
-                            navController.navigate(R.id.addSP_to_listSP);
-                        } else {
-                            Toast.makeText(appCompatActivity, "Thêm thuộc tính sản phẩm thất bại", Toast.LENGTH_SHORT).show();
-                        }
-
+                    if (daoSanPham.checkMaSP(maSP) > 0) {
+                        Toast.makeText(appCompatActivity, "Đã có mã sản phẩm trong hệ thống", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(appCompatActivity, "Lưu thất bại", Toast.LENGTH_SHORT).show();
-                    }
+                        SanPham sanPham = new SanPham();
+                        sanPham.setMaSP(maSP);
+                        sanPham.setMaHang(maHang);
+                        sanPham.setTenSP(tenSP);
+                        sanPham.setHinhAnh(hinhAnh);
+                        sanPham.setPhanLoai(phanLoai);
+                        sanPham.setTinhTrang(tinhTrang);
+                        sanPham.setGiaTien(giaTien);
+                        sanPham.setTrangThai(trangThai);
+                        sanPham.setMoTa(moTa);
 
+                        long kq = daoSanPham.add(sanPham);
+                        if (kq > 0) {
+                            ThuocTinhSanPham thuocTinhSanPham = new ThuocTinhSanPham();
+                            thuocTinhSanPham.setMaSP(maSP);
+
+                            if (phanLoai == 0) {
+                                thuocTinhSanPham.setBoNho(boNho);
+                                thuocTinhSanPham.setRAM(RAM);
+                                thuocTinhSanPham.setChipSet(chipSet);
+                                thuocTinhSanPham.setHeDieuHanh(heDieuHanh);
+                                thuocTinhSanPham.setManHinh(manHinh);
+                                thuocTinhSanPham.setDungLuongPin(dungLuongPin);
+                                thuocTinhSanPham.setCongSac(congSac);
+                            } else {
+                                thuocTinhSanPham.setLoaiPhuKien(loaiPhuKien);
+                            }
+                            long kqTTSP = daoTTSP.add(thuocTinhSanPham);
+                            if (kqTTSP > 0) {
+                                Toast.makeText(appCompatActivity, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                                navController.navigate(R.id.addSP_to_listSP);
+                            } else {
+                                Toast.makeText(appCompatActivity, "Thêm thuộc tính sản phẩm thất bại", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } else {
+                            Toast.makeText(appCompatActivity, "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
 
 

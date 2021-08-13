@@ -94,7 +94,15 @@ public class DaoNhanVien {
         List<NhanVien> list = getdata(sql, maTK);
         return list.get(0);
     }
-
+    public int checkMaNV(String maNV) {
+        String dl = "SELECT * FROM NhanVien WHERE  maNV=?";
+        List<NhanVien> list = getdata(dl, maNV);
+        if (list.size() == 0) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
     public int getUserName(String user) {
         String dl = "SELECT * FROM NhanVien WHERE  taiKhoan=?";
         List<NhanVien> list = getdata(dl, user);

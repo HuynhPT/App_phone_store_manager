@@ -96,22 +96,26 @@ public class AddTaiKhoanFragment extends Fragment {
                 return true;
             case R.id.menu_save:
                 if (valiDate()) {
-                    NhanVien nhanVien = new NhanVien();
-                    nhanVien.setMaNV(edMaNV.getText().toString());
-                    nhanVien.setHoTen(edHoTenNV.getText().toString());
-                    nhanVien.setDienThoai(edDienThoaiNV.getText().toString());
-                    nhanVien.setTaiKhoan(edTaiKhoanNV.getText().toString());
-                    nhanVien.setDiaChi(edDiaChiNV.getText().toString());
-                    nhanVien.setNamSinh(edNamSinhNV.getText().toString());
-                    nhanVien.setMatKhau(passDefault);
-                    long kq = dao.addNV(nhanVien);
-                    if (kq > 0) {
-                        navController.navigate(R.id.addTk_to_listTk);
-                        Toast.makeText(getContext(), "Thành Công", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getContext(), "Thất Bại", Toast.LENGTH_SHORT).show();
-                    }
 
+                    if (dao.checkMaNV(edMaNV.getText().toString()) > 0) {
+                        Toast.makeText(appCompatActivity, "Mã nhân viên đã tồn tại trong hệ thống", Toast.LENGTH_SHORT).show();
+                    } else {
+                        NhanVien nhanVien = new NhanVien();
+                        nhanVien.setMaNV(edMaNV.getText().toString());
+                        nhanVien.setHoTen(edHoTenNV.getText().toString());
+                        nhanVien.setDienThoai(edDienThoaiNV.getText().toString());
+                        nhanVien.setTaiKhoan(edTaiKhoanNV.getText().toString());
+                        nhanVien.setDiaChi(edDiaChiNV.getText().toString());
+                        nhanVien.setNamSinh(edNamSinhNV.getText().toString());
+                        nhanVien.setMatKhau(passDefault);
+                        long kq = dao.addNV(nhanVien);
+                        if (kq > 0) {
+                            navController.navigate(R.id.addTk_to_listTk);
+                            Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
                 }
                 return true;

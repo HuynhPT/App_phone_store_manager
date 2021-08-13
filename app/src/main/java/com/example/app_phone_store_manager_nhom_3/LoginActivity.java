@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         if (dao.getUserName("admin") < 0) {
             NhanVien nhanVien = new NhanVien();
             nhanVien.setMaNV("Admin");
-            nhanVien.setHoTen("admin");
+            nhanVien.setHoTen("Admin");
             nhanVien.setDienThoai("0123456789");
             nhanVien.setTaiKhoan("admin");
             nhanVien.setMatKhau("123456");

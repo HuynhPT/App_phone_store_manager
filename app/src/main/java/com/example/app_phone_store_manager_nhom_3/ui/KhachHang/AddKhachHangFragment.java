@@ -88,20 +88,23 @@ public class AddKhachHangFragment extends Fragment {
                 return true;
             case R.id.menu_save:
                 if (valiDate()) {
-                    KhachHang khachHang = new KhachHang();
-                    khachHang.setMaKH(edMaKH.getText().toString());
-                    khachHang.setHoTen(edHoTenKH.getText().toString());
-                    khachHang.setDienThoai(edDienThoaiKH.getText().toString());
-                    khachHang.setDiaChi(edDiaChiKH.getText().toString());
-                    long kq = dao.addKH(khachHang);
-                    if (kq > 0) {
-                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        navController.navigate(R.id.action_addKH_to_listKH);
+                    if (dao.checkMaKH(edMaKH.getText().toString()) > 0) {
+                        Toast.makeText(appCompatActivity, "Đã có mã khách hàng trong hệ thống!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getContext(), "Thêm thất Bại", Toast.LENGTH_SHORT).show();
+                        KhachHang khachHang = new KhachHang();
+                        khachHang.setMaKH(edMaKH.getText().toString());
+                        khachHang.setHoTen(edHoTenKH.getText().toString());
+                        khachHang.setDienThoai(edDienThoaiKH.getText().toString());
+                        khachHang.setDiaChi(edDiaChiKH.getText().toString());
+                        long kq = dao.addKH(khachHang);
+                        if (kq > 0) {
+                            Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                            navController.navigate(R.id.action_addKH_to_listKH);
+                        } else {
+                            Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
-
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

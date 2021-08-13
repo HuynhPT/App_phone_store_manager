@@ -57,16 +57,24 @@ public class DaoHang {
         return list.get(0);
     }
 
+    public int checkMaHang(String maHang) {
+        String sql = "SELECT * FROM Hang WHERE maHang = ?";
+        List<Hang> list = getData(sql, maHang);
+        return list.size() == 0 ? -1 : 1;
+    }
+
     public List<Hang> getAll() {
         String sql = "SELECT * FROM Hang";
         List<Hang> list = getData(sql);
         return list;
     }
+
     public List<Hang> getAllSXTen() {
         String sql = "SELECT * FROM Hang ORDER BY tenHang ASC";
         List<Hang> list = getData(sql);
         return list;
     }
+
     public List<Hang> getAllSXMa() {
         String sql = "SELECT * FROM Hang ORDER BY maHang ASC";
         List<Hang> list = getData(sql);

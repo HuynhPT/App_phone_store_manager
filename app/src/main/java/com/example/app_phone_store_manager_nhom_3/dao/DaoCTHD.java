@@ -70,6 +70,12 @@ public class DaoCTHD {
         list = getData(sql, maHD);
         return list.get(0);
     }
+    public ChiTietHoaDon getMaSP(String maSP) {
+        List<ChiTietHoaDon> list = new ArrayList<>();
+        String sql = "SELECT * FROM ChiTietHoaDon WHERE maSP = ?";
+        list = getData(sql, maSP);
+        return list.get(0);
+    }
 
     public List<ChiTietHoaDon> getListMaHD(String maHD) {
         List<ChiTietHoaDon> list = new ArrayList<>();

@@ -12,6 +12,7 @@ import com.example.app_phone_store_manager_nhom_3.model.HoaDon;
 import com.example.app_phone_store_manager_nhom_3.model.KhachHang;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DaoKhachHang {
@@ -64,6 +65,12 @@ public class DaoKhachHang {
         return list.get(0);
     }
 
+    public int checkMaKH(String maKH) {
+        String sql = "SELECT * FROM KhachHang WHERE maKH = ?";
+        List<KhachHang> list = getData(sql, maKH);
+        return list.size() == 0 ? -1 : 1;
+    }
+
     public int getCountKH() {
         String sql = "SELECT COUNT(*) AS SoLuong FROM KhachHang";
         Cursor cursor = database.rawQuery(sql, null);
@@ -92,12 +99,27 @@ public class DaoKhachHang {
         return cursor.getInt(cursor.getColumnIndex("SoLuong"));
     }
 
-    public int getTongtien() {
-        String sql = "SELECT SUM(donGia*giamGia) AS thanhTien FROM ChiTietHoaDon";
-        Cursor cursor = database.rawQuery(sql, null);
+    public int getSUM(String pl) {
+        String doanhThu = "SELECT SUM(donGia * soLuong) AS tongTien FROM ChiTietHoaDon INNER JOIN HoaDon ON ChiTietHoaDon.maHD = HoaDon.maHD WHERE phanLoai = ? ";
+        Cursor cursor = database.rawQuery(doanhThu, new String[]{pl});
         cursor.moveToFirst();
-        return cursor.getInt(cursor.getColumnIndex("thanhTien"));
+        return cursor.getInt(cursor.getColumnIndex("tongTien"));
     }
+
+    public List<HashMap<String, Integer>> getNhap(String pl) {
+        List<HashMap<String, Integer>> list = new ArrayList<>();
+        String doanhThu = "SELECT donGia , soLuong, giamGia FROM ChiTietHoaDon INNER JOIN HoaDon ON ChiTietHoaDon.maHD = HoaDon.maHD WHERE phanLoai = ? ";
+        Cursor cursor = database.rawQuery(doanhThu, new String[]{pl});
+        while (cursor.moveToNext()) {
+            HashMap<String, Integer> data = new HashMap<>();
+            data.put("donGia", cursor.getInt(cursor.getColumnIndex("donGia")));
+            data.put("soLuong", cursor.getInt(cursor.getColumnIndex("soLuong")));
+            data.put("giamGia", cursor.getInt(cursor.getColumnIndex("giamGia")));
+            list.add(data);
+        }
+        return list;
+    }
+
     public int getTongsl() {
         String sql = "SELECT Sum(soLuong) as tongsl FROM ChiTietHoaDon WHERE giamGia !='0'";
         Cursor cursor = database.rawQuery(sql, null);

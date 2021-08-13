@@ -3,7 +3,6 @@ package com.example.app_phone_store_manager_nhom_3.ui.HoaDonXuat;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -58,7 +57,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Random;
 
 
 public class AddHoaDonXuatFragment extends Fragment {
@@ -82,7 +80,6 @@ public class AddHoaDonXuatFragment extends Fragment {
     private List<SanPham> listSP;
     private List<KhachHang> listKH;
     private String tenSP;
-    private String maSP;
     private String donGia;
     private double thanhTien;
     private String maHD;
@@ -229,11 +226,10 @@ public class AddHoaDonXuatFragment extends Fragment {
         btnCancel = (Button) view.findViewById(R.id.btnCancelChonHang);
         btnSave = (Button) view.findViewById(R.id.btnSaveChonHang);
         tvTitleDL = (TextView) view.findViewById(R.id.tvTitleDL);
-        tvTitleDL.setText("Chọn sản phẩm");
+        tvTitleDL.setText("Chọn khách hàng");
 
         listKH = new ArrayList<>();
         listKH = daoKH.getAll();
-
 
         adapterKH = new ChonKHAdapter(listKH);
 
@@ -276,7 +272,7 @@ public class AddHoaDonXuatFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                edKH.setText(tenSP);
+                edKH.setText(tenKH);
                 Toast.makeText(appCompatActivity, "Chọn Khách hàng thành công", Toast.LENGTH_SHORT).show();
             }
         });
@@ -340,7 +336,6 @@ public class AddHoaDonXuatFragment extends Fragment {
         ArrayAdapter<CharSequence> spAdapter = ArrayAdapter.createFromResource(appCompatActivity, R.array.tinhTrang, R.layout.custom_item_sp);
         spAdapter.setDropDownViewResource(R.layout.custom_item_sp_drop_down);
         spinnerTT.setAdapter(spAdapter);
-        spinnerKM.setSelection(0);
         spinnerTT.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -379,30 +374,30 @@ public class AddHoaDonXuatFragment extends Fragment {
                 switch (i) {
                     case 1:
                         khuyenMai = 1;
-                        edThanhTien.setText(formatter.format(thanhTien - (thanhTien * 0.05))+" đ");
+                        edThanhTien.setText(formatter.format(thanhTien - (thanhTien * 0.05)) + " đ");
                         break;
                     case 2:
                         khuyenMai = 2;
-                        edThanhTien.setText(formatter.format(thanhTien - (thanhTien * 0.1))+" đ");
+                        edThanhTien.setText(formatter.format(thanhTien - (thanhTien * 0.1)) + " đ");
                         break;
                     case 3:
                         khuyenMai = 3;
-                        edThanhTien.setText(formatter.format( thanhTien - (thanhTien * 0.15))+" đ");
+                        edThanhTien.setText(formatter.format(thanhTien - (thanhTien * 0.15)) + " đ");
                         break;
                     case 4:
                         khuyenMai = 4;
-                        edThanhTien.setText(formatter.format(thanhTien - (thanhTien * 0.2))+" đ");
+                        edThanhTien.setText(formatter.format(thanhTien - (thanhTien * 0.2)) + " đ");
                         break;
                     case 5:
                         khuyenMai = 5;
-                        edThanhTien.setText(formatter.format(thanhTien - (thanhTien * 0.25))+" đ");
+                        edThanhTien.setText(formatter.format(thanhTien - (thanhTien * 0.25)) + " đ");
                         break;
                     case 6:
                         khuyenMai = 6;
-                        edThanhTien.setText(formatter.format(thanhTien - (thanhTien * 0.3))+" đ");
+                        edThanhTien.setText(formatter.format(thanhTien - (thanhTien * 0.3)) + " đ");
                         break;
                     case 0:
-                        edThanhTien.setText(formatter.format( thanhTien * 1)+" đ");
+                        edThanhTien.setText(formatter.format(thanhTien * 1) + " đ");
                         khuyenMai = 0;
                         break;
                 }
@@ -454,6 +449,7 @@ public class AddHoaDonXuatFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (edSP.getText().length() == 0 && edSL.getText().length() == 0) {
+                    spinnerKM.setSelection(0);
                     listChon = adapter.getListSelected();
                     double giaTien;
                     double sl;
@@ -461,7 +457,7 @@ public class AddHoaDonXuatFragment extends Fragment {
                     for (SanPham x : listChon) {
                         if (x.getTrangThai() > 0) {
                             if (tenSP == null) {
-                                donGia = x.getTenSP() + ": " + formatter.format(x.getGiaTien())+ " đ";
+                                donGia = x.getTenSP() + ": " + formatter.format(x.getGiaTien()) + " đ";
                                 soLuong = x.getTenSP() + ": " + x.getTinhTrang() + "";
                                 tenSP = x.getTenSP();
                                 giaTien = x.getGiaTien();
@@ -488,9 +484,10 @@ public class AddHoaDonXuatFragment extends Fragment {
                     edSP.setText(tenSP);
                     edSL.setText(soLuong + "");
                     edDonGia.setText(donGia);
-                    edThanhTien.setText(formatter.format(tien)+" đ");
+                    edThanhTien.setText(formatter.format(tien) + " đ");
                     dialog.dismiss();
                 } else {
+                    spinnerKM.setSelection(0);
                     thanhTien = 0;
                     tenSP = "";
                     donGia = "";
@@ -502,7 +499,7 @@ public class AddHoaDonXuatFragment extends Fragment {
                     for (SanPham x : listChon) {
                         if (x.getTrangThai() > 0) {
                             if (tenSP == null) {
-                                donGia = x.getTenSP() + ": " + formatter.format(x.getGiaTien())+ " đ";
+                                donGia = x.getTenSP() + ": " + formatter.format(x.getGiaTien()) + " đ";
                                 soLuong = x.getTenSP() + ": " + x.getTinhTrang() + "";
                                 tenSP = x.getTenSP();
                                 giaTien = x.getGiaTien();
@@ -529,7 +526,7 @@ public class AddHoaDonXuatFragment extends Fragment {
                     edSP.setText(tenSP);
                     edSL.setText(soLuong + "");
                     edDonGia.setText(donGia);
-                    edThanhTien.setText(formatter.format(tien)+" đ");
+                    edThanhTien.setText(formatter.format(tien) + " đ");
                     dialog.dismiss();
                 }
             }
@@ -539,8 +536,8 @@ public class AddHoaDonXuatFragment extends Fragment {
 
     private void resetFrom() {
         tenSP = "";
-        donGia ="";
-        thanhTien =0;
+        donGia = "";
+        thanhTien = 0;
         soLuong = "";
         edMaHD.setText("");
         edNgay.setText("");
@@ -575,36 +572,41 @@ public class AddHoaDonXuatFragment extends Fragment {
                     maHD = edMaHD.getText().toString();
                     ngay = edNgay.getText().toString();
                     formatBaoHanh();
-                    HoaDon hoaDon = new HoaDon();
-
-                    hoaDon.setMaHD(maHD);
-                    hoaDon.setNgay(ngay);
-                    hoaDon.setMaKH(maKH);
-                    hoaDon.setMaNV(maNV);
-                    hoaDon.setPhanLoai(1);
-                    hoaDon.setTrangThai(trangThai);
-                    long kqHDX = daoHD.add(hoaDon);
-                    if (kqHDX > 0) {
-                        if (checkAddCTHD(hoaDon)){
-                            Toast.makeText(appCompatActivity, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                            navController.navigate(R.id.addHDX_to_listHDX);
-                        }else {
-                            Toast.makeText(appCompatActivity, "Thêm chi tiết hóa đơn thất bại", Toast.LENGTH_SHORT).show();
-                        }
+                    if (daoHD.checkMaHD(maHD) > 0) {
+                        Toast.makeText(appCompatActivity, "Mã hóa đơn đã tồn tại trong hệ thống!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(appCompatActivity, "Thêm thất bại", Toast.LENGTH_SHORT).show();
-                    }
+                        HoaDon hoaDon = new HoaDon();
 
+                        hoaDon.setMaHD(maHD);
+                        hoaDon.setNgay(ngay);
+                        hoaDon.setMaKH(maKH);
+                        hoaDon.setMaNV(maNV);
+                        hoaDon.setPhanLoai(1);
+                        hoaDon.setTrangThai(trangThai);
+                        long kqHDX = daoHD.add(hoaDon);
+                        if (kqHDX > 0) {
+                            if (checkAddCTHD(hoaDon)) {
+                                Toast.makeText(appCompatActivity, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                                navController.navigate(R.id.addHDX_to_listHDX);
+                            } else {
+                                Toast.makeText(appCompatActivity, "Thêm chi tiết hóa đơn thất bại", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(appCompatActivity, "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
                 }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-    private boolean checkAddCTHD(HoaDon hoaDon){
+
+    private boolean checkAddCTHD(HoaDon hoaDon) {
         for (SanPham x : listChon) {
             ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon();
-            chiTietHoaDon.setMaHD(maHD);
+            chiTietHoaDon.setMaHD(hoaDon.getMaHD());
             chiTietHoaDon.setMaSP(x.getMaSP());
             chiTietHoaDon.setSoLuong(x.getTinhTrang());
             chiTietHoaDon.setDonGia(x.getGiaTien());
@@ -612,15 +614,11 @@ public class AddHoaDonXuatFragment extends Fragment {
             chiTietHoaDon.setBaoHanh(baoHanh);
             long kqCTHD = daoCTHD.add(chiTietHoaDon);
 
-            if (kqCTHD < 0){
+            if (kqCTHD < 0) {
                 return false;
             }
         }
         return true;
-    }
-    public int getRandomColor() {
-        Random rnd = new Random();
-        return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
     }
 
     @Override

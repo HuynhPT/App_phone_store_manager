@@ -63,17 +63,6 @@
             tools:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvTTSPItem2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="2dp"
-            android:text="@string/don_gia_show"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSLXuatItem" />
-
-        <TextView
             android:id="@+id/tvTTSPItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,13 +89,14 @@
             android:id="@+id/tvDonGiaXItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvTTSPItem2"
-            app:layout_constraintTop_toTopOf="@+id/tvTTSPItem2" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSLXuatItem" />
 
         <TextView
             android:id="@+id/tvKMXItem"
@@ -125,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="TextView"
-            android:textColor="@color/black"
+            android:textColor="@color/red"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tvTTSPItem4"
             app:layout_constraintStart_toEndOf="@+id/tvTTSPItem4"
