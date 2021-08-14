@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
                     sumXuat += giaTien;
                     break;
                 case 1:
-                    sumXuat += giaTien - (giaTien * 0.5);
+                    sumXuat += giaTien - (giaTien * 0.05);
                     break;
                 case 2:
                     sumXuat += giaTien - (giaTien * 0.1);
