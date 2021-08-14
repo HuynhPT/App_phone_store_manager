@@ -1,6 +1,7 @@
 package com.example.app_phone_store_manager_nhom_3.ui.HoaDonXuat;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -272,7 +273,7 @@ public class EditHoaDonXuatragment extends Fragment {
         btnCancel = (Button) view.findViewById(R.id.btnCancelChonHang);
         btnSave = (Button) view.findViewById(R.id.btnSaveChonHang);
         tvTitleDL = (TextView) view.findViewById(R.id.tvTitleDL);
-        tvTitleDL.setText("Chọn sản phẩm");
+        tvTitleDL.setText("Chọn khách hàng");
 
         listKH = new ArrayList<>();
         listKH = daoKH.getAll();
@@ -665,6 +666,31 @@ public class EditHoaDonXuatragment extends Fragment {
         }
         return true;
     }
+    private void dialogBack(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(appCompatActivity);
+        builder.setTitle("Thoát cập nhập");
+        builder.setMessage("Bạn có chắc chắn muốn thoát không. \nDữ liệu sẽ không bị thay đổi!");
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (maHDOld != null){
+                    Bundle bundle = new Bundle();
+                    bundle.putString("maHD", hoaDon.getMaHD());
+                    navController.navigate(R.id.editHDX_to_chiTietHDX, bundle);
+                }else {
+                    navController.navigate(R.id.editHDX_to_listHDX);
+                }
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+    }
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -675,16 +701,14 @@ public class EditHoaDonXuatragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Bundle bundle = new Bundle();
-                bundle.putString("maHD", hoaDon.getMaHD());
-                navController.navigate(R.id.editHDX_to_chiTietHDX, bundle);
+                dialogBack();
                 return true;
             case R.id.menu_reset:
                 resetFrom();
                 return true;
             case R.id.menu_save:
                 if (validate()){
-                    maHD = edMaHD.getText().toString();
+                    maHD = edMaHD.getText().toString().replaceAll(" ","");
                     ngay = edNgay.getText().toString();
                     formatBaoHanh();
                     hoaDon.setMaHD(maHD);

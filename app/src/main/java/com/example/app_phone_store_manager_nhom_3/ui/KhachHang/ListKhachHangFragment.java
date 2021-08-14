@@ -209,7 +209,7 @@ public class ListKhachHangFragment extends Fragment {
     public void dialogDelete(KhachHang khachHang) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Xóa");
-        builder.setMessage("Bạn có chắc chắn muốn xóa không ?");
+        builder.setMessage("Sẽ xóa hết dữ liệu liên quan đến khách hàng này.\nBạn có chắc chắn muốn xóa không?");
         builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

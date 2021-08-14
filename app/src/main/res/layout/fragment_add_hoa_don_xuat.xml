@@ -146,21 +146,21 @@
                 android:id="@+id/cbKoBH"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.1"
+                android:layout_weight="1.3"
                 android:text="@string/proted_no" />
 
             <RadioButton
                 android:id="@+id/cbBH6T"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.9"
+                android:layout_weight="0.8"
                 android:text="@string/proted_tittle" />
 
             <RadioButton
                 android:id="@+id/cbBH12T"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.9"
                 android:text="@string/proted_big" />
         </RadioGroup>
 

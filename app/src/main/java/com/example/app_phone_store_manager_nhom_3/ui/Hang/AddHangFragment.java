@@ -149,7 +149,7 @@ public class AddHangFragment extends Fragment {
                         bitmapNew = ((BitmapDrawable) imgHang.getDrawable()).getBitmap();
                         Hang hang = new Hang();
                         hang.setTenHang(edTenHang.getText().toString());
-                        hang.setMaHang(edMaHang.getText().toString());
+                        hang.setMaHang(edMaHang.getText().toString().replaceAll(" ",""));
                         if (bitmapOld != bitmapNew) {
                             convertImage();
                             hang.setHinhAnh(hinhAnh);

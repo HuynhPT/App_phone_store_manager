@@ -70,9 +70,15 @@ public class DaoThuocTinhSanPham {
         return list;
     }
 
+    public int checkTTMaSP(String maSP) {
+        String sql = "SELECT * FROM ThuocTinhSanPham WHERE maSP = ? ";
+        List<ThuocTinhSanPham> list = getData(sql, maSP);
+        return list.size() == 0 ? -1 : 1;
+    }
+
     public ThuocTinhSanPham getMaSP(String maSP) {
         String sql = "SELECT * FROM ThuocTinhSanPham WHERE maSP = ? ";
-        List<ThuocTinhSanPham> list = getData(sql,maSP);
+        List<ThuocTinhSanPham> list = getData(sql, maSP);
         return list.get(0);
     }
 

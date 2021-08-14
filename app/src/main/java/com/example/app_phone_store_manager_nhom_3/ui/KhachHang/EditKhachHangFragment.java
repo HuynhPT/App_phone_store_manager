@@ -101,16 +101,20 @@ public class EditKhachHangFragment extends Fragment {
                 builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
+                        dialogInterface.dismiss();
                     }
                 });
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Bundle bundle = new Bundle();
-                        bundle.putString("maKH", maKHOld);
-                        navController.navigate(R.id.action_editKH_to_chitietKH, bundle);
-                        dialogInterface.cancel();
+                        if (maKHOld != null){
+                            Bundle bundle = new Bundle();
+                            bundle.putString("maKH", maKHOld);
+                            navController.navigate(R.id.action_editKH_to_chitietKH, bundle);
+                        }else {
+                            navController.navigate(R.id.action_editKH_to_listKH);
+                        }
+                        dialogInterface.dismiss();
                     }
                 });
                 builder.show();
@@ -129,7 +133,7 @@ public class EditKhachHangFragment extends Fragment {
                             khachHang.getDiaChi().equals(edDiaChiChange.getText().toString())) {
                         Toast.makeText(appCompatActivity, "Không có thay đổi để cập nhập!", Toast.LENGTH_SHORT).show();
                     } else {
-                        khachHang.setMaKH(edMaKHChange.getText().toString());
+                        khachHang.setMaKH(edMaKHChange.getText().toString().replaceAll(" ",""));
                         khachHang.setHoTen(edHoTenKHChange.getText().toString());
                         khachHang.setDienThoai(edDienThoaiChange.getText().toString());
                         khachHang.setDiaChi(edDiaChiChange.getText().toString());
@@ -157,7 +161,7 @@ public class EditKhachHangFragment extends Fragment {
             return false;
         }
         if (edMaKHChange.getText().length() < 6 || edMaKHChange.getText().length() > 10) {
-            Toast.makeText(appCompatActivity, "Mã hãng có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(appCompatActivity, "Mã khách hàng có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!edMaKHChange.getText().toString().substring(0, 1).toUpperCase().equals(edMaKHChange.getText().toString().substring(0, 1)) ||

@@ -70,6 +70,14 @@ public class DaoCTHD {
         list = getData(sql, maHD);
         return list.get(0);
     }
+
+    public int checkCTHD(String maHD) {
+        List<ChiTietHoaDon> list = new ArrayList<>();
+        String sql = "SELECT * FROM ChiTietHoaDon WHERE maHD = ?";
+        list = getData(sql, maHD);
+        return list.size() == 0 ? -1 : 1;
+    }
+
     public ChiTietHoaDon getMaSP(String maSP) {
         List<ChiTietHoaDon> list = new ArrayList<>();
         String sql = "SELECT * FROM ChiTietHoaDon WHERE maSP = ?";
@@ -106,16 +114,17 @@ public class DaoCTHD {
 
     public int getSUM(String startDay, String endDay, String pl) {
         String doanhThu = "SELECT SUM(donGia * soLuong) AS tongTien FROM ChiTietHoaDon INNER JOIN HoaDon ON ChiTietHoaDon.maHD = HoaDon.maHD WHERE ngay >= ? AND ngay <= ? AND phanLoai = ? ";
-        Cursor cursor = database.rawQuery(doanhThu, new String[]{startDay,endDay,pl});
+        Cursor cursor = database.rawQuery(doanhThu, new String[]{startDay, endDay, pl});
         cursor.moveToFirst();
         return cursor.getInt(cursor.getColumnIndex("tongTien"));
     }
+
     public List<HashMap<String, Integer>> getNhap(String startDay, String endDay, String pl) {
-        List<HashMap<String,Integer>> list = new ArrayList<>();
+        List<HashMap<String, Integer>> list = new ArrayList<>();
         String doanhThu = "SELECT donGia , soLuong, giamGia FROM ChiTietHoaDon INNER JOIN HoaDon ON ChiTietHoaDon.maHD = HoaDon.maHD WHERE ngay >= ? AND ngay <= ? AND phanLoai = ? ";
-        Cursor cursor = database.rawQuery(doanhThu, new String[]{startDay,endDay,pl});
-        while (cursor.moveToNext()){
-            HashMap<String,Integer> data = new HashMap<>();
+        Cursor cursor = database.rawQuery(doanhThu, new String[]{startDay, endDay, pl});
+        while (cursor.moveToNext()) {
+            HashMap<String, Integer> data = new HashMap<>();
             data.put("donGia", cursor.getInt(cursor.getColumnIndex("donGia")));
             data.put("soLuong", cursor.getInt(cursor.getColumnIndex("soLuong")));
             data.put("giamGia", cursor.getInt(cursor.getColumnIndex("giamGia")));

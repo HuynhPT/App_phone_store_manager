@@ -106,9 +106,13 @@ public class EditTaiKhoanFragment extends Fragment {
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Bundle bundle = new Bundle();
-                        bundle.putString("maNV", maNV);
-                        navController.navigate(R.id.editTk_to_ChiTietTk, bundle);
+                        if (maNV != null){
+                            Bundle bundle = new Bundle();
+                            bundle.putString("maNV", maNV);
+                            navController.navigate(R.id.editTk_to_ChiTietTk, bundle);
+                        }else {
+                            navController.navigate(R.id.editTk_to_ListTk);
+                        }
                         dialogInterface.cancel();
                     }
                 });
@@ -164,7 +168,7 @@ public class EditTaiKhoanFragment extends Fragment {
             return false;
         }
         if (edMaNV.getText().length() < 6 || edMaNV.getText().length() > 10) {
-            Toast.makeText(appCompatActivity, "Mã hãng có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(appCompatActivity, "Mã nhân viên có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!edMaNV.getText().toString().substring(0, 1).toUpperCase().equals(edMaNV.getText().toString().substring(0, 1)) ||

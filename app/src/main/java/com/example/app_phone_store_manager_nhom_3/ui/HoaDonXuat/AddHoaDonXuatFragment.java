@@ -569,7 +569,7 @@ public class AddHoaDonXuatFragment extends Fragment {
             case R.id.menu_save:
                 if (validate()) {
 
-                    maHD = edMaHD.getText().toString();
+                    maHD = edMaHD.getText().toString().replaceAll(" ","");
                     ngay = edNgay.getText().toString();
                     formatBaoHanh();
                     if (daoHD.checkMaHD(maHD) > 0) {

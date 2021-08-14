@@ -356,7 +356,7 @@ public class AddHoaDonNhapFragment extends Fragment {
                 return true;
             case R.id.menu_save:
                 if (validate()) {
-                    maHD = edMaHD.getText().toString();
+                    maHD = edMaHD.getText().toString().replaceAll(" ","");
                     getMaNV();
                     ngay = edNgay.getText().toString();
                     soLuong = Integer.parseInt(edSL.getText().toString());
@@ -370,6 +370,7 @@ public class AddHoaDonNhapFragment extends Fragment {
                         hoaDon.setMaNV(maNV);
                         hoaDon.setPhanLoai(0);
                         hoaDon.setNgay(ngay);
+                        hoaDon.setTrangThai(2);
 
                         long kq = daoHD.add(hoaDon);
                         if (kq > 0) {

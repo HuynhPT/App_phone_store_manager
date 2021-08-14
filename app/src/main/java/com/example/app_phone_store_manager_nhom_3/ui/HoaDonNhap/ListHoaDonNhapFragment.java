@@ -142,9 +142,13 @@ public class ListHoaDonNhapFragment extends Fragment {
         adapter.setItemClick(new ItemHoaDonClick() {
             @Override
             public void ItemClick(HoaDon hoaDon) {
-                Bundle bundle = new Bundle();
-                bundle.putString("maHD", hoaDon.getMaHD());
-                navController.navigate(R.id.listHDNhap_to_ChiTietHDNhap, bundle);
+                if (daoCTHD.checkCTHD(hoaDon.getMaHD()) >0){
+                    Bundle bundle = new Bundle();
+                    bundle.putString("maHD", hoaDon.getMaHD());
+                    navController.navigate(R.id.listHDNhap_to_ChiTietHDNhap, bundle);
+                }else {
+                    dialogDeleteErr(hoaDon);
+                }
             }
         });
     }
@@ -158,7 +162,32 @@ public class ListHoaDonNhapFragment extends Fragment {
         }
         adapter.filter(filterList);
     }
-
+    public void dialogDeleteErr(HoaDon hoaDon) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(appCompatActivity);
+        builder.setTitle("Xóa");
+        builder.setMessage("Sản phẩm đã ngừng kinh doanh.\nBạn nên xóa hóa đơn để tối ưu bộ nhớ!");
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                int kq = daoHD.delete(hoaDon.getMaHD());
+                if (kq > 0) {
+                    Toast.makeText(appCompatActivity, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    list.clear();
+                    list.addAll(daoHD.getAllNhap());
+                    adapter.filter(list);
+                } else {
+                    Toast.makeText(appCompatActivity, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.show();
+    }
     public void dialogDelete(HoaDon hoaDon) {
         AlertDialog.Builder builder = new AlertDialog.Builder(appCompatActivity);
         builder.setTitle("Xóa");

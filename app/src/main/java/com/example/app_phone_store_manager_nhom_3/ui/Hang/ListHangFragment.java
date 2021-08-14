@@ -181,7 +181,7 @@ public class ListHangFragment extends Fragment {
     public void dialogDelete(Hang hang) {
         AlertDialog.Builder builder = new AlertDialog.Builder(appCompatActivity);
         builder.setTitle("Xóa");
-        builder.setMessage("Bạn có chắc chắn muốn xóa không!");
+        builder.setMessage("Sẽ xóa hết dữ liệu liên quan đến hãng này.\nBạn có chắc chắn muốn xóa không!");
         builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

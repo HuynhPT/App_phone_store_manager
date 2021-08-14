@@ -127,7 +127,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/text_medium"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/tvSLNhapItem"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgSPHDNItem"
             app:layout_constraintTop_toBottomOf="@+id/tvMaHDNItem" />
 

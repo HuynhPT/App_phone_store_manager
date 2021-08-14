@@ -43,7 +43,7 @@ public class DbHelper extends SQLiteOpenHelper {
         //Tạo bảng Sản Phẩm
         String createTableSanPham = "CREATE TABLE SanPham(" +
                 "maSP TEXT NOT NULL UNIQUE PRIMARY KEY," +
-                "maHang TEXT NOT NULL REFERENCES Hang(maHang)," +
+                "maHang TEXT NOT NULL REFERENCES Hang(maHang)ON DELETE CASCADE ON UPDATE CASCADE," +
                 "tenSP TEXT NOT NULL," +
                 "hinhAnh BOLD," +
                 "phanLoai INTEGER NOT NULL," +
@@ -55,7 +55,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // Tạo bảng thuộc tính SP
         String createTableThuocTinhSanPham = "CREATE TABLE ThuocTinhSanPham(" +
                 "maTT INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "maSP TEXT NOT NULL REFERENCES SanPham(maSP)," +
+                "maSP TEXT NOT NULL REFERENCES SanPham(maSP) ON DELETE CASCADE ON UPDATE CASCADE," +
                 "boNho TEXT," +
                 "RAM TEXT," +
                 "chipSet TEXT," +
@@ -68,10 +68,10 @@ public class DbHelper extends SQLiteOpenHelper {
         //Tạo bảng hóa đơn
         String createTableHoaDon = "CREATE TABLE HoaDon(" +
                 "maHD TEXT NOT NULL UNIQUE PRIMARY KEY," +
-                "maNV TEXT NOT NULL REFERENCES NhanVien(maNV)," +
-                "maKH TEXT REFERENCES KhachHang(maKH)," +
+                "maNV TEXT NOT NULL REFERENCES NhanVien(maNV) ON DELETE CASCADE ON UPDATE CASCADE," +
+                "maKH TEXT REFERENCES KhachHang(maKH) ON DELETE CASCADE ON UPDATE CASCADE," +
                 "phanLoai INTEGER NOT NULL," +
-                "trangThai INTEGER," +
+                "trangThai INTEGER NOT NULL," +
                 "ngay TEXT NOT NULL)";
         db.execSQL(createTableHoaDon);
         //Tạo bảng Chi tiết HĐ

@@ -72,84 +72,101 @@ public class HoaDonXuatAdapter extends RecyclerView.Adapter<HoaDonXuatAdapter.Vi
         daoCTHD.open();
         daoSP.open();
         daoKH.open();
-        KhachHang khachHang = daoKH.getMaKH(hoaDon.getMaKH());
-        holder.tvKH.setText("Khách hàng: " + khachHang.getHoTen());
+
+        if (daoKH.checkMaKH(hoaDon.getMaKH()) > 0){
+            KhachHang khachHang = daoKH.getMaKH(hoaDon.getMaKH());
+            holder.tvKH.setText("Khách hàng: " + khachHang.getHoTen());
+        }else {
+            holder.tvKH.setText("Khách hàng: null");
+            holder.tvBaoHanh.setText("null");
+        }
+
         List<ChiTietHoaDon> hoaDonList = daoCTHD.getListMaHD(hoaDon.getMaHD());
-        String tenSP = "";
-        String soLuong = "";
-        String donGia = "";
-        double tien = 0;
-        int khuyenMai = 0;
-        int baohanh = 0;
-        DecimalFormat formatter = new DecimalFormat("###,###,###");
-        for (ChiTietHoaDon x : hoaDonList) {
-            SanPham sanPham = daoSP.getMaSP(x.getMaSP());
-            if (tenSP.equals("")) {
-                tenSP = sanPham.getTenSP();
-                soLuong = sanPham.getTenSP() + ": " + x.getSoLuong();
-                donGia = sanPham.getTenSP() + ": " + formatter.format(x.getDonGia()) + " đ";
-                tien = x.getDonGia() * x.getSoLuong();
-                khuyenMai = x.getGiamGia();
-                baohanh = x.getBaoHanh();
+        if (hoaDonList.size() == 0){
+            holder.tvGiamGia.setText("null");
+            holder.tvThanhTien.setText("null");
+            drawable = context.getDrawable(R.drawable.ic_kobaohanh);
+            holder.imgBH.setImageDrawable(drawable);
+            holder.tvBaoHanh.setText("Không bảo hành");
+            holder.tvSP.setText("Sản phẩm: ngừng kinh doanh");
+            holder.tvDonGia.setText("Đơn giá: null");
+            holder.tvSL.setText("Số lượng: null");
+        }else {
+            String tenSP = "";
+            String soLuong = "";
+            String donGia = "";
+            double tien = 0;
+            int khuyenMai = 0;
+            int baohanh = 0;
+            DecimalFormat formatter = new DecimalFormat("###,###,###");
+            for (ChiTietHoaDon x : hoaDonList) {
+                SanPham sanPham = daoSP.getMaSP(x.getMaSP());
+                if (tenSP.equals("")) {
+                    tenSP = sanPham.getTenSP();
+                    soLuong = sanPham.getTenSP() + ": " + x.getSoLuong();
+                    donGia = sanPham.getTenSP() + ": " + formatter.format(x.getDonGia()) + " đ";
+                    tien = x.getDonGia() * x.getSoLuong();
+                    khuyenMai = x.getGiamGia();
+                    baohanh = x.getBaoHanh();
 
-            } else {
-                tenSP += " , " + sanPham.getTenSP();
-                soLuong += " , " + sanPham.getTenSP() + ": " + x.getSoLuong();
-                donGia += " , " + sanPham.getTenSP() + ": " + formatter.format(x.getDonGia()) + " đ";
-                tien += (x.getDonGia() * x.getSoLuong());
+                } else {
+                    tenSP += " , " + sanPham.getTenSP();
+                    soLuong += " , " + sanPham.getTenSP() + ": " + x.getSoLuong();
+                    donGia += " , " + sanPham.getTenSP() + ": " + formatter.format(x.getDonGia()) + " đ";
+                    tien += (x.getDonGia() * x.getSoLuong());
+                }
             }
+            switch (khuyenMai) {
+                case 0:
+                    holder.tvGiamGia.setText("Không khuyến mãi");
+                    holder.tvThanhTien.setText(formatter.format(tien) + " đ");
+                    break;
+                case 1:
+                    holder.tvGiamGia.setText("5%");
+                    holder.tvThanhTien.setText(formatter.format(tien - tien * 0.05) + " đ");
+                    break;
+                case 2:
+                    holder.tvGiamGia.setText("10%");
+                    holder.tvThanhTien.setText(formatter.format(tien - tien * 0.1) + " đ");
+                    break;
+                case 3:
+                    holder.tvGiamGia.setText("15%");
+                    holder.tvThanhTien.setText(formatter.format(tien - tien * 0.15) + " đ");
+                    break;
+                case 4:
+                    holder.tvGiamGia.setText("20%");
+                    holder.tvThanhTien.setText(formatter.format(tien - tien * 0.2) + " đ");
+                    break;
+                case 5:
+                    holder.tvGiamGia.setText("25%");
+                    holder.tvThanhTien.setText(formatter.format(tien - tien * 0.25) + " đ");
+                    break;
+                case 6:
+                    holder.tvGiamGia.setText("30%");
+                    holder.tvThanhTien.setText(formatter.format(tien - tien * 0.3) + " đ");
+                    break;
+            }
+            switch (baohanh) {
+                case 0:
+                    drawable = context.getDrawable(R.drawable.ic_baohanh6t);
+                    holder.imgBH.setImageDrawable(drawable);
+                    holder.tvBaoHanh.setText("6 tháng BH");
+                    break;
+                case 1:
+                    drawable = context.getDrawable(R.drawable.ic_baohanh12t);
+                    holder.imgBH.setImageDrawable(drawable);
+                    holder.tvBaoHanh.setText("12 tháng BH");
+                    break;
+                default:
+                    drawable = context.getDrawable(R.drawable.ic_kobaohanh);
+                    holder.imgBH.setImageDrawable(drawable);
+                    holder.tvBaoHanh.setText("Không bảo hành");
+                    break;
+            }
+            holder.tvSP.setText("Sản phẩm: " + tenSP);
+            holder.tvDonGia.setText("Đơn giá: " +donGia);
+            holder.tvSL.setText("Số lượng: " + soLuong);
         }
-        switch (khuyenMai) {
-            case 0:
-                holder.tvGiamGia.setText("Không khuyến mãi");
-                holder.tvThanhTien.setText(formatter.format(tien) + " đ");
-                break;
-            case 1:
-                holder.tvGiamGia.setText("5%");
-                holder.tvThanhTien.setText(formatter.format(tien - tien * 0.05) + " đ");
-                break;
-            case 2:
-                holder.tvGiamGia.setText("10%");
-                holder.tvThanhTien.setText(formatter.format(tien - tien * 0.1) + " đ");
-                break;
-            case 3:
-                holder.tvGiamGia.setText("15%");
-                holder.tvThanhTien.setText(formatter.format(tien - tien * 0.15) + " đ");
-                break;
-            case 4:
-                holder.tvGiamGia.setText("20%");
-                holder.tvThanhTien.setText(formatter.format(tien - tien * 0.2) + " đ");
-                break;
-            case 5:
-                holder.tvGiamGia.setText("25%");
-                holder.tvThanhTien.setText(formatter.format(tien - tien * 0.25) + " đ");
-                break;
-            case 6:
-                holder.tvGiamGia.setText("30%");
-                holder.tvThanhTien.setText(formatter.format(tien - tien * 0.3) + " đ");
-                break;
-        }
-        switch (baohanh) {
-            case 0:
-                drawable = context.getDrawable(R.drawable.ic_baohanh6t);
-                holder.imgBH.setImageDrawable(drawable);
-                holder.tvBaoHanh.setText("6 tháng BH");
-                break;
-            case 1:
-                drawable = context.getDrawable(R.drawable.ic_baohanh12t);
-                holder.imgBH.setImageDrawable(drawable);
-                holder.tvBaoHanh.setText("12 tháng BH");
-                break;
-            default:
-                drawable = context.getDrawable(R.drawable.ic_kobaohanh);
-                holder.imgBH.setImageDrawable(drawable);
-                holder.tvBaoHanh.setText("Không bảo hành");
-                break;
-        }
-        holder.tvSP.setText("Sản phẩm: " + tenSP);
-        holder.tvDonGia.setText("Đơn giá: " +donGia);
-        holder.tvSL.setText("Số lượng: " + soLuong);
-
         daoCTHD.close();
         daoKH.close();
         daoKH.close();

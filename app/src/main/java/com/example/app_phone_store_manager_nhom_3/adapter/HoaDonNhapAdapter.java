@@ -69,36 +69,55 @@ public class HoaDonNhapAdapter extends RecyclerView.Adapter<HoaDonNhapAdapter.Vi
         daoSanPham.open();
         daoCTHD = new DaoCTHD(context);
         daoCTHD.open();
+        if (daoCTHD.checkCTHD(hoaDon.getMaHD()) > 0){
+            ChiTietHoaDon chiTietHoaDon = daoCTHD.getMaHD(hoaDon.getMaHD());
 
-        ChiTietHoaDon chiTietHoaDon = daoCTHD.getMaHD(hoaDon.getMaHD());
-
-        String maSP = chiTietHoaDon.getMaSP();
-        String tenSP = daoSanPham.getMaSP(maSP).getTenSP();
-        holder.tvTenSP.setText("Sản phẩm: " + tenSP);
-        int ttSP = daoSanPham.getMaSP(maSP).getTinhTrang();
-        if (daoSanPham.getMaSP(maSP).getHinhAnh() == null) {
-            TextDrawable textDrawable = TextDrawable.builder().beginConfig().width(48).height(48).endConfig().buildRect(tenSP.substring(0, 1).toUpperCase(), getRandomColor());
+            String maSP = chiTietHoaDon.getMaSP();
+            if (daoSanPham.checkMaSP(maSP) > 0){
+                String tenSP = daoSanPham.getMaSP(maSP).getTenSP();
+                holder.tvTenSP.setText("Sản phẩm: " + tenSP);
+                int ttSP = daoSanPham.getMaSP(maSP).getTinhTrang();
+                if (daoSanPham.getMaSP(maSP).getHinhAnh() == null) {
+                    TextDrawable textDrawable = TextDrawable.builder().beginConfig().width(48).height(48).endConfig().buildRect(tenSP.substring(0, 1).toUpperCase(), getRandomColor());
+                    holder.imgSP.setImageDrawable(textDrawable);
+                } else {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(daoSanPham.getMaSP(maSP).getHinhAnh(), 0, daoSanPham.getMaSP(maSP).getHinhAnh().length);
+                    holder.imgSP.setImageBitmap(bitmap);
+                }
+                switch (ttSP) {
+                    case 0:
+                        holder.tvTTSP.setText("Tình trạng: Like new 99%");
+                        break;
+                    case 1:
+                        holder.tvTTSP.setText("Tình trạng: Mới 100%");
+                        break;
+                    default:
+                        holder.tvTTSP.setText("Tình trạng: Cũ");
+                        break;
+                }
+            }else {
+                TextDrawable textDrawable = TextDrawable.builder().beginConfig().width(48).height(48).endConfig().buildRect("N".toUpperCase(), getRandomColor());
+                holder.imgSP.setImageDrawable(textDrawable);
+                holder.tvTenSP.setText("Sản phẩm: ngừng kinh doanh");
+                holder.tvTenSP.setTextColor(context.getResources().getColor(R.color.red));
+                holder.tvTTSP.setText("Tình trạng: null");
+            }
+            DecimalFormat formatter = new DecimalFormat("###,###,###");
+            holder.tvDonGia.setText(formatter.format(chiTietHoaDon.getDonGia()) + " đ");
+            holder.tvSL.setText("Số lượng: " + chiTietHoaDon.getSoLuong());
+            double thanhTien = chiTietHoaDon.getDonGia() * chiTietHoaDon.getSoLuong();
+            holder.tvThanhTien.setText(formatter.format(thanhTien) + " đ");
+        }else {
+            TextDrawable textDrawable = TextDrawable.builder().beginConfig().width(48).height(48).endConfig().buildRect("N".toUpperCase(), getRandomColor());
             holder.imgSP.setImageDrawable(textDrawable);
-        } else {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(daoSanPham.getMaSP(maSP).getHinhAnh(), 0, daoSanPham.getMaSP(maSP).getHinhAnh().length);
-            holder.imgSP.setImageBitmap(bitmap);
+            holder.tvDonGia.setText("null");
+            holder.tvTenSP.setText("Sản phẩm: ngừng kinh doanh");
+            holder.tvTenSP.setTextColor(context.getResources().getColor(R.color.red));
+            holder.tvTTSP.setText("Tình trạng: null");
+            holder.tvSL.setText("Số lượng: null");
+            holder.tvThanhTien.setText("null");
         }
-        switch (ttSP) {
-            case 0:
-                holder.tvTTSP.setText("Tình trạng: Like new 99%");
-                break;
-            case 1:
-                holder.tvTTSP.setText("Tình trạng: Mới 100%");
-                break;
-            default:
-                holder.tvTTSP.setText("Tình trạng: Cũ");
-                break;
-        }
-        DecimalFormat formatter = new DecimalFormat("###,###,###");
-        holder.tvDonGia.setText(formatter.format(chiTietHoaDon.getDonGia()) + " đ");
-        holder.tvSL.setText("Số lượng: " + chiTietHoaDon.getSoLuong());
-        double thanhTien = chiTietHoaDon.getDonGia() * chiTietHoaDon.getSoLuong();
-        holder.tvThanhTien.setText(formatter.format(thanhTien) + " đ");
+
         daoCTHD.close();
         daoSanPham.close();
 

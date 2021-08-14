@@ -484,8 +484,8 @@ public class AddSanPhamFragment extends Fragment {
         if (binding.edGiaTienSP.getText().length() > 0) {
             try {
                 giaTien = Double.parseDouble(binding.edGiaTienSP.getText().toString());
-                if (giaTien < 0) {
-                    Toast.makeText(appCompatActivity, "Giá tiền không phải là số âm", Toast.LENGTH_SHORT).show();
+                if (giaTien <= 0) {
+                    Toast.makeText(appCompatActivity, "Giá tiền phải lớn hơn 0", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             } catch (Exception e) {

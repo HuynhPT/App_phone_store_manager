@@ -1,5 +1,6 @@
 package com.example.app_phone_store_manager_nhom_3.ui.SanPham;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -506,7 +507,31 @@ public class EditSanPhamFragment extends Fragment {
         binding.edLoaiPKSPChange.setText("");
         binding.edMoTaSPChange.setText("");
     }
-
+    private void dialogBack(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(appCompatActivity);
+        builder.setTitle("Thoát cập nhập");
+        builder.setMessage("Bạn có chắc chắn muốn thoát không. \nDữ liệu sẽ không bị thay đổi!");
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (maSPOld != null) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("maSP", maSPOld);
+                    navController.navigate(R.id.editSP_to_chitetSP, bundle);
+                } else {
+                    navController.navigate(R.id.editSP_to_listSP);
+                }
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+    }
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -517,13 +542,7 @@ public class EditSanPhamFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (maSP != null) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("maSP", maSP);
-                    navController.navigate(R.id.editSP_to_chitetSP, bundle);
-                } else {
-                    navController.navigate(R.id.editSP_to_listSP);
-                }
+                dialogBack();
                 return true;
             case R.id.menu_reset:
                 resetFrom();

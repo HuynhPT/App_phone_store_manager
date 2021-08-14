@@ -92,7 +92,7 @@ public class AddKhachHangFragment extends Fragment {
                         Toast.makeText(appCompatActivity, "Đã có mã khách hàng trong hệ thống!", Toast.LENGTH_SHORT).show();
                     } else {
                         KhachHang khachHang = new KhachHang();
-                        khachHang.setMaKH(edMaKH.getText().toString());
+                        khachHang.setMaKH(edMaKH.getText().toString().replaceAll(" ",""));
                         khachHang.setHoTen(edHoTenKH.getText().toString());
                         khachHang.setDienThoai(edDienThoaiKH.getText().toString());
                         khachHang.setDiaChi(edDiaChiKH.getText().toString());
@@ -121,7 +121,7 @@ public class AddKhachHangFragment extends Fragment {
             return false;
         }
         if (edMaKH.getText().length() < 6 || edMaKH.getText().length() > 10) {
-            Toast.makeText(appCompatActivity, "Mã hãng có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(appCompatActivity, "Mã khách hàng có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!edMaKH.getText().toString().substring(0, 1).toUpperCase().equals(edMaKH.getText().toString().substring(0, 1)) ||

@@ -74,13 +74,13 @@ public class ListTaiKhoanFragment extends Fragment {
         navController = Navigation.findNavController(view);
         appCompatActivity = (AppCompatActivity) getActivity();
 
-        binding.tlbTaiKhoan.inflateMenu(R.menu.menu_header);
+        binding.tlbTaiKhoan.inflateMenu(R.menu.menu_seach);
         drawable = getActivity().getDrawable(R.drawable.ic_menu);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setTitle("Tài Khoản");
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
 
-        MenuItem menu = binding.tlbTaiKhoan.getMenu().findItem(R.id.menu_search);
+        MenuItem menu = binding.tlbTaiKhoan.getMenu().findItem(R.id.menu_extra_seach);
         searchView = (SearchView) menu.getActionView();
         searchView.setQueryHint("Mã nhân viên, Họ tên, Tài khoản");
         searchView.setMaxWidth(Integer.MAX_VALUE);
@@ -130,17 +130,6 @@ public class ListTaiKhoanFragment extends Fragment {
             }
         });
 
-        binding.tlbTaiKhoan.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.menu_loc:
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
         dao = new DaoNhanVien(getContext());
         dao.openNV();
 
@@ -207,7 +196,7 @@ public class ListTaiKhoanFragment extends Fragment {
     public void deleteDialogNV(NhanVien nhanVien) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Xóa");
-        builder.setMessage("Bạn Có Chắc Chắn Muốn Xóa Không?");
+        builder.setMessage("Sẽ xóa hết dữ liệu liên quan đến nhân viên này.\nBạn có chắc chắn muốn xóa không?");
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {

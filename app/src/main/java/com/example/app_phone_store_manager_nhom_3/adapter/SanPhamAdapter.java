@@ -76,24 +76,28 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         daoHang.open();
         daoTTSP = new DaoThuocTinhSanPham(context);
         daoTTSP.open();
+        if (daoTTSP.checkTTMaSP(sanPham.getMaSP()) > 0) {
+            ThuocTinhSanPham ttSP = daoTTSP.getMaSP(sanPham.getMaSP());
+            Hang hang = daoHang.getMaHang(sanPham.getMaHang());
 
-        ThuocTinhSanPham ttSP = daoTTSP.getMaSP(sanPham.getMaSP());
-        Hang hang = daoHang.getMaHang(sanPham.getMaHang());
-
-        if (hang.getHinhAnh() == null) {
-            String tenHang = hang.getTenHang();
-            setImage(tenHang, holder.imgHang);
+            if (hang.getHinhAnh() == null) {
+                String tenHang = hang.getTenHang();
+                setImage(tenHang, holder.imgHang);
+            } else {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(hang.getHinhAnh(), 0, hang.getHinhAnh().length);
+                holder.imgHang.setImageBitmap(bitmap);
+            }
+            holder.tvHang.setText(hang.getTenHang());
+            if (sanPham.getPhanLoai() > 0) {
+                holder.tvPLSP.setText("Loại: Phụ kiện  ");
+                holder.tvCTSP.setText("Loại phụ kiện: " + ttSP.getLoaiPhuKien());
+            } else {
+                holder.tvPLSP.setText("Loại: Điện thoại  ");
+                holder.tvCTSP.setText("RAM: " + ttSP.getRAM() + "  -  Bộ nhớ: " + ttSP.getBoNho());
+            }
         } else {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(hang.getHinhAnh(), 0, hang.getHinhAnh().length);
-            holder.imgHang.setImageBitmap(bitmap);
-        }
-        holder.tvHang.setText(hang.getTenHang());
-        if (sanPham.getPhanLoai()>0){
-            holder.tvPLSP.setText("Loại: Phụ kiện  ");
-            holder.tvCTSP.setText("Loại phụ kiện: " + ttSP.getLoaiPhuKien());
-        }else {
-            holder.tvPLSP.setText("Loại: Điện thoại  ");
-            holder.tvCTSP.setText("RAM: " + ttSP.getRAM() +"  -  Bộ nhớ: "+ ttSP.getBoNho());
+            holder.tvPLSP.setText("Chưa cập nhập");
+            holder.tvCTSP.setText("Chưa cập nhập");
         }
 
         daoTTSP.close();
@@ -112,7 +116,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
                 holder.tvTinhTrang.setText("-  Tình trạng: Cũ");
                 break;
         }
-        holder.tvMTSP.setText("Mô tả: "+ sanPham.getMoTa());
+        holder.tvMTSP.setText("Mô tả: " + sanPham.getMoTa());
 
         DecimalFormat formatter = new DecimalFormat("###,###,###");
         holder.tvGiaTien.setText(formatter.format(sanPham.getGiaTien()) + " đ");
@@ -155,7 +159,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgSP, imgHang, imgDelete;
-        TextView tvMaSP, tvTenSP, tvTinhTrang,tvPLSP,  tvMTSP, tvCTSP, tvGiaTien, tvTrangThai, tvHang;
+        TextView tvMaSP, tvTenSP, tvTinhTrang, tvPLSP, tvMTSP, tvCTSP, tvGiaTien, tvTrangThai, tvHang;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);

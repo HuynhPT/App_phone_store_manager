@@ -135,7 +135,7 @@ public class AddTaiKhoanFragment extends Fragment {
             return false;
         }
         if (edMaNV.getText().length() < 6 || edMaNV.getText().length() > 10) {
-            Toast.makeText(appCompatActivity, "Mã hãng có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(appCompatActivity, "Mã tài khoản có độ dài tối thiểu 6, tối đa 10.", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!edMaNV.getText().toString().substring(0, 1).toUpperCase().equals(edMaNV.getText().toString().substring(0, 1)) ||

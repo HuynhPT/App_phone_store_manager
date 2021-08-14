@@ -156,7 +156,7 @@ public class EditHangFragment extends Fragment {
                 builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
+                        dialogInterface.dismiss();
                     }
                 });
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
@@ -165,6 +165,7 @@ public class EditHangFragment extends Fragment {
                         Bundle bundle = new Bundle();
                         bundle.putString("maHang", maHang);
                         navController.navigate(R.id.editHang_to_chiTietHang, bundle);
+                        dialogInterface.dismiss();
                     }
                 });
                 builder.show();
@@ -180,7 +181,7 @@ public class EditHangFragment extends Fragment {
                 if (valueDate()) {
                     bitmapNew = ((BitmapDrawable) imgHangChange.getDrawable()).getBitmap();
                     hang.setTenHang(edTenHangChange.getText().toString());
-                    hang.setMaHang(edMaHangChange.getText().toString());
+                    hang.setMaHang(edMaHangChange.getText().toString().replaceAll(" ",""));
                     if (bitmapOld != bitmapNew) {
                         convertImage();
                         hang.setHinhAnh(hinhAnh);
