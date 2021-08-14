@@ -145,12 +145,16 @@ public class ChiTietNguoiDungFragment extends Fragment {
             Bitmap bitmap = BitmapFactory.decodeByteArray(nhanVien.getHinhAnh(), 0, nhanVien.getHinhAnh().length);
             img_nv.setImageBitmap(bitmap);
         }
-
+        img_nv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickOpenfile();
+            }
+        });
         img_chonAnh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clickOpenfile();
-
             }
         });
         setData(nhanVien);
@@ -238,8 +242,7 @@ public class ChiTietNguoiDungFragment extends Fragment {
                         nhanVien.getDienThoai().equals(eddienthoai.getText().toString()) &&
                         nhanVien.getDiaChi().equals(eddiachi.getText().toString()) &&
                         nhanVien.getNamSinh().equals(ednamsinh.getText().toString())) {
-                    Toast.makeText(getContext().getApplicationContext(), "Không Có Gì Thay Đổi \n  " +
-                            " Lưu Thất Bại!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Không có gì thay đổi để cập nhập", Toast.LENGTH_SHORT).show();
                 } else {
                     nhanVien.setHoTen(edhoten.getText().toString());
                     nhanVien.setDienThoai(eddienthoai.getText().toString());
@@ -248,9 +251,9 @@ public class ChiTietNguoiDungFragment extends Fragment {
                     int kq = dao.updateNV(nhanVien, nhanVien.getMaNV());
                     if (kq > 0) {
                         setData(nhanVien);
-                        Toast.makeText(getContext(), "Lưu thành công!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Cập nhập thành công!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getContext(), "Lưu thất bại!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Cập nhập thất bại!", Toast.LENGTH_SHORT).show();
                     }
                     dialog.dismiss();
                 }

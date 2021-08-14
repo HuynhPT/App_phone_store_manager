@@ -176,7 +176,7 @@ public class AddHoaDonNhapFragment extends Fragment {
         navController = Navigation.findNavController(view);
         appCompatActivity = (AppCompatActivity) getActivity();
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        appCompatActivity.getSupportActionBar().setTitle("Thêm Hoá Đơn Nhập");
+        appCompatActivity.getSupportActionBar().setTitle("Thêm HD Nhập");
         drawable = getActivity().getDrawable(R.drawable.ic_backspace);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
 

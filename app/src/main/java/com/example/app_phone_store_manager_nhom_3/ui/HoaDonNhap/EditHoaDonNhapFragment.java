@@ -106,7 +106,7 @@ public class EditHoaDonNhapFragment extends Fragment {
         drawable = appCompatActivity.getDrawable(R.drawable.ic_backspace);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
-        appCompatActivity.getSupportActionBar().setTitle("Cập nhập Hoá Đơn Nhập");
+        appCompatActivity.getSupportActionBar().setTitle("Cập nhập HĐ Nhập");
 
         edMaHD = view.findViewById(R.id.edMaHDNhapChange);
         edNgay = view.findViewById(R.id.edNgayNhapChange);

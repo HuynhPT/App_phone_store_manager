@@ -78,7 +78,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String createTableChiTietHoaDon = "CREATE TABLE ChiTietHoaDon(" +
                 "maCTHD INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "maHD NOT NULL REFERENCES HoaDon(maHD) ON DELETE CASCADE ON UPDATE CASCADE," +
-                "maSP NOT NULL REFERENCES SanPham(maSP)," +
+                "maSP NOT NULL REFERENCES SanPham(maSP) ON DELETE CASCADE ON UPDATE CASCADE," +
                 "soLuong INTEGER NOT NULL," +
                 "giamGia INTEGER," +
                 "donGia TEXT NOT NULL," +

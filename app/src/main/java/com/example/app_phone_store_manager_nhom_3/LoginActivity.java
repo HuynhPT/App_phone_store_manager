@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +14,6 @@ import android.widget.Toast;
 import com.example.app_phone_store_manager_nhom_3.dao.DaoNhanVien;
 import com.example.app_phone_store_manager_nhom_3.model.NhanVien;
 
-import java.io.ByteArrayOutputStream;
 
 public class LoginActivity extends AppCompatActivity {
     private Button btnLogin, btnHuy;
@@ -46,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
             nhanVien.setDienThoai("0123456789");
             nhanVien.setTaiKhoan("admin");
             nhanVien.setMatKhau("123456");
+            nhanVien.setDiaChi("Viet Nam");
+            nhanVien.setNamSinh("1234");
             dao.addNV(nhanVien);
         }
         SharedPreferences preferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);

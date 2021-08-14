@@ -212,7 +212,7 @@ public class EditHoaDonXuatragment extends Fragment {
         drawable = appCompatActivity.getDrawable(R.drawable.ic_backspace);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
-        appCompatActivity.getSupportActionBar().setTitle("Cập nhập Hoá Đơn Xuất");
+        appCompatActivity.getSupportActionBar().setTitle("Cập nhập HĐ Xuất");
 
         edMaHD = view.findViewById(R.id.edMaHDXuatChange);
         edNgay = view.findViewById(R.id.edNgayXuatChange);

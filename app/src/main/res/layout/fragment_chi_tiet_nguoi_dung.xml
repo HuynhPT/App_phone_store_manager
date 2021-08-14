@@ -5,6 +5,7 @@
     android:id="@+id/fragment_chiTietNguoiDung"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_seach"
     tools:context=".ui.NguoiDung.ChiTietNguoiDungFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -23,13 +24,14 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_camera"
         app:layout_constraintBottom_toBottomOf="@+id/imgNguoiDung"
-        app:layout_constraintEnd_toEndOf="@+id/imgNguoiDung" />
+        app:layout_constraintStart_toEndOf="@+id/imgNguoiDung" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/item_height"
         android:layout_marginTop="16dp"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/padding_defaut"
@@ -57,7 +59,8 @@
         android:id="@+id/linearLayout14"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,6 +88,8 @@
         android:id="@+id/linearLayout15"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,6 +116,8 @@
         android:id="@+id/linearLayout16"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,6 +144,8 @@
         android:id="@+id/linearLayout17"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

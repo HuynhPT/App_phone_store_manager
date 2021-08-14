@@ -77,7 +77,7 @@ public class ListTaiKhoanFragment extends Fragment {
         binding.tlbTaiKhoan.inflateMenu(R.menu.menu_header);
         drawable = getActivity().getDrawable(R.drawable.ic_menu);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        appCompatActivity.getSupportActionBar().setTitle("Danh Sách Tài Khoản");
+        appCompatActivity.getSupportActionBar().setTitle("Tài Khoản");
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(drawable);
 
         MenuItem menu = binding.tlbTaiKhoan.getMenu().findItem(R.id.menu_search);
