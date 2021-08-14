@@ -107,11 +107,11 @@ public class EditKhachHangFragment extends Fragment {
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (maKHOld != null){
+                        if (maKHOld != null) {
                             Bundle bundle = new Bundle();
                             bundle.putString("maKH", maKHOld);
                             navController.navigate(R.id.action_editKH_to_chitietKH, bundle);
-                        }else {
+                        } else {
                             navController.navigate(R.id.action_editKH_to_listKH);
                         }
                         dialogInterface.dismiss();
@@ -133,7 +133,7 @@ public class EditKhachHangFragment extends Fragment {
                             khachHang.getDiaChi().equals(edDiaChiChange.getText().toString())) {
                         Toast.makeText(appCompatActivity, "Không có thay đổi để cập nhập!", Toast.LENGTH_SHORT).show();
                     } else {
-                        khachHang.setMaKH(edMaKHChange.getText().toString().replaceAll(" ",""));
+                        khachHang.setMaKH(edMaKHChange.getText().toString().replaceAll(" ", ""));
                         khachHang.setHoTen(edHoTenKHChange.getText().toString());
                         khachHang.setDienThoai(edDienThoaiChange.getText().toString());
                         khachHang.setDiaChi(edDiaChiChange.getText().toString());
@@ -165,8 +165,8 @@ public class EditKhachHangFragment extends Fragment {
             return false;
         }
         if (!edMaKHChange.getText().toString().substring(0, 1).toUpperCase().equals(edMaKHChange.getText().toString().substring(0, 1)) ||
-                !edDienThoaiChange.getText().toString().substring(0, 1).toUpperCase().equals(edHoTenKHChange.getText().toString().substring(0, 1)) ||
-                !edDiaChiChange.getText().toString().substring(0, 1).toUpperCase().equals(edDiaChiChange.getText().toString().substring(0, 1))) {
+                !edHoTenKHChange.getText().toString().substring(0, 1).toUpperCase().equals(edHoTenKHChange.getText().toString().substring(0, 1))
+        ) {
             Toast.makeText(appCompatActivity, "Chữ cái đầu tiên tên hãng phải viết hoa", Toast.LENGTH_SHORT).show();
             return false;
         }
