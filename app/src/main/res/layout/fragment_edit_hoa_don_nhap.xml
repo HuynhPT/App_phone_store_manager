@@ -20,13 +20,16 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:clickable="true"
         app:startIconDrawable="@drawable/ic_id_hoa_don">
 
         <EditText
             android:id="@+id/edMaHDNhapChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hd_id" />
+            android:hint="@string/hd_id"
+            android:clickable="true"
+            android:focusable="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

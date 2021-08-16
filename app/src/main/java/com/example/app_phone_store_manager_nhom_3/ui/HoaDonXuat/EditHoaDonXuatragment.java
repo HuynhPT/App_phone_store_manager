@@ -583,6 +583,12 @@ public class EditHoaDonXuatragment extends Fragment {
     }
 
     private void eventDialog() {
+        edMaHD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(appCompatActivity, "Không được sửa mã hóa đơn", Toast.LENGTH_SHORT).show();
+            }
+        });
         edSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
