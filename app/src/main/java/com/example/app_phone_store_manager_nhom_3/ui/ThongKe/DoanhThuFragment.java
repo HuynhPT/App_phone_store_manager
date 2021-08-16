@@ -74,7 +74,7 @@ public class DoanhThuFragment extends Fragment {
         lnlXuat.setVisibility(View.GONE);
         lnlNhap.setVisibility(View.GONE);
         lnlTable.setVisibility(View.GONE);
-        DecimalFormat formatter = new DecimalFormat("###,###,###");
+        DecimalFormat formatter = new DecimalFormat("###,###,###,###");
 
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getActivity());
         rvPM.setLayoutManager(manager);
@@ -137,7 +137,7 @@ public class DoanhThuFragment extends Fragment {
                                 sumXuat += giaTien;
                                 break;
                             case 1:
-                                sumXuat += giaTien - (giaTien * 0.5);
+                                sumXuat += giaTien - (giaTien * 0.05);
                                 break;
                             case 2:
                                 sumXuat += giaTien - (giaTien * 0.1);
@@ -159,7 +159,6 @@ public class DoanhThuFragment extends Fragment {
                     sumNhap = daoCTHD.getSUM(start,end,0+"");
                     tvThu.setText(formatter.format(sumNhap) + " đ");
                     tvChi.setText(formatter.format(sumXuat) + " đ");
-
                     listHD.clear();
                     listHD.addAll(daoHD.getNgay(start, end));
                     adapter.filter(listHD);

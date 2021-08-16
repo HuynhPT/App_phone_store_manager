@@ -112,11 +112,11 @@ public class DaoCTHD {
         return list;
     }
 
-    public int getSUM(String startDay, String endDay, String pl) {
+    public double getSUM(String startDay, String endDay, String pl) {
         String doanhThu = "SELECT SUM(donGia * soLuong) AS tongTien FROM ChiTietHoaDon INNER JOIN HoaDon ON ChiTietHoaDon.maHD = HoaDon.maHD WHERE ngay >= ? AND ngay <= ? AND phanLoai = ? ";
         Cursor cursor = database.rawQuery(doanhThu, new String[]{startDay, endDay, pl});
         cursor.moveToFirst();
-        return cursor.getInt(cursor.getColumnIndex("tongTien"));
+        return cursor.getDouble(cursor.getColumnIndex("tongTien"));
     }
 
     public List<HashMap<String, Integer>> getNhap(String startDay, String endDay, String pl) {

@@ -473,7 +473,7 @@
         <LinearLayout
             android:id="@+id/lnlMoTaSPDeltail"
             android:layout_width="0dp"
-            android:layout_height="@dimen/item_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:background="@color/white"
@@ -486,10 +486,10 @@
             <TextView
                 android:id="@+id/tvMotaSPDeltail"
                 style="@style/custom_TV"
-                android:layout_marginLeft="@dimen/padding_defaut"
-                android:layout_marginRight="@dimen/padding_defaut"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/padding_defaut"
+                android:layout_marginRight="@dimen/padding_defaut"
                 android:textSize="@dimen/text_medium" />
 
         </LinearLayout>
