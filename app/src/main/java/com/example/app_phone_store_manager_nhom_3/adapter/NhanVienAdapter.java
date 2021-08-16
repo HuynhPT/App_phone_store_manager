@@ -60,7 +60,7 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.Viewho
             return;
 
         } else {
-            holder.tvMaNV.setText("Mã NV: #" + nhanVien.getMaNV());
+            holder.tvMaNV.setText("Mã NV: " + nhanVien.getMaNV());
             holder.tvHoTenNV.setText("Họ Tên: " + nhanVien.getHoTen());
             holder.tvDienThoaiNV.setText("Số Điện Thoại: " + nhanVien.getDienThoai());
             holder.tvTaiKhoanNV.setText("Tài Khoản: " + nhanVien.getTaiKhoan());

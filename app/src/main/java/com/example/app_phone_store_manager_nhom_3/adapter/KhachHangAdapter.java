@@ -60,7 +60,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
         if (khachHang == null) {
             return;
         } else {
-            holder.tvMaKH.setText("Mã KH: #" + khachHang.getMaKH());
+            holder.tvMaKH.setText("Mã KH: " + khachHang.getMaKH());
             holder.tvHoTenKH.setText("Họ tên: " + khachHang.getHoTen());
             holder.tvPhoneKH.setText("Số điện thoại: " + khachHang.getDienThoai());
             holder.tvDiaChiKH.setText("Địa chỉ: " + khachHang.getDiaChi());

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Manager Phone Store</string>
+    <string name="app_name">Phone Store Manager</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -52,6 +52,7 @@
     <string name="dia_chi">Điạ chỉ</string>
     <string name="pass_forget">Quên mật khẩu</string>
     <string name="pass_change">Đổi mật khẩu</string>
+    <string name="pass_defaut">Mật khẩu mặc định là: 123456</string>
     <string name="reset_pass">Đặt lại mật khẩu mặc định cho tài khoản</string>
     <string name="text_thongtin">Chỉnh sửa cá nhân</string>
     <string name="pass_old">Mật khẩu cũ</string>

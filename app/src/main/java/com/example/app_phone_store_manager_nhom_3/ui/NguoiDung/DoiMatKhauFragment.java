@@ -125,7 +125,6 @@ public class DoiMatKhauFragment extends Fragment {
         if (edPassOld.getText().length() == 0 || edPassChange.getText().length() == 0 || edRePassChange.getText().length() == 0) {
             Toast.makeText(getContext(), "Bạn phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             return check=-1;
-
         } else {
             String oldPass = nhanVien.getMatKhau();
             String pass = edPassChange.getText().toString();
@@ -136,6 +135,10 @@ public class DoiMatKhauFragment extends Fragment {
             }
             if (!pass.equals(rePass)) {
                 Toast.makeText(getContext(), "Mật khẩu không trùng khớp", Toast.LENGTH_SHORT).show();
+                return check=-1;
+            }
+            if (pass.length() < 6 || rePass.length() < 6){
+                Toast.makeText(getContext(), "Mật khẩu mới tối thiểu 6 ký tự", Toast.LENGTH_SHORT).show();
                 return check=-1;
             }
         }

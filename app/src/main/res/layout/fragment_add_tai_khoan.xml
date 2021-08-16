@@ -134,9 +134,38 @@
             android:id="@+id/ed_NamSinh_Tk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:ems="10"
             android:hint="@string/date_year"
-            android:inputType="date" />
+            android:inputType="date"
+            android:maxLength="4"/>
     </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/selected"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilNamSinhTk">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin"
+            android:src="@drawable/ic_baseline_notifications_24" />
+
+        <TextView
+            style="@style/custom_TV_show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/pass_defaut"
+            android:textSize="@dimen/text_medium" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

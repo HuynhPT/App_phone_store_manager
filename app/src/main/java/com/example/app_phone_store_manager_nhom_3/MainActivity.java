@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeByteArray(nhanVien.getHinhAnh(), 0, nhanVien.getHinhAnh().length);
             imgUser.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 1000, 1000, false));
         }
-        tvUser.setText(user.toUpperCase());
+        tvUser.setText(nhanVien.getHoTen());
         if (user.equalsIgnoreCase("admin")) {
             tvHello.setText("Xin chào Quản trị viên! ");
             navigationView.getMenu().findItem(R.id.nav_account).setVisible(true);
